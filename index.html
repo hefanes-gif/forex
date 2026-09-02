@@ -1,125 +1,106 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FX Kenya PRO V5 - Login</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<title>FX Kenya V6 - Full Auth</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet">
 <style>
 *{font-family:Inter,sans-serif;box-sizing:border-box}
-body{margin:0;background:#f1f5f9}
-.header{background:#0f172a;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-.logo{font-weight:800}.logo b{color:#fbbf24}
+body{margin:0;background:#0f172a;color:#fff}
+#auth{position:fixed;inset:0;background:#0f172a;display:flex;align-items:center;justify-content:center;z-index:99;padding:20px}
+.box{background:#fff;color:#000;width:100%;max-width:380px;border-radius:20px;padding:24px}
+.box input{width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:10px}
+.box button{width:100%;padding:13px;border:0;border-radius:10px;background:#0f172a;color:#fff;font-weight:800}
+.tabs{display:flex;gap:10px;margin-bottom:14px}
+.tabs div{flex:1;text-align:center;padding:8px;border-radius:20px;background:#f1f5f9;cursor:pointer;font-weight:700;font-size:13px}
+.tabs .on{background:#0f172a;color:#fff}
+.header{background:#0f172a;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
 .cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px}
-.card{background:#fff;border-radius:14px;padding:10px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.card small{color:#64748b;font-size:11px}.card div{font-weight:700;margin-top:2px}
+.card{background:#fff;color:#000;border-radius:14px;padding:10px}
 .pairs{display:flex;gap:6px;overflow:auto;padding:0 10px 8px}
-.p{padding:7px 12px;background:#fff;border:1px solid #e2e8f0;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
-.p.on{background:#0f172a;color:#fff}
+.p{padding:7px 12px;background:#1e293b;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;color:#fff}
+.p.on{background:#fff;color:#000}
 .chartBox{margin:0 10px;background:#fff;border-radius:14px;overflow:hidden;height:400px}
-.controls{margin:10px;background:#fff;border-radius:14px;padding:12px;display:flex;gap:8px;align-items:center}
-.controls select{padding:10px;border-radius:8px;border:1px solid #e2e8f0;flex:1}
-.btns{display:flex;gap:10px;padding:0 10px 10px}
-.btns button{flex:1;padding:15px;border:0;border-radius:12px;font-weight:800;color:#fff;font-size:16px}
+.btns{display:flex;gap:10px;padding:10px}
+.btns button{flex:1;padding:15px;border:0;border-radius:12px;font-weight:800;color:#fff}
 .sell{background:#ef4444}.buy{background:#16a34a}
-.list{margin:10px;background:#fff;border-radius:14px;padding:12px;min-height:80px}
-.mpesabtn{width:100%;padding:12px;background:#10b981;color:#fff;border:0;border-radius:12px;font-weight:700;margin-top:10px}
-/* LOGIN */
-#loginPage{position:fixed;inset:0;background:#0f172a;display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
-.loginBox{background:#fff;width:100%;max-width:360px;border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-.loginBox h2{margin:0 0 4px;font-weight:800}.loginBox p{color:#64748b;font-size:13px;margin:0 0 16px}
-.loginBox input{width:100%;padding:12px 14px;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:10px;font-size:14px}
-.loginBox button{width:100%;padding:12px;border:0;border-radius:10px;background:#0f172a;color:#fff;font-weight:800;font-size:15px;margin-top:6px}
-.loginBox .alt{text-align:center;margin-top:12px;font-size:12px;color:#64748b}.loginBox .alt b{color:#0f172a;cursor:pointer}
+.list{margin:10px;background:#fff;color:#000;border-radius:14px;padding:12px}
 </style>
 </head><body>
 
-<div id="loginPage">
-<div class="loginBox">
-<h2>FX<b style="color:#f59e0b">KENYA</b> PRO</h2>
-<p id="loginSub">Login to continue trading</p>
-<input id="l_user" placeholder="Username or Phone">
-<input id="l_pass" type="password" placeholder="Password">
-<button onclick="doLogin()" id="loginBtn">Login / Register</button>
-<div class="alt">V5 • Secure • <b>Kenya's #1</b></div>
+<div id="auth">
+<div class="box">
+<h2 style="margin:0">FX<b style="color:#f59e0b">KENYA</b> V6</h2>
+<p style="color:#64748b;font-size:13px">Full authentication - secure trading</p>
+<div class="tabs"><div id="tLogin" class="on" onclick="switchTab('login')">Login</div><div id="tReg" onclick="switchTab('reg')">Register</div></div>
+<input id="email" placeholder="Email (e.g. you@gmail.com)">
+<input id="pass" type="password" placeholder="Password (6+ chars)">
+<button id="actionBtn" onclick="handleAuth()">Login</button>
+<p id="msg" style="font-size:12px;color:#ef4444;text-align:center;margin-top:10px"></p>
+<p style="font-size:11px;color:#64748b;text-align:center;margin-top:10px;cursor:pointer" onclick="resetPass()">Forgot password? Reset</p>
 </div>
 </div>
 
-<div class="header">
-<div class="logo">FX<b>KENYA</b> PRO V5</div>
-<div style="display:flex;gap:8px;align-items:center">
-<span id="uName" style="font-size:12px;opacity:.8"></span>
-<div style="font-size:11px;background:#22c55e;padding:4px 8px;border-radius:12px">● LIVE</div>
-<span onclick="logout()" style="font-size:12px;background:#1e293b;padding:4px 8px;border-radius:12px;cursor:pointer">Logout</span>
-</div>
-</div>
+<div class="header"><div>FX<b style="color:#fbbf24">KENYA</b> V6</div><div style="display:flex;gap:8px;align-items:center"><span id="uEmail" style="font-size:11px"></span><span onclick="logout()" style="background:#1e293b;padding:6px 10px;border-radius:8px;font-size:11px">Logout</span></div></div>
 
 <div class="cards">
 <div class="card"><small>BALANCE</small><div>$<span id="bal">10000.00</span></div></div>
 <div class="card"><small>EQUITY</small><div style="color:#16a34a">$<span id="equ">10000.00</span></div></div>
-<div class="card"><small>FLOAT P/L</small><div id="fl" style="color:#64748b">$0.00</div></div>
+<div class="card"><small>P/L</small><div id="fl">$0.00</div></div>
 </div>
 
-<div class="pairs">
-<div class="p on" onclick="setP('FX:EURUSD',this)">EUR/USD</div>
-<div class="p" onclick="setP('FX:GBPUSD',this)">GBP/USD</div>
-<div class="p" onclick="setP('OANDA:XAUUSD',this)">GOLD</div>
-<div class="p" onclick="setP('BINANCE:BTCUSDT',this)">BTC</div>
-<div class="p" onclick="setP('FX_IDC:USDKES',this)">USD/KES</div>
-</div>
-
+<div class="pairs"><div class="p on" onclick="loadChart('FX:EURUSD',this)">EUR/USD</div><div class="p" onclick="loadChart('FX:GBPUSD',this)">GBP/USD</div><div class="p" onclick="loadChart('OANDA:XAUUSD',this)">GOLD</div><div class="p" onclick="loadChart('BINANCE:BTCUSDT',this)">BTC</div><div class="p" onclick="loadChart('FX_IDC:USDKES',this)">USD/KES</div></div>
 <div class="chartBox"><div id="tv" style="height:400px"></div></div>
-
-<div class="controls">
-<label style="font-size:12px;font-weight:700">LOT:</label>
-<select id="lot"><option>0.01</option><option selected>0.10</option><option>1.00</option></select>
-<span id="price" style="font-size:12px;color:#64748b">15m</span>
-</div>
-
-<div class="btns">
-<button class="sell" onclick="trade('SELL')">SELL</button>
-<button class="buy" onclick="trade('BUY')">BUY</button>
-</div>
-
-<div class="list">
-<div style="display:flex;justify-content:space-between"><b style="font-size:13px">Open Trades — <span id="uName2"></span></b><span style="font-size:12px;color:#ef4444" onclick="closeAll()">Close All</span></div>
-<div id="trades" style="font-size:12px;color:#64748b;margin-top:8px">No open trades</div>
-<button class="mpesabtn" onclick="alert('V6 will add real M-Pesa STK Push - Daraja API')">💚 Deposit via M-Pesa</button>
-</div>
+<div class="btns"><button class="sell" onclick="trade('SELL')">SELL</button><button class="buy" onclick="trade('BUY')">BUY</button></div>
+<div class="list"><b style="font-size:13px">Open Trades</b><div id="trades" style="font-size:12px;color:#64748b;margin-top:8px">No trades</div></div>
 
 <script src="https://s3.tradingview.com/tv.js"></script>
-<script>
-let cur='FX:EURUSD', bal=10000, positions=[];
-let user=localStorage.getItem('fx_user');
-if(user){ document.getElementById('loginPage').style.display='none'; document.getElementById('uName').innerText=user; document.getElementById('uName2').innerText=user; bal=parseFloat(localStorage.getItem('fx_bal_'+user)||10000); document.getElementById('bal').innerText=bal.toFixed(2); }
-function doLogin(){
- let u=document.getElementById('l_user').value.trim();
- let p=document.getElementById('l_pass').value.trim();
- if(u.length<3||p.length<3) return alert('Enter username 3+ chars and password 3+ chars');
- localStorage.setItem('fx_user',u);
- localStorage.setItem('fx_pass_'+u,p);
- if(!localStorage.getItem('fx_bal_'+u)) localStorage.setItem('fx_bal_'+u,'10000');
- location.reload();
-}
-function logout(){ localStorage.removeItem('fx_user'); location.reload(); }
-function load(s){document.getElementById('tv').innerHTML=''; new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'light',interval:'15',timezone:'Africa/Nairobi',style:'1'})}
-load(cur)
-function setP(s,el){document.querySelectorAll('.p').forEach(x=>x.classList.remove('on')); el.classList.add('on'); load(s); cur=s;}
-function trade(type){
- let lot=parseFloat(document.getElementById('lot').value);
- let entry=(Math.random()*0.3+1.08).toFixed(5);
- positions.push({id:Date.now(),type,pair:cur.split(':')[1],entry:parseFloat(entry),lot,pl:0});
- render();
-}
-function render(){
- if(!positions.length){document.getElementById('trades').innerHTML='No open trades'; updateEquity(); return}
- let h=''; positions.forEach(p=>{
-   let color=p.pl>=0?'#16a34a':'#ef4444';
-   h+=`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div><b style="color:${p.type=='BUY'?'#16a34a':'#ef4444'}">${p.type}</b> ${p.pair} ${p.lot} @ ${p.entry}<br><small style="color:${color}">P/L $${p.pl.toFixed(2)}</small></div><div><button onclick="closePos(${p.id})" style="background:#0f172a;color:#fff;border:0;border-radius:8px;padding:6px 10px">Close</button></div></div>`;
- }); document.getElementById('trades').innerHTML=h; updateEquity();
-}
-function closePos(id){ let pos=positions.find(p=>p.id==id); if(pos){ bal+=pos.pl; positions=positions.filter(p=>p.id!=id); saveBal(); render(); } }
-function closeAll(){ positions.forEach(p=>bal+=p.pl); positions=[]; saveBal(); render(); }
-function saveBal(){ document.getElementById('bal').innerText=bal.toFixed(2); let u=localStorage.getItem('fx_user'); if(u) localStorage.setItem('fx_bal_'+u,bal.toString()); }
-function updateEquity(){ let floating=positions.reduce((s,p)=>s+p.pl,0); document.getElementById('fl').innerText='$'+floating.toFixed(2); document.getElementById('fl').style.color=floating>=0?'#16a34a':'#ef4444'; document.getElementById('equ').innerText=(bal+floating).toFixed(2); }
-setInterval(()=>{ positions.forEach(p=>{ p.pl+=(Math.random()-0.5)*p.lot*20; }); if(positions.length) render(); },1200);
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// 🔴 REPLACE THIS WITH YOUR OWN CONFIG FROM FIREBASE
+const firebaseConfig = {
+  apiKey: "REPLACE_WITH_YOURS",
+  authDomain: "REPLACE.firebaseapp.com",
+  projectId: "REPLACE",
+  storageBucket: "REPLACE.appspot.com",
+  messagingSenderId: "123456",
+  appId: "1:123456:web:abc"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let mode='login', bal=10000, positions=[], cur='FX:EURUSD';
+window.switchTab = (m)=>{ mode=m; document.getElementById('tLogin').classList.toggle('on',m=='login'); document.getElementById('tReg').classList.toggle('on',m=='reg'); document.getElementById('actionBtn').innerText=m=='login'?'Login':'Register'; }
+window.handleAuth = async ()=>{
+ let email=document.getElementById('email').value.trim(); let pass=document.getElementById('pass').value.trim();
+ if(!email||pass.length<6){ document.getElementById('msg').innerText='Email + password 6+ chars'; return; }
+ try{
+  if(mode=='login'){ await signInWithEmailAndPassword(auth,email,pass); }
+  else{ await createUserWithEmailAndPassword(auth,email,pass); await setDoc(doc(db,'users',auth.currentUser.uid),{email,balance:10000}); }
+ }catch(e){ document.getElementById('msg').innerText=e.message; }
+};
+window.resetPass = async ()=>{ let e=document.getElementById('email').value.trim(); if(!e) return alert('Enter email'); await sendPasswordResetEmail(auth,e); alert('Reset link sent to '+e); }
+window.logout = async ()=>{ await signOut(auth); location.reload(); }
+
+onAuthStateChanged(auth, async (user)=>{
+ if(user){
+  document.getElementById('auth').style.display='none';
+  document.getElementById('uEmail').innerText=user.email;
+  let snap=await getDoc(doc(db,'users',user.uid));
+  if(snap.exists()){ bal=snap.data().balance; } else { await setDoc(doc(db,'users',user.uid),{email:user.email,balance:10000}); }
+  document.getElementById('bal').innerText=bal.toFixed(2);
+  loadChart(cur,document.querySelector('.p'));
+ } else { document.getElementById('auth').style.display='flex'; }
+});
+
+window.loadChart = (s,el)=>{ if(el){document.querySelectorAll('.p').forEach(x=>x.classList.remove('on')); el.classList.add('on');} cur=s; document.getElementById('tv').innerHTML=''; new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'light',interval:'15'}); }
+loadChart(cur,null);
+window.trade = (type)=>{ positions.push({id:Date.now(),type,pair:cur,pl:0}); render(); }
+window.render = ()=>{ if(!positions.length){document.getElementById('trades').innerHTML='No trades'; return} let h=''; positions.forEach(p=>{ h+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f1f5f9"><b style="color:${p.type=='BUY'?'#16a34a':'#ef4444'}">${p.type}</b> ${p.pair.split(':')[1]} <small style="color:${p.pl>=0?'green':'red'}">$${p.pl.toFixed(2)}</small> <button onclick="this.parentElement.remove()" style="background:#000;color:#fff;border:0;border-radius:6px;padding:4px 8px">Close</button></div>`;}); document.getElementById('trades').innerHTML=h; }
+setInterval(()=>{ positions.forEach(p=>p.pl+=(Math.random()-0.5)*5); if(positions.length) render(); let f=positions.reduce((s,p)=>s+p.pl,0); document.getElementById('fl').innerText='$'+f.toFixed(2); document.getElementById('equ').innerText=(bal+f).toFixed(2); },1000);
 </script>
 </body></html>
