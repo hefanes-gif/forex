@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FX Kenya V6 - Full Auth</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet">
+<title>FX Kenya V6 Supabase</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *{font-family:Inter,sans-serif;box-sizing:border-box}
 body{margin:0;background:#0f172a;color:#fff}
@@ -13,11 +14,11 @@ body{margin:0;background:#0f172a;color:#fff}
 .tabs{display:flex;gap:10px;margin-bottom:14px}
 .tabs div{flex:1;text-align:center;padding:8px;border-radius:20px;background:#f1f5f9;cursor:pointer;font-weight:700;font-size:13px}
 .tabs .on{background:#0f172a;color:#fff}
-.header{background:#0f172a;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
+.header{background:#0f172a;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
 .cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px}
 .card{background:#fff;color:#000;border-radius:14px;padding:10px}
 .pairs{display:flex;gap:6px;overflow:auto;padding:0 10px 8px}
-.p{padding:7px 12px;background:#1e293b;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;color:#fff}
+.p{padding:7px 12px;background:#1e293b;border-radius:20px;font-size:12px;font-weight:700;color:#fff;white-space:nowrap}
 .p.on{background:#fff;color:#000}
 .chartBox{margin:0 10px;background:#fff;border-radius:14px;overflow:hidden;height:400px}
 .btns{display:flex;gap:10px;padding:10px}
@@ -29,14 +30,14 @@ body{margin:0;background:#0f172a;color:#fff}
 
 <div id="auth">
 <div class="box">
-<h2 style="margin:0">FX<b style="color:#f59e0b">KENYA</b> V6</h2>
-<p style="color:#64748b;font-size:13px">Full authentication - secure trading</p>
+<h2>FX<b style="color:#f59e0b">KENYA</b> V6</h2>
+<p style="color:#64748b;font-size:13px">Supabase secure auth</p>
 <div class="tabs"><div id="tLogin" class="on" onclick="switchTab('login')">Login</div><div id="tReg" onclick="switchTab('reg')">Register</div></div>
-<input id="email" placeholder="Email (e.g. you@gmail.com)">
-<input id="pass" type="password" placeholder="Password (6+ chars)">
+<input id="email" placeholder="you@gmail.com">
+<input id="pass" type="password" placeholder="Password 6+ chars">
 <button id="actionBtn" onclick="handleAuth()">Login</button>
 <p id="msg" style="font-size:12px;color:#ef4444;text-align:center;margin-top:10px"></p>
-<p style="font-size:11px;color:#64748b;text-align:center;margin-top:10px;cursor:pointer" onclick="resetPass()">Forgot password? Reset</p>
+<p style="font-size:11px;color:#64748b;text-align:center;margin-top:10px;cursor:pointer" onclick="resetPass()">Forgot password? Reset link</p>
 </div>
 </div>
 
@@ -48,59 +49,59 @@ body{margin:0;background:#0f172a;color:#fff}
 <div class="card"><small>P/L</small><div id="fl">$0.00</div></div>
 </div>
 
-<div class="pairs"><div class="p on" onclick="loadChart('FX:EURUSD',this)">EUR/USD</div><div class="p" onclick="loadChart('FX:GBPUSD',this)">GBP/USD</div><div class="p" onclick="loadChart('OANDA:XAUUSD',this)">GOLD</div><div class="p" onclick="loadChart('BINANCE:BTCUSDT',this)">BTC</div><div class="p" onclick="loadChart('FX_IDC:USDKES',this)">USD/KES</div></div>
+<div class="pairs"><div class="p on" onclick="loadC('FX:EURUSD',this)">EUR/USD</div><div class="p" onclick="loadC('FX:GBPUSD',this)">GBP/USD</div><div class="p" onclick="loadC('OANDA:XAUUSD',this)">GOLD</div><div class="p" onclick="loadC('BINANCE:BTCUSDT',this)">BTC</div><div class="p" onclick="loadC('FX_IDC:USDKES',this)">USD/KES</div></div>
 <div class="chartBox"><div id="tv" style="height:400px"></div></div>
 <div class="btns"><button class="sell" onclick="trade('SELL')">SELL</button><button class="buy" onclick="trade('BUY')">BUY</button></div>
-<div class="list"><b style="font-size:13px">Open Trades</b><div id="trades" style="font-size:12px;color:#64748b;margin-top:8px">No trades</div></div>
+<div class="list"><b style="font-size:13px">Trades</b><div id="trades" style="font-size:12px;color:#64748b;margin-top:8px">No trades</div></div>
 
 <script src="https://s3.tradingview.com/tv.js"></script>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-// 🔴 REPLACE THIS WITH YOUR OWN CONFIG FROM FIREBASE
-const firebaseConfig = {
-  apiKey: "REPLACE_WITH_YOURS",
-  authDomain: "REPLACE.firebaseapp.com",
-  projectId: "REPLACE",
-  storageBucket: "REPLACE.appspot.com",
-  messagingSenderId: "123456",
-  appId: "1:123456:web:abc"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+<script>
+// 🔴 REPLACE WITH YOURS FROM SUPABASE SETTINGS > API
+const SUPA_URL = "https://YOUR_PROJECT.supabase.co";
+const SUPA_KEY = "YOUR_ANON_PUBLIC_KEY";
+const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
 
 let mode='login', bal=10000, positions=[], cur='FX:EURUSD';
-window.switchTab = (m)=>{ mode=m; document.getElementById('tLogin').classList.toggle('on',m=='login'); document.getElementById('tReg').classList.toggle('on',m=='reg'); document.getElementById('actionBtn').innerText=m=='login'?'Login':'Register'; }
-window.handleAuth = async ()=>{
- let email=document.getElementById('email').value.trim(); let pass=document.getElementById('pass').value.trim();
- if(!email||pass.length<6){ document.getElementById('msg').innerText='Email + password 6+ chars'; return; }
- try{
-  if(mode=='login'){ await signInWithEmailAndPassword(auth,email,pass); }
-  else{ await createUserWithEmailAndPassword(auth,email,pass); await setDoc(doc(db,'users',auth.currentUser.uid),{email,balance:10000}); }
- }catch(e){ document.getElementById('msg').innerText=e.message; }
-};
-window.resetPass = async ()=>{ let e=document.getElementById('email').value.trim(); if(!e) return alert('Enter email'); await sendPasswordResetEmail(auth,e); alert('Reset link sent to '+e); }
-window.logout = async ()=>{ await signOut(auth); location.reload(); }
+function switchTab(m){mode=m; document.getElementById('tLogin').classList.toggle('on',m=='login'); document.getElementById('tReg').classList.toggle('on',m=='reg'); document.getElementById('actionBtn').innerText=m=='login'?'Login':'Register';}
 
-onAuthStateChanged(auth, async (user)=>{
- if(user){
+async function handleAuth(){
+ let email=document.getElementById('email').value.trim(); let pass=document.getElementById('pass').value.trim(); let msg=document.getElementById('msg');
+ if(!email||pass.length<6){msg.innerText='Enter email + 6 char pass'; return;}
+ msg.innerText='Loading...';
+ try{
+  if(mode=='login'){
+   let {error} = await supa.auth.signInWithPassword({email,password:pass});
+   if(error) throw error;
+  } else {
+   let {data,error} = await supa.auth.signUp({email,password:pass});
+   if(error) throw error;
+   if(data.user){ await supa.from('profiles').insert({id:data.user.id,email,balance:10000}); }
+   msg.innerText='Registered! Check email to confirm, then Login.';
+   return;
+  }
+ } catch(e){ msg.innerText=e.message; }
+}
+
+async function resetPass(){
+ let email=document.getElementById('email').value.trim(); if(!email) return alert('Enter email first');
+ let {error}=await supa.auth.resetPasswordForEmail(email); alert(error?error.message:'Reset link sent to '+email);
+}
+async function logout(){ await supa.auth.signOut(); location.reload(); }
+
+supa.auth.onAuthStateChange(async (event, session)=>{
+ if(session){
   document.getElementById('auth').style.display='none';
-  document.getElementById('uEmail').innerText=user.email;
-  let snap=await getDoc(doc(db,'users',user.uid));
-  if(snap.exists()){ bal=snap.data().balance; } else { await setDoc(doc(db,'users',user.uid),{email:user.email,balance:10000}); }
-  document.getElementById('bal').innerText=bal.toFixed(2);
-  loadChart(cur,document.querySelector('.p'));
+  document.getElementById('uEmail').innerText=session.user.email;
+  let {data}=await supa.from('profiles').select('balance').eq('id',session.user.id).single();
+  if(data){ bal=data.balance; document.getElementById('bal').innerText=bal.toFixed(2); }
+  loadC(cur,document.querySelector('.p'));
  } else { document.getElementById('auth').style.display='flex'; }
 });
 
-window.loadChart = (s,el)=>{ if(el){document.querySelectorAll('.p').forEach(x=>x.classList.remove('on')); el.classList.add('on');} cur=s; document.getElementById('tv').innerHTML=''; new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'light',interval:'15'}); }
-loadChart(cur,null);
-window.trade = (type)=>{ positions.push({id:Date.now(),type,pair:cur,pl:0}); render(); }
-window.render = ()=>{ if(!positions.length){document.getElementById('trades').innerHTML='No trades'; return} let h=''; positions.forEach(p=>{ h+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f1f5f9"><b style="color:${p.type=='BUY'?'#16a34a':'#ef4444'}">${p.type}</b> ${p.pair.split(':')[1]} <small style="color:${p.pl>=0?'green':'red'}">$${p.pl.toFixed(2)}</small> <button onclick="this.parentElement.remove()" style="background:#000;color:#fff;border:0;border-radius:6px;padding:4px 8px">Close</button></div>`;}); document.getElementById('trades').innerHTML=h; }
+function loadC(s,el){ if(el){document.querySelectorAll('.p').forEach(x=>x.classList.remove('on')); el.classList.add('on');} cur=s; document.getElementById('tv').innerHTML=''; new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'light',interval:'15'}); }
+loadC(cur,null);
+function trade(type){ positions.push({id:Date.now(),type,pl:0}); render(); }
+function render(){ if(!positions.length){document.getElementById('trades').innerHTML='No trades'; return} let h=''; positions.forEach(p=>{h+=`<div style="display:flex;justify-content:space-between;padding:6px 0"><b style="color:${p.type=='BUY'?'#16a34a':'#ef4444'}">${p.type}</b> ${cur.split(':')[1]} <small>$${p.pl.toFixed(2)}</small></div>`}); document.getElementById('trades').innerHTML=h; }
 setInterval(()=>{ positions.forEach(p=>p.pl+=(Math.random()-0.5)*5); if(positions.length) render(); let f=positions.reduce((s,p)=>s+p.pl,0); document.getElementById('fl').innerText='$'+f.toFixed(2); document.getElementById('equ').innerText=(bal+f).toFixed(2); },1000);
 </script>
 </body></html>
