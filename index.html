@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FX Kenya - Pro Trader</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Inter',sans-serif;box-sizing:border-box}
+body{margin:0;background:#f8fafc;color:#0f172a}
+.top{background:#0f172a;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:700;letter-spacing:-0.5px}.logo span{color:#f59e0b}
+.live{background:#10b981;color:#fff;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.bal{background:#fff;margin:12px;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,0.05);display:flex;justify-content:space-between}
+.bal small{color:#64748b}.bal b{font-size:18px}
+.pairs{display:flex;gap:8px;overflow:auto;padding:0 12px}
+.pair{background:#fff;padding:8px 14px;border-radius:20px;border:1px solid #e2e8f0;white-space:nowrap;font-size:13px;font-weight:600}
+.pair.active{background:#0f172a;color:#fff;border-color:#0f172a}
+.trade{display:flex;gap:10px;padding:12px}
+.trade button{flex:1;padding:14px;border-radius:12px;border:0;font-weight:700;font-size:15px}
+.buy{background:#10b981;color:#fff}.sell{background:#ef4444;color:#fff}
+.chart{background:#fff;margin:0 12px;border-radius:16px;overflow:hidden;height:460px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.pos{background:#fff;margin:12px;border-radius:16px;padding:12px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.pos h4{margin:0 0 8px 0;font-size:14px}
+</style>
+</head>
+<body>
+<div class="top"><div class="logo">FX<span>KENYA</span> PRO</div><div class="live">● LIVE</div></div>
+
+<div class="bal">
+<div><small>Balance</small><br><b>$<span id="bal">10,000.00</span></b></div>
+<div><small>Equity</small><br><b style="color:#10b981">$<span id="eq">10,000.00</span></b></div>
+<div><small>P/L Today</small><br><b style="color:#64748b">$<span id="pnl">0.00</span></b></div>
+</div>
+
+<div class="pairs" id="pairList">
+<div class="pair active" onclick="setPair('FX:EURUSD',this)">EUR/USD</div>
+<div class="pair" onclick="setPair('FX:GBPUSD',this)">GBP/USD</div>
+<div class="pair" onclick="setPair('FX:USDJPY',this)">USD/JPY</div>
+<div class="pair" onclick="setPair('FX:USDCHF',this)">USD/CHF</div>
+<div class="pair" onclick="setPair('OANDA:XAUUSD',this)">GOLD</div>
+<div class="pair" onclick="setPair('BINANCE:BTCUSDT',this)">BTC/USD</div>
+<div class="pair" onclick="setPair('FX_IDC:USDKES',this)">USD/KES</div>
+</div>
+
+<div class="chart"><div id="tv" style="height:460px"></div></div>
+
+<div class="trade">
+<button class="sell" onclick="openTrade('SELL')">SELL</button>
+<button class="buy" onclick="openTrade('BUY')">BUY</button>
+</div>
+
+<div class="pos"><h4>Open Positions</h4><div id="trades" style="color:#64748b;font-size:13px">No open positions</div></div>
+
+<script src="https://s3.tradingview.com/tv.js"></script>
+<script>
+let trades=[], current="FX:EURUSD";
+function load(sym){document.getElementById('tv').innerHTML='';new TradingView.widget({symbol:sym,container_id:"tv",autosize:true,theme:"light",interval:"15",timezone:"Africa/Nairobi",style:"1",toolbar_bg:"#fff"})}
+load(current);
+function setPair(sym,el){
+ current=sym; load(sym);
+ document.querySelectorAll('.pair').forEach(p=>p.classList.remove('active'));
+ el.classList.add('active');
+}
+function openTrade(type){
+ trades.push({type,pair:current.split(':')[1],price:(Math.random()*10+1).toFixed(4),time:new Date().toLocaleTimeString()});
+ render();
+}
+function render(){
+ if(!trades.length){document.getElementById('trades').innerHTML='No open positions';return}
+ let h=''; trades.forEach((t,i)=>{h+=`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><span><b style="color:${t.type=='BUY'?'#10b981':'#ef4444'}">${t.type}</b> ${t.pair} @ ${t.price}</span><span>${t.time} <b onclick="trades.splice(${i},1);render()" style="color:#ef4444;margin-left:8px">✕</b></span></div>`});
+ document.getElementById('trades').innerHTML=h;
+}
+</script>
+</body></html>
