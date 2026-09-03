@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>FX Kenya PRO V23</title>
+<title>FX Kenya PRO V24</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -15,7 +15,6 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 .hero{padding:30px 16px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:20px}
 @media(min-width:800px){.hero{grid-template-columns:1.2fr.8fr;padding:50px 20px}}
 .hero h1{font-size:32px;line-height:1.1;margin:0}
-@media(min-width:800px){.hero h1{font-size:48px}}
 .hero h1 span{color:#f5c518}
 .heroStats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:16px 0}
 .heroStat{background:#151a21;border:1px solid #222a35;border-radius:12px;padding:10px;text-align:center}
@@ -58,13 +57,11 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 .posCard{background:#151a21;border:1px solid #222a35;border-radius:18px;margin:12px;padding:14px}
 .dashGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 12px}
 .dashCard{background:#151a21;border:1px solid #222a35;border-radius:14px;padding:12px}
-.dashCard b{font-size:20px;display:block}
 .progressBar{height:6px;background:#222a35;border-radius:10px;overflow:hidden;margin-top:6px}
 .progressBar div{height:6px;background:#f5c518}
 .bBar{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:5px}
 .bCard{background:#151a21;border:1px solid #222a35;border-radius:12px;padding:8px}
 .bCard small{color:#8b93a1;font-size:7px;display:block}
-.posCard small{font-size:11px}
 .bCard.v{font-size:12px;font-weight:800;margin-top:2px}
 .pills{display:flex;gap:6px;overflow:auto;padding:6px 12px}
 .pill{white-space:nowrap;padding:7px 11px;border-radius:20px;background:#151a21;border:1px solid #222a35;font-size:11px;font-weight:700;cursor:pointer}
@@ -106,8 +103,8 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 <a class="waFloat" href="https://wa.me/254789338183" target="_blank">💬</a>
 <div id="landing">
 <div class="landHeader"><div style="font-weight:800">FX<span style="color:#f5c518">KENYA</span> PRO</div><div style="display:flex;gap:8px"><button class="landBtn outline" onclick="openAuth('login')">Sign In</button><button class="landBtn gold" onclick="openAuth('signup')">Sign Up</button></div></div>
-<div class="hero"><div><h1>Kenya's <span>#1 Forex</span> in 20 Sec</h1><p>Sign up magic link, sign in direct password. Reset password now works. Bonus trade-only, real withdraw $5-$50k/day.</p><div class="heroStats"><div class="heroStat"><b>20s</b><small>Sign Up</small></div><div class="heroStat"><b>50-100%</b><small>Bonus</small></div><div class="heroStat"><b>Once/Day</b><small>Bonus</small></div></div><button class="btn" style="width:auto;padding:12px 22px" onclick="openAuth('signup')">🚀 Magic Link Sign Up →</button></div><div class="heroCard"><div style="font-size:12px;display:flex;justify-content:space-between"><span>💹 Live</span><span style="color:#00c076">● LIVE</span></div><div class="mockBal"><span>EUR/USD</span><span style="color:#00c076">1.16195 ▲</span></div><div class="mockBal"><span>GOLD</span><span style="color:#00c076">$2,045 ▲</span></div><div class="mockBal"><span>Balance</span><b style="color:#00c076">$1,250 REAL</b></div><div class="mockBal"><span>Bonus</span><b style="color:#f5c518">$620 trade-only</b></div></div></div>
-<div class="features"><div class="feat"><b>⚡ Magic Sign Up</b><small>Email+password → verify link.</small></div><div class="feat"><b>🔑 Direct Sign In</b><small>Email+password, Google, Facebook, forgot works.</small></div><div class="feat"><b>🔥 Once/Day</b><small>Check-in + Spin once per day only.</small></div><div class="feat"><b>💳 M-Pesa 542542</b><small>Deposit KES, bonus trade-only.</small></div></div>
+<div class="hero"><div><h1>Kenya's <span>#1 Forex</span> in 20 Sec</h1><p>Magic link for sign up, direct password for sign in. Reset password fixed. Bonus trade-only $5-$50k/day real.</p><div class="heroStats"><div class="heroStat"><b>20s</b><small>Sign Up</small></div><div class="heroStat"><b>50-100%</b><small>Bonus</small></div><div class="heroStat"><b>Fixed</b><small>Reset Pass</small></div></div><button class="btn" style="width:auto;padding:12px 22px" onclick="openAuth('signup')">🚀 Magic Link Sign Up →</button></div><div class="heroCard"><div style="font-size:12px;display:flex;justify-content:space-between"><span>💹 Live</span><span style="color:#00c076">● LIVE</span></div><div class="mockBal"><span>EUR/USD</span><span style="color:#00c076">1.16195 ▲</span></div><div class="mockBal"><span>GOLD</span><span style="color:#00c076">$2,045 ▲</span></div><div class="mockBal"><span>Balance</span><b style="color:#00c076">$1,250 REAL</b></div><div class="mockBal"><span>Bonus</span><b style="color:#f5c518">$620 trade-only</b></div></div></div>
+<div class="features"><div class="feat"><b>⚡ Magic Sign Up Only</b><small>Email+password → verify link.</small></div><div class="feat"><b>🔑 Direct Sign In</b><small>Password direct + Google + FB + forgot fixed.</small></div><div class="feat"><b>🔥 Once/Day</b><small>Streak + spin once/day no spam.</small></div><div class="feat"><b>💳 M-Pesa 542542</b><small>Deposit KES, bonus trade-only.</small></div></div>
 <div class="ctaBig"><h2 style="margin:0">Start in 20 Sec</h2><button class="btn" style="background:#000;color:#fff;max-width:280px" onclick="openAuth('signup')">Get Magic Link →</button></div>
 </div>
 <div id="auth"><div class="authTop"><div><b>FX<span style="color:#f5c518">KENYA</span> PRO</b><div style="font-size:10px;color:#8b93a1"><span id="authStepNum">1</span> • <span id="authStepName">Email</span></div></div><div onclick="closeAuth()" style="cursor:pointer;background:#151a21;padding:8px 12px;border-radius:8px">✕</div></div><div class="authProgress"><div id="authProgressBar" class="authProgressBar" style="width:25%"></div></div><div class="authBody" id="authBody">Loading...</div></div>
@@ -135,7 +132,7 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 <div id="dailyModal" class="modal"><div class="modalBox"><div style="font-size:40px">🔥</div><h3>Daily Check-in</h3><p style="font-size:12px;color:#8b93a1">Day <b id="modalDay">1</b> → <b id="modalReward" style="color:#f5c518">$0.10</b> trade-only</p><div style="background:#0b0e12;border:1px solid #222a35;border-radius:10px;padding:8px;margin:8px 0;display:flex;gap:4px;justify-content:center"><span id="d1">⬜</span><span id="d2">⬜</span><span id="d3">⬜</span><span id="d4">⬜</span><span id="d5">⬜</span><span id="d6">⬜</span><span id="d7">⬜</span></div><button class="btn" onclick="closeDaily()">CLAIM & TRADE →</button><div style="font-size:10px;color:#5a6476;margin-top:6px">Once per day</div></div></div>
 <div id="spinModal" class="modal"><div class="modalBox"><h3>🎡 Daily Spin</h3><div id="wheel" class="wheel"><span>🎯</span></div><p id="spinResult" style="font-size:12px;color:#8b93a1">Once per day $0.10-$2 bonus</p><button class="btn" id="spinBtn" onclick="doSpin()">SPIN NOW →</button><button class="btn-outline" onclick="closeSpin()">Later</button></div></div>
 <div id="dashboardView" style="display:none">
-<div class="dashGrid"><div class="dashCard"><small>Real (withdrawable)</small><b id="dBal">$0.00</b><small>$5 min $50k max/day</small></div><div class="dashCard"><small>Bonus trade-only</small><b id="dBonus" style="color:#f5c518">$0.00</b></div><div class="dashCard"><small>Equity</small><b id="dEqu">$0.00</b><div class="progressBar"><div id="dEquBar" style="width:50%"></div></div></div><div class="dashCard"><small>P/L</small><b id="dPl">$0.00</b><small id="dTrades">0 trades</small></div></div>
+<div class="dashGrid"><div class="dashCard"><small>Real withdrawable</small><b id="dBal">$0.00</b><small>$5 min $50k max/day</small></div><div class="dashCard"><small>Bonus trade-only</small><b id="dBonus" style="color:#f5c518">$0.00</b></div><div class="dashCard"><small>Equity</small><b id="dEqu">$0.00</b><div class="progressBar"><div id="dEquBar" style="width:50%"></div></div></div><div class="dashCard"><small>P/L</small><b id="dPl">$0.00</b><small id="dTrades">0 trades</small></div></div>
 <div class="posCard"><b style="font-size:12px">🔥 Streak (once/day)</b><div style="display:flex;justify-content:space-between;font-size:11px;margin-top:6px"><span id="vipLevel">BRONZE</span><span id="nextVip">Deposit $100 for Silver</span></div><div class="progressBar"><div id="vipProg" style="width:10%"></div></div><div style="display:flex;gap:4px;margin-top:8px" id="streakDots"></div><div style="font-size:10px;color:#8b93a1;margin-top:6px">Deposited: <span id="totalDep">$0</span> • Today: <span id="todayBonus" style="color:#f5c518">$0</span></div></div>
 <div class="posCard"><b style="font-size:12px">🎡 Spin (once/day)</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn" onclick="openSpin()">🎡 SPIN $0.10-$2</button><button class="btn-outline" onclick="requestNotif()">🔔 Alerts</button></div><div style="margin-top:12px"><small>Weekly 5 lots → $5 bonus</small><div class="challengeBar"><div id="challengeBar" style="width:0%"></div></div><small id="challengeText" style="font-size:10px;color:#8b93a1">0 / 5 lots</small></div></div>
 <div class="posCard"><b style="font-size:12px">Quick</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn" onclick="goView('wallet','deposit')">💰 Deposit</button><button class="btn" style="background:#00c076;color:#fff" onclick="goView('trade')">📈 Trade</button><button class="btn-outline" onclick="goView('copy')">🏆 Copy</button><button class="btn-outline" onclick="goView('affiliate')">👥 Invite $5</button></div></div>
@@ -171,27 +168,68 @@ function toggleSide(o){let s=document.getElementById('sidebar');let ov=document.
 function toggleWallet(){document.getElementById('walletSub').classList.toggle('open');}
 function goView(v,sub){toggleSide(false);['dashboard','trade','wallet','copy','profile','affiliate','support','admin','kyc'].forEach(x=>{let el=document.getElementById(x+'View'); if(el) el.style.display=x==v?'block':'none';}); if(v=='wallet'){let dep=document.getElementById('depositCard'); let withd=document.getElementById('withdrawCard'); let tx=document.getElementById('txCard'); if(sub=='deposit'){dep.style.display='block';withd.style.display='none';tx.style.display='none';}else if(sub=='withdraw'){dep.style.display='none';withd.style.display='block';tx.style.display='none';loadWithdrawStats();}else if(sub=='history'){dep.style.display='none';withd.style.display='none';tx.style.display='block';loadAllTx();}else{dep.style.display='block';withd.style.display='block';tx.style.display='block';loadWithdrawStats();}} if(v=='trade') loadC(cur,document.querySelector('.pill')); if(v=='copy') loadLeaderboard(); if(v=='profile') loadProfile(); if(v=='affiliate') loadAffList(); if(v=='admin') loadAdmin(); if(v=='kyc') loadKycStatus(); if(v=='support') loadChat(); if(v=='dashboard') loadChallenge();}
 function openAuth(mode){document.getElementById('auth').style.display='flex'; document.getElementById('landing').style.display='none'; if(mode=='login'){showLogin();} else {obStep=1; renderSignup();}}
-function closeAuth(){if(currentUser &&!isRecoveryFlow){document.getElementById('auth').style.display='none';}else if(!currentUser){document.getElementById('auth').style.display='none'; document.getElementById('landing').style.display='block';}}
+function closeAuth(){if(isRecoveryFlow){return;} if(currentUser){document.getElementById('auth').style.display='none';}else{document.getElementById('auth').style.display='none'; document.getElementById('landing').style.display='block';}}
 let isRecoveryFlow=false;
-function checkRecoveryOnLoad(){
-const hash=window.location.hash;
-const search=window.location.search;
-if(hash.includes('type=recovery') || search.includes('type=recovery')){
+function showNewPasswordForm(){
 isRecoveryFlow=true;
+updateProgress(100,'New Password');
 document.getElementById('landing').style.display='none';
+document.getElementById('appHeader').style.display='none';
+document.getElementById('dashboardView').style.display='none';
+document.getElementById('tradeView').style.display='none';
+document.getElementById('walletView').style.display='none';
+document.getElementById('copyView').style.display='none';
+document.getElementById('profileView').style.display='none';
+document.getElementById('affiliateView').style.display='none';
+document.getElementById('supportView').style.display='none';
+document.getElementById('adminView').style.display='none';
+document.getElementById('kycView').style.display='none';
 document.getElementById('auth').style.display='flex';
-showNewPasswordForm();
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔑</div><div class="stepTitle">Set New Password</div><div class="stepDesc">Reset link verified ✅ Enter new password now. This will UPDATE your password.</div><input id="npPass" type="password" class="inp" placeholder="New password 8+ chars"><input id="npPass2" type="password" class="inp" placeholder="Confirm new password"><button class="btn" id="npBtn" onclick="doUpdatePassword()">UPDATE PASSWORD →</button><p id="npErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p><p id="npMsg" style="color:#00c076;font-size:12px;text-align:center"></p><div style="font-size:10px;color:#5a6476;text-align:center;margin-top:8px">Link from email verified. After update you will sign in with new password.</div>`;
 }
+async function doUpdatePassword(){
+let p1=document.getElementById('npPass').value.trim();
+let p2=document.getElementById('npPass2').value.trim();
+let errEl=document.getElementById('npErr');
+let msgEl=document.getElementById('npMsg');
+if(errEl) errEl.innerText='';
+if(p1.length<8){if(errEl) errEl.innerText='Password must be 8+ characters'; return;}
+if(p1!==p2){if(errEl) errEl.innerText='Passwords do not match'; return;}
+let btn=document.getElementById('npBtn'); if(btn){btn.innerText='Updating...'; btn.disabled=true;}
+let {data,error}=await supa.auth.updateUser({password:p1});
+if(error){if(errEl) errEl.innerText=error.message; if(btn){btn.innerText='UPDATE PASSWORD →'; btn.disabled=false;}}
+else{
+if(msgEl) msgEl.innerText='✅ Password updated! Logging you in...';
+setTimeout(async()=>{
+isRecoveryFlow=false;
+try{localStorage.removeItem('fx_daily_'+currentUser?.id+'_'+new Date().toISOString().split('T')[0]);}catch(e){}
+await supa.auth.signOut();
+window.history.replaceState({}, document.title, window.location.pathname);
+showLogin();
+let liErr=document.getElementById('liErr');
+if(liErr){liErr.style.color='#00c076'; liErr.innerText='✅ Password updated! Sign in with new password';}
+},1200);
+}
+}
+function checkRecoveryOnLoad(){
+const href=window.location.href;
+const hash=window.location.hash;
+if(href.includes('type=recovery') || hash.includes('type=recovery') || (hash.includes('access_token') && href.includes('recovery'))){
+showNewPasswordForm();
+return true;
+}
+return false;
 }
 checkRecoveryOnLoad();
+window.addEventListener('hashchange', checkRecoveryOnLoad);
 function renderSignup(){
 if(obStep==1){
-updateProgress(25,'Sign Up - Magic');
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">📧</div><div class="stepTitle">Sign Up - Magic Link</div><div class="stepDesc">ONLY for sign up. Email + password → we send verification magic link.</div><input id="suEmail" class="inp" placeholder="you@gmail.com" value="${obData.email}"><input id="suPass" type="password" class="inp" placeholder="Create password 8+ chars"><input id="suRef" class="inp" placeholder="Referral (optional)" value="${referralFromUrl||localStorage.getItem('fx_ref')||obData.refCode||''}"><button class="btn" id="suBtn" onclick="doSignup()">Create & Send Magic Link →</button><div style="text-align:center;margin-top:12px;font-size:12px;color:#8b93a1">Already have? <span style="color:#f5c518;font-weight:800;cursor:pointer" onclick="showLogin()">Sign In Direct</span></div><p id="suErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p>`;
+updateProgress(25,'Sign Up Magic');
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">📧</div><div class="stepTitle">Sign Up - Magic Link Only</div><div class="stepDesc">Sign up uses magic link verification ONLY.</div><input id="suEmail" class="inp" placeholder="you@gmail.com" value="${obData.email}"><input id="suPass" type="password" class="inp" placeholder="Create password 8+ chars"><input id="suRef" class="inp" placeholder="Referral (optional)" value="${referralFromUrl||localStorage.getItem('fx_ref')||obData.refCode||''}"><button class="btn" id="suBtn" onclick="doSignup()">Create & Send Magic Link →</button><div style="text-align:center;margin-top:12px;font-size:12px;color:#8b93a1">Already have? <span style="color:#f5c518;font-weight:800;cursor:pointer" onclick="showLogin()">Sign In Direct</span></div><p id="suErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p>`;
 }
 else if(obStep==2){
 updateProgress(50,'Check Email');
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">✉️</div><div class="stepTitle">Check Email</div><div class="stepDesc">Magic link sent to <b style="color:#fff">${obData.email}</b>. Tap link to verify.</div><div style="background:#00c07622;border:1px solid #00c07655;border-radius:12px;padding:14px;text-align:center;margin:12px 0"><div style="font-size:32px">📨</div><b style="color:#00c076">Link Sent!</b><br><small>Open Gmail → tap link</small></div><button class="btn" onclick="resendSignupLink()">Resend Link →</button><button class="btn-outline" onclick="obStep=1;renderSignup()">Change Email</button><p id="suErr" style="color:#ff6b6b;font-size:12px"></p>`;
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">✉️</div><div class="stepTitle">Check Email</div><div class="stepDesc">Magic link sent to <b style="color:#fff">${obData.email}</b>. Tap link to verify account.</div><div style="background:#00c07622;border:1px solid #00c07655;border-radius:12px;padding:14px;text-align:center;margin:12px 0"><div style="font-size:32px">📨</div><b style="color:#00c076">Link Sent!</b><br><small>Open Gmail → tap verification link</small></div><button class="btn" onclick="resendSignupLink()">Resend Link →</button><button class="btn-outline" onclick="obStep=1;renderSignup()">Change Email</button><p id="suErr" style="color:#ff6b6b;font-size:12px"></p>`;
 }
 else if(obStep==3){
 updateProgress(75,'Name');
@@ -238,10 +276,9 @@ obStep=4; renderSignup(); localStorage.removeItem('fx_easy_ob');
 }catch(e){document.getElementById('suErr').innerText=e.message;}
 }
 function finishOnboarding(){document.getElementById('auth').style.display='none'; location.reload();}
-
 function showLogin(){
 updateProgress(25,'Sign In Direct');
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔑</div><div class="stepTitle">Sign In Direct</div><div class="stepDesc">No magic link for sign in. Direct password.</div><input id="liEmail" class="inp" placeholder="Email"><input id="liPass" type="password" class="inp" placeholder="Password"><button class="btn" id="liBtn" onclick="doDirectLogin()">Sign In →</button><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><button class="btn-outline" onclick="realGoogle()">🔵 Google</button><button class="btn-outline" onclick="realFacebook()">🔵 Facebook</button></div><div style="display:flex;justify-content:space-between;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showForgotPass()">Forgot Password?</span><span style="color:#8b93a1;cursor:pointer" onclick="showForgotEmail()">Forgot Email?</span></div><div style="text-align:center;margin-top:12px;font-size:12px">No account? <span style="color:#f5c518;font-weight:800;cursor:pointer" onclick="obStep=1;renderSignup()">Sign Up (Magic)</span></div><p id="liErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p>`;
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔑</div><div class="stepTitle">Sign In Direct</div><div class="stepDesc">Direct password login ONLY. No magic link for sign in.</div><input id="liEmail" class="inp" placeholder="Email"><input id="liPass" type="password" class="inp" placeholder="Password"><button class="btn" id="liBtn" onclick="doDirectLogin()">Sign In →</button><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><button class="btn-outline" onclick="realGoogle()">🔵 Google</button><button class="btn-outline" onclick="realFacebook()">🔵 Facebook</button></div><div style="display:flex;justify-content:space-between;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showForgotPass()">Forgot Password?</span><span style="color:#8b93a1;cursor:pointer" onclick="showForgotEmail()">Forgot Email?</span></div><div style="text-align:center;margin-top:12px;font-size:12px">No account? <span style="color:#f5c518;font-weight:800;cursor:pointer" onclick="obStep=1;renderSignup()">Sign Up (Magic)</span></div><p id="liErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p>`;
 }
 async function doDirectLogin(){
 let em=document.getElementById('liEmail').value.trim();
@@ -253,41 +290,22 @@ if(error){document.getElementById('liErr').innerText=error.message; if(btn){btn.
 }
 async function realGoogle(){let {error}=await supa.auth.signInWithOAuth({provider:'google',options:{redirectTo:window.location.href}}); if(error) alert(error.message);}
 async function realFacebook(){let {error}=await supa.auth.signInWithOAuth({provider:'facebook',options:{redirectTo:window.location.href}}); if(error) alert(error.message);}
-
 function showForgotPass(){
 updateProgress(30,'Forgot Password');
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔒</div><div class="stepTitle">Forgot Password</div><div class="stepDesc">Enter email → we send reset link → tap link → set new password.</div><input id="fpEmail" class="inp" placeholder="you@gmail.com"><button class="btn" id="fpBtn" onclick="doForgotPass()">Send Reset Link →</button><p id="fpMsg" style="font-size:12px;text-align:center;margin-top:8px"></p><div style="text-align:center;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showLogin()">Back to Sign In</span></div>`;
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔒</div><div class="stepTitle">Forgot Password</div><div class="stepDesc">Enter email → we send reset link. Click link → set new password screen will open (fixed).</div><input id="fpEmail" class="inp" placeholder="you@gmail.com"><button class="btn" id="fpBtn" onclick="doForgotPass()">Send Reset Link →</button><p id="fpMsg" style="font-size:12px;text-align:center;margin-top:8px"></p><div style="text-align:center;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showLogin()">Back to Sign In</span></div>`;
 }
 async function doForgotPass(){
 let em=document.getElementById('fpEmail').value.trim();
 if(!em.includes('@')) return alert('Valid email');
 let btn=document.getElementById('fpBtn'); if(btn){btn.innerText='Sending...'; btn.disabled=true;}
-let {error}=await supa.auth.resetPasswordForEmail(em,{redirectTo:window.location.origin+window.location.pathname});
+let {error}=await supa.auth.resetPasswordForEmail(em,{redirectTo:window.location.origin + window.location.pathname});
 let msg=document.getElementById('fpMsg');
 if(error){msg.style.color='#ff6b6b'; msg.innerText=error.message; if(btn){btn.innerText='Send Reset Link →'; btn.disabled=false;}}
-else{msg.style.color='#00c076'; msg.innerText='✅ Reset link sent to '+em+' → Open email → Tap link → Set new password'; if(btn) btn.innerText='Sent! Check Email';}
-}
-function showNewPasswordForm(){
-updateProgress(90,'New Password');
-isRecoveryFlow=true;
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔑</div><div class="stepTitle">Set New Password</div><div class="stepDesc">You clicked reset link. Enter new password now.</div><input id="npPass" type="password" class="inp" placeholder="New password 8+ chars"><input id="npPass2" type="password" class="inp" placeholder="Confirm new password"><button class="btn" id="npBtn" onclick="doUpdatePassword()">Update Password → Sign In</button><p id="npErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p><p id="npMsg" style="color:#00c076;font-size:12px;text-align:center"></p>`;
-}
-async function doUpdatePassword(){
-let p1=document.getElementById('npPass').value.trim();
-let p2=document.getElementById('npPass2').value.trim();
-if(p1.length<8){document.getElementById('npErr').innerText='Password 8+ chars'; return;}
-if(p1!==p2){document.getElementById('npErr').innerText='Passwords not match'; return;}
-let btn=document.getElementById('npBtn'); if(btn){btn.innerText='Updating...'; btn.disabled=true;}
-let {error}=await supa.auth.updateUser({password:p1});
-if(error){document.getElementById('npErr').innerText=error.message; if(btn){btn.innerText='Update Password → Sign In'; btn.disabled=false;}}
-else{
-document.getElementById('npMsg').innerText='✅ Password updated! Redirecting to Sign In...';
-setTimeout(async()=>{isRecoveryFlow=false; await supa.auth.signOut(); showLogin(); document.getElementById('npMsg')?.innerText; let liE=document.getElementById('liErr'); if(liE){liE.style.color='#00c076'; liE.innerText='✅ Password updated, sign in now';}},1500);
-}
+else{msg.style.color='#00c076'; msg.innerText='✅ Reset link sent to '+em+' → Open email → Tap link → You will see Set New Password screen'; if(btn) btn.innerText='Sent! Check Email';}
 }
 function showForgotEmail(){
 updateProgress(30,'Forgot Email');
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">📧</div><div class="stepTitle">Forgot Email?</div><div class="stepDesc">Search by phone.</div><input id="fePhone" class="inp" placeholder="M-Pesa Phone or Name"><button class="btn" onclick="doForgotEmail()">Search My Email</button><p id="feMsg" style="font-size:12px;text-align:center;margin-top:8px"></p><div style="text-align:center;margin-top:12px;font-size:11px;color:#8b93a1">WhatsApp +254789338183 for help</div><div style="text-align:center;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showLogin()">Back to Sign In</span></div>`;
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">📧</div><div class="stepTitle">Forgot Email?</div><div class="stepDesc">Search by phone.</div><input id="fePhone" class="inp" placeholder="M-Pesa Phone or Name"><button class="btn" onclick="doForgotEmail()">Search My Email</button><p id="feMsg" style="font-size:12px;text-align:center;margin-top:8px"></p><div style="text-align:center;margin-top:12px;font-size:11px;color:#8b93a1">WhatsApp +254789338183</div><div style="text-align:center;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showLogin()">Back to Sign In</span></div>`;
 }
 async function doForgotEmail(){
 let ph=document.getElementById('fePhone').value.trim();
@@ -295,25 +313,27 @@ let msg=document.getElementById('feMsg');
 if(!ph){msg.innerText='Enter phone'; return;}
 let {data}=await supa.from('profiles').select('email,phone').eq('phone',ph).limit(1);
 if(data&&data.length){msg.style.color='#00c076'; msg.innerText='✅ Your email: '+data[0].email;}
-else{msg.style.color='#ff6b6b'; msg.innerText='Not found. Contact WhatsApp +254789338183 with M-Pesa message.';}
+else{msg.style.color='#ff6b6b'; msg.innerText='Not found. Contact WhatsApp +254789338183';}
 }
 async function logout(){try{localStorage.removeItem('fx_easy_ob');}catch(e){} await supa.auth.signOut(); location.reload();}
 supa.auth.onAuthStateChange(async (ev,sess)=>{
-if(ev=='PASSWORD_RECOVERY'){
-isRecoveryFlow=true;
-document.getElementById('landing').style.display='none';
-document.getElementById('auth').style.display='flex';
+if(ev==='PASSWORD_RECOVERY'){
+console.log('PASSWORD_RECOVERY event');
 showNewPasswordForm();
 return;
 }
 if(sess && sess.user){
+if(isRecoveryFlow){
+console.log('In recovery flow, waiting for password update');
+return;
+}
 let {data:prof}=await supa.from('profiles').select('id,first_name').eq('id',sess.user.id).single();
 let hasOb=false; try{hasOb=!!localStorage.getItem('fx_easy_ob');}catch(e){}
-if(!isRecoveryFlow && (!prof ||!prof.first_name) && (hasOb || ev=='SIGNED_IN' || window.location.hash.includes('access_token') || window.location.search.includes('code'))){
+if((!prof ||!prof.first_name) && (hasOb || ev=='SIGNED_IN' || window.location.hash.includes('access_token') || window.location.search.includes('code'))){
+if(window.location.href.includes('type=recovery')){showNewPasswordForm(); return;}
 currentUser=sess.user; try{let s=localStorage.getItem('fx_easy_ob'); if(s) obData={...obData,...JSON.parse(s)}; if(!obData.email) obData.email=sess.user.email;}catch(e){obData.email=sess.user.email;}
 document.getElementById('auth').style.display='flex'; document.getElementById('landing').style.display='none'; document.getElementById('appHeader').style.display='none'; obStep=3; renderSignup(); return;
 }
-if(isRecoveryFlow) return;
 currentUser=sess.user;
 document.getElementById('landing').style.display='none';
 document.getElementById('auth').style.display='none';
@@ -414,4 +434,3 @@ async function approveDep(id,uid,amt){let {data:p}=await supa.from('profiles').s
 async function approveWith(id,uid,amt){let today=new Date().toISOString().split('T')[0];let {data:todayData}=await supa.from('withdrawals').select('amount').eq('user_id',uid).eq('status','approved').gte('created_at',today+'T00:00:00');let sum=0; if(todayData) todayData.forEach(d=>sum+=Number(d.amount)||0);if((sum+amt)>50000) return alert('Exceeds $50k daily. Already: $'+sum);let {data:p}=await supa.from('profiles').select('balance').eq('id',uid).single();if(amt>p.balance) return alert('Not enough REAL. Real: $'+p.balance);await supa.from('profiles').update({balance:p.balance-amt}).eq('id',uid);await supa.from('withdrawals').update({status:'approved'}).eq('id',id);alert('Paid $'+amt);loadAdmin();}
 </script>
 </body></html>
-
