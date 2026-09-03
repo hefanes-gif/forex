@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>FX Kenya V13 Trade Engine</title>
+<title>FX Kenya V14 Copy Trading</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -28,7 +28,7 @@
 .priceTicker{display:flex;justify-content:space-between;padding:8px 12px;background:#151a21;margin:0 12px;border-radius:10px;border:1px solid #222a35;font-size:11px}
 .liveDot{width:7px;height:7px;background:#00c076;border-radius:50%;display:inline-block;animation:blink 1s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.chartWrap{margin:8px 12px;background:#151a21;border:1px solid #222a35;border-radius:18px;overflow:hidden;height:440px}
+.chartWrap{margin:8px 12px;background:#151a21;border:1px solid #222a35;border-radius:18px;overflow:hidden;height:420px}
 .sel{background:#151a21;border:1px solid #222a35;color:#fff;padding:7px 8px;border-radius:8px;font-size:11px}
 .actionDock{position:fixed;bottom:62px;left:0;right:0;padding:10px 12px;display:flex;gap:10px;z-index:20;background:linear-gradient(0deg,#0b0e12 70%,#0b0e1200)}
 .actionDock button{flex:1;padding:14px;border:0;border-radius:14px;font-weight:800;font-size:14px}
@@ -41,12 +41,14 @@
 .payBox{background:#0b0e12;border:1px dashed #f5c518;border-radius:12px;padding:14px;margin:12px 0}
 .refBox{background:linear-gradient(135deg,#f5c51822,#00c07622);border:1px solid #f5c51855;border-radius:14px;padding:14px;margin:12px 0}
 .waFloat{position:fixed;bottom:120px;right:12px;z-index:50;background:#25D366;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;box-shadow:0 8px 24px #25D36655;cursor:pointer;font-size:26px;text-decoration:none}
-.leaderRow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #222;font-size:12px}
+.leaderRow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #222;font-size:12px}
 .mLevel{font-size:9px;padding:3px 6px;border-radius:6px;font-weight:800}
+.copyBtn{background:#f5c518;color:#000;border:0;padding:5px 10px;border-radius:8px;font-weight:800;font-size:10px;cursor:pointer}
+.copied{background:#00c076;color:#fff}
 </style>
 </head><body>
 <a class="waFloat" href="https://wa.me/254789338183?text=Hi%20FX%20Kenya%20Support" target="_blank">💬</a>
-<div id="auth"><div class="box"><h1 style="margin:0">FX<b style="color:#f5c518">KENYA</b> V13</h1><p style="color:#8b93a1;font-size:11px;margin-top:6px">Real Trades Saved • Margin • TP/SL Auto</p><div class="tabs"><div id="tLogin" class="on" onclick="switchTab('login')">Login</div><div id="tReg" onclick="switchTab('reg')">Register</div></div><input id="email" class="inp" placeholder="Email"><input id="pass" type="password" class="inp" placeholder="Password"><div id="refInputWrap" style="display:none"><input id="refCodeInput" class="inp" placeholder="Referral Code"></div><button class="btn" onclick="handleAuth()">Continue →</button><p id="msg" style="font-size:12px;color:#ff6b6b;text-align:center;margin-top:10px"></p><p id="refDetected" style="font-size:11px;color:#00c076;text-align:center;display:none">🎁 Referral detected!</p></div></div>
+<div id="auth"><div class="box"><h1 style="margin:0">FX<b style="color:#f5c518">KENYA</b> V14</h1><p style="color:#8b93a1;font-size:11px;margin-top:6px">Copy Trading • Follow Top Traders</p><div class="tabs"><div id="tLogin" class="on" onclick="switchTab('login')">Login</div><div id="tReg" onclick="switchTab('reg')">Register</div></div><input id="email" class="inp" placeholder="Email"><input id="pass" type="password" class="inp" placeholder="Password"><div id="refInputWrap" style="display:none"><input id="refCodeInput" class="inp" placeholder="Referral Code"></div><button class="btn" onclick="handleAuth()">Continue →</button><p id="msg" style="font-size:12px;color:#ff6b6b;text-align:center;margin-top:10px"></p><p id="refDetected" style="font-size:11px;color:#00c076;text-align:center;display:none">🎁 Referral detected!</p></div></div>
 <div class="header">
 <div style="display:flex;gap:10px;align-items:center"><div style="width:32px;height:32px;background:#fff;color:#000;border-radius:8px;display:grid;place-items:center;font-weight:800">FX</div><div><b style="font-size:13px">KENYA <span style="color:#f5c518">PRO</span></b><div style="font-size:9px;color:#8b93a1;display:flex;gap:5px;align-items:center"><span class="liveDot"></span> LIVE • <span id="livePrice">1.16195</span> <span id="marginLevel" class="mLevel" style="background:#00c076;color:#000">SAFE</span></div></div></div>
 <div style="display:flex;gap:8px;align-items:center"><div class="accSwitch"><div id="realBtn" class="on" onclick="setAccount('real')">REAL</div><div id="demoBtn" onclick="setAccount('demo')">DEMO</div></div><span onclick="logout()" style="background:#151a21;border:1px solid #222a35;padding:6px 10px;border-radius:20px;font-size:10px;cursor:pointer">⎋</span></div>
@@ -69,27 +71,27 @@
 <div style="padding:0 12px;display:flex;gap:6px;flex-wrap:wrap">
 <select id="lot" class="sel"><option>0.01</option><option>0.05</option><option selected>0.10</option><option>0.50</option><option>1.00</option><option>5.00</option><option>10.00</option><option>20.00</option><option>50.00</option></select>
 <select id="lev" class="sel"><option>1:100</option><option selected>1:500</option><option>1:1000</option></select>
-<input id="sl" class="sel" type="number" placeholder="SL price" style="width:92px"><input id="tp" class="sel" type="number" placeholder="TP price" style="width:92px">
+<input id="sl" class="sel" type="number" placeholder="SL" style="width:92px"><input id="tp" class="sel" type="number" placeholder="TP" style="width:92px">
 </div>
-<div class="chartWrap"><div id="tv" style="height:440px"></div></div>
-<div class="posCard"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">Open Positions • Saved in DB</b><span style="font-size:11px;color:#ff3b3b;cursor:pointer" onclick="closeAll()">CLOSE ALL</span></div><div id="trades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:20px">No positions - Trades stay after refresh</div></div>
+<div class="chartWrap"><div id="tv" style="height:420px"></div></div>
+<div class="posCard"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">Open Positions • Saved</b><span style="font-size:11px;color:#ff3b3b;cursor:pointer" onclick="closeAll()">CLOSE ALL</span></div><div id="trades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:20px">No positions</div></div>
 <div class="posCard"><b style="font-size:12px">History</b><div id="history" style="margin-top:8px;font-size:11px;color:#8b93a1">No history</div></div>
 <div class="actionDock"><button class="sell" onclick="openTrade('SELL')">SELL<br><small id="sellPrice">-</small></button><button class="buy" onclick="openTrade('BUY')">BUY<br><small id="buyPrice">-</small></button></div>
 </div>
 <div id="walletView" style="display:none;padding:12px">
-<div class="posCard"><h3 style="margin:0">💳 Deposit • M-Pesa</h3><div class="payBox"><div style="display:flex;justify-content:space-between"><span>Paybill</span><b style="color:#f5c518;font-size:22px">542542</b></div><div style="display:flex;justify-content:space-between"><span>Account</span><b>01710144646150</b></div><div style="margin-top:8px;font-size:11px;color:#f5c518">Deposit → 50% bonus. Auto-refresh in 5 sec.</div></div><input id="depAmount" class="inp" placeholder="Amount e.g. 1000"><input id="depPhone" class="inp" placeholder="M-Pesa phone"><button class="btn" onclick="submitDeposit()">I HAVE PAID</button><div id="myDeposits" style="margin-top:12px"></div></div>
-<div class="posCard"><h3 style="margin:0">💸 Withdraw Profit • M-Pesa</h3><input id="withAmount" class="inp" placeholder="Amount e.g. 500"><input id="withPhone" class="inp" placeholder="Phone to receive"><button class="btn" style="background:#00c076;color:#fff" onclick="submitWithdraw()">REQUEST WITHDRAWAL</button><div id="myWithdraws" style="margin-top:12px"></div></div>
+<div class="posCard"><h3 style="margin:0">💳 Deposit • M-Pesa Paybill 542542</h3><div class="payBox"><div style="display:flex;justify-content:space-between"><span>Paybill</span><b style="color:#f5c518;font-size:22px">542542</b></div><div style="display:flex;justify-content:space-between"><span>Account</span><b>01710144646150</b></div></div><input id="depAmount" class="inp" placeholder="Amount e.g. 1000"><input id="depPhone" class="inp" placeholder="M-Pesa phone"><button class="btn" onclick="submitDeposit()">I HAVE PAID</button><div id="myDeposits" style="margin-top:12px"></div></div>
+<div class="posCard"><h3 style="margin:0">💸 Withdraw M-Pesa</h3><input id="withAmount" class="inp" placeholder="Amount"><input id="withPhone" class="inp" placeholder="Phone"><button class="btn" style="background:#00c076;color:#fff" onclick="submitWithdraw()">REQUEST</button><div id="myWithdraws" style="margin-top:12px"></div></div>
 <div class="posCard"><h3 style="margin:0">👥 Refer $5</h3><div class="refBox"><input id="refLink" class="inp" readonly><button class="btn" style="margin-top:6px" onclick="copyRef()">Copy Link</button><div style="margin-top:8px;font-size:11px">Referrals: <b id="refCount">0</b> • Earned: <b id="refEarn" style="color:#00c076">$0</b></div></div></div>
 </div>
 <div id="leaderView" style="display:none;padding:12px">
-<div class="posCard"><h3 style="margin:0">🏆 Leaderboard • Real</h3><div style="margin-top:12px"><b style="font-size:12px;color:#f5c518">💰 Top Balance</b><div id="leaderBalance">Loading...</div></div><div style="margin-top:16px"><b style="font-size:12px;color:#00c076">👥 Top Referrers</b><div id="leaderRef">Loading...</div></div><div style="margin-top:16px"><b style="font-size:12px">🔥 Big Wins</b><div id="leaderWins">Loading...</div></div></div>
+<div class="posCard"><h3 style="margin:0">🏆 Copy Trading • Real Leaders</h3><p style="font-size:10px;color:#8b93a1">Click COPY to auto follow top traders. You pay 10% fee on profit to broker, leader gets 5%.</p><div style="margin-top:12px"><b style="font-size:12px;color:#f5c518">💰 Top Balance • Click COPY</b><div id="leaderBalance">Loading...</div></div><div style="margin-top:16px"><b style="font-size:12px;color:#00c076">👥 Top Referrers</b><div id="leaderRef">Loading...</div></div><div style="margin-top:16px"><b style="font-size:12px">🔥 Big Wins</b><div id="leaderWins">Loading...</div></div><div style="margin-top:16px"><b style="font-size:12px">👤 You Are Copying</b><div id="copyingList" style="font-size:11px;color:#8b93a1">Not copying anyone - Click COPY above to start</div></div></div>
 <div class="posCard"><a href="https://wa.me/254789338183?text=Hi%20FX%20Kenya%20Support" target="_blank" style="display:block;background:#25D366;color:#fff;text-align:center;padding:14px;border-radius:12px;font-weight:800;text-decoration:none">WhatsApp 0789338183</a></div>
 </div>
 <div id="adminView" style="display:none;padding:12px">
 <div class="posCard"><h3>Admin • Deposits</h3><div id="adminDeposits"></div></div>
 <div class="posCard"><h3>Admin • Withdrawals</h3><div id="adminWithdraws"></div></div>
 </div>
-<div class="nav"><div id="navTrade" class="on" onclick="showTab('trade')">📈<br>Trade</div><div onclick="showTab('wallet')">💳<br>Wallet</div><div onclick="showTab('leader')">🏆<br>Board</div><div id="navAdmin" onclick="showTab('admin')" style="display:none">🛡️<br>Admin</div><div onclick="logout()">🚪<br>Out</div></div>
+<div class="nav"><div id="navTrade" class="on" onclick="showTab('trade')">📈<br>Trade</div><div onclick="showTab('wallet')">💳<br>Wallet</div><div onclick="showTab('leader')">🏆<br>Copy</div><div id="navAdmin" onclick="showTab('admin')" style="display:none">🛡️<br>Admin</div><div onclick="logout()">🚪<br>Out</div></div>
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
 const SUPA_URL="https://bvebgevqlquqpidtzdij.supabase.co";
@@ -126,137 +128,73 @@ supa.auth.onAuthStateChange(async (e,s)=>{
   let {data}=await supa.from('profiles').select('*').eq('id',s.user.id).single();
   if(data){ bal=data.balance||0; bonus=data.bonus||0; demoBal=data.demo_balance||10000; myRefCode=data.referral_code||''; if(!myRefCode){ myRefCode=currentUser.email.split('@')[0].slice(0,4).toUpperCase()+Math.floor(100+Math.random()*900); await supa.from('profiles').update({referral_code:myRefCode}).eq('id',s.user.id);} document.getElementById('refCount').innerText=data.referrals_count||0; document.getElementById('refEarn').innerText='$'+((data.referrals_count||0)*5); }
   let link=window.location.origin+window.location.pathname+'?ref='+myRefCode; document.getElementById('refLink').value=link;
-  upd(); loadC(cur,document.querySelector('.pill')); loadMyDeposits(); loadMyWithdraws(); loadHistory(); loadOpenTrades(); loadLeaderboard(); if(s.user.email==ADMIN_EMAIL) loadAdmin(); startLivePrice(); startAutoRefresh();
+  upd(); loadC(cur,document.querySelector('.pill')); loadMyDeposits(); loadMyWithdraws(); loadHistory(); loadOpenTrades(); loadLeaderboard(); loadCopying(); if(s.user.email==ADMIN_EMAIL) loadAdmin(); startLivePrice(); startAutoRefresh();
  } else document.getElementById('auth').style.display='flex';
 });
 function setAccount(type){ account=type; document.getElementById('realBtn').classList.toggle('on',type=='real'); document.getElementById('demoBtn').classList.toggle('on',type=='demo'); loadOpenTrades(); upd(); }
 function showTab(t){ document.getElementById('tradeView').style.display=t=='trade'?'block':'none'; document.getElementById('walletView').style.display=t=='wallet'?'block':'none'; document.getElementById('leaderView').style.display=t=='leader'?'block':'none'; document.getElementById('adminView').style.display=t=='admin'?'block':'none'; document.querySelectorAll('.nav div').forEach(d=>d.classList.remove('on')); if(t=='leader') loadLeaderboard(); }
 function loadC(s,el){ if(el){document.querySelectorAll('.pill').forEach(x=>x.classList.remove('on')); el.classList.add('on');} cur=s; document.getElementById('pairName').innerText=s.split(':')[1]; document.getElementById('tv').innerHTML=''; new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'dark',interval:'15',timezone:'Africa/Nairobi'}); }
 function getSpread(pair){ if(pair.includes('XAU')||pair.includes('GOLD')) return 0.30; if(pair.includes('BTC')) return 20; if(pair.includes('USDKES')) return 0.05; return 0.00015; }
-function calcProfit(p, curPrice){
- let isForex = p.pair.includes('USD') &&!p.pair.includes('XAU') &&!p.pair.includes('BTC') &&!p.pair.includes('KES');
- let diff = p.type=='BUY'? curPrice - p.entry : p.entry - curPrice;
- if(p.pair.includes('XAU')) return diff * p.lot * 100;
- if(p.pair.includes('BTC')) return diff * p.lot * 1;
- if(p.pair.includes('KES')) return diff * p.lot * 5000;
- return diff * p.lot * 100000 * 0.5;
-}
+function calcProfit(p, curPrice){ let diff = p.type=='BUY'? curPrice - p.entry : p.entry - curPrice; if(p.pair.includes('XAU')) return diff * p.lot * 100; if(p.pair.includes('BTC')) return diff * p.lot * 1; if(p.pair.includes('KES')) return diff * p.lot * 5000; return diff * p.lot * 100000 * 0.5; }
 function getMarginLot(lot){ let levStr=document.getElementById('lev').value||'1:500'; let lev=parseInt(levStr.split(':')[1]); return lot*100000/lev; }
-function startLivePrice(){ setInterval(async ()=>{
-  let c=(Math.random()-0.5)*0.0004; if(cur.includes('XAU')) c=(Math.random()-0.5)*0.4; if(cur.includes('BTC')) c=(Math.random()-0.5)*8;
-  liveBid+=c; liveAsk=liveBid+getSpread(cur);
-  document.getElementById('bid').innerText=liveBid.toFixed(5)+' SELL'; document.getElementById('sellPrice').innerText=liveBid.toFixed(5);
-  document.getElementById('ask').innerText=liveAsk.toFixed(5)+' BUY'; document.getElementById('buyPrice').innerText=liveAsk.toFixed(5);
-  document.getElementById('livePrice').innerText=liveAsk.toFixed(5);
-  if(positions.length){
-   let toClose=[];
-   positions.forEach(p=>{
-    let curPrice = p.type=='BUY'? liveBid : liveAsk;
-    if(cur.split(':')[1]==p.pair || true){
-     let liveP = p.pair==cur.split(':')[1]? curPrice : p.type=='BUY'? p.entry + c : p.entry - c;
-     if(p.pair==cur.split(':')[1]) liveP = curPrice;
-     p.pl = calcProfit(p, liveP);
-     if(p.sl && ((p.type=='BUY' && liveP <= p.sl) || (p.type=='SELL' && liveP >= p.sl))) toClose.push({id:p.id, reason:'SL'});
-     if(p.tp && ((p.type=='BUY' && liveP >= p.tp) || (p.type=='SELL' && liveP <= p.tp))) toClose.push({id:p.id, reason:'TP'});
-    }
-   });
-   for(let tc of toClose){ await closePos(tc.id, tc.reason); }
-   render();
-  }
- },700); }
-function startAutoRefresh(){
- setInterval(async ()=>{
-  if(!currentUser) return;
-  let {data}=await supa.from('profiles').select('balance,bonus,demo_balance,referrals_count').eq('id',currentUser.id).single();
-  if(data){ let changed=data.balance!=bal||data.bonus!=bonus; bal=data.balance||0; bonus=data.bonus||0; demoBal=data.demo_balance||10000; if(changed){ upd(); loadMyDeposits(); } }
-  if(document.getElementById('leaderView').style.display!='none') loadLeaderboard();
- },5000);
-}
-async function loadOpenTrades(){
- if(!currentUser) return;
- let {data}=await supa.from('open_trades').select('*').eq('user_id',currentUser.id).eq('account_type',account).order('created_at',{ascending:true});
- positions = (data||[]).map(t=>({id:t.id, dbId:t.id, type:t.type, pair:t.pair, lot:t.lot, entry:t.entry, sl:t.sl, tp:t.tp, pl:0}));
- render();
-}
+function startLivePrice(){ setInterval(async ()=>{ let c=(Math.random()-0.5)*0.0004; if(cur.includes('XAU')) c=(Math.random()-0.5)*0.4; if(cur.includes('BTC')) c=(Math.random()-0.5)*8; liveBid+=c; liveAsk=liveBid+getSpread(cur); document.getElementById('bid').innerText=liveBid.toFixed(5)+' SELL'; document.getElementById('sellPrice').innerText=liveBid.toFixed(5); document.getElementById('ask').innerText=liveAsk.toFixed(5)+' BUY'; document.getElementById('buyPrice').innerText=liveAsk.toFixed(5); document.getElementById('livePrice').innerText=liveAsk.toFixed(5); if(positions.length){ let toClose=[]; positions.forEach(p=>{ let curPrice = p.type=='BUY'? liveBid : liveAsk; if(p.pair==cur.split(':')[1]){ p.pl = calcProfit(p, curPrice); if(p.sl && ((p.type=='BUY' && curPrice <= p.sl) || (p.type=='SELL' && curPrice >= p.sl))) toClose.push({id:p.id, reason:'SL'}); if(p.tp && ((p.type=='BUY' && curPrice >= p.tp) || (p.type=='SELL' && curPrice <= p.tp))) toClose.push({id:p.id, reason:'TP'}); } }); for(let tc of toClose){ await closePos(tc.id, tc.reason); } render(); } },700); }
+function startAutoRefresh(){ setInterval(async ()=>{ if(!currentUser) return; let {data}=await supa.from('profiles').select('balance,bonus,demo_balance,referrals_count').eq('id',currentUser.id).single(); if(data){ let changed=data.balance!=bal||data.bonus!=bonus; bal=data.balance||0; bonus=data.bonus||0; demoBal=data.demo_balance||10000; if(changed){ upd(); loadMyDeposits(); } } if(document.getElementById('leaderView').style.display!='none') loadLeaderboard(); },5000); }
+async function loadOpenTrades(){ if(!currentUser) return; let {data}=await supa.from('open_trades').select('*').eq('user_id',currentUser.id).eq('account_type',account).order('created_at',{ascending:true}); positions = (data||[]).map(t=>({id:t.id, dbId:t.id, type:t.type, pair:t.pair, lot:t.lot, entry:t.entry, sl:t.sl, tp:t.tp, pl:0})); render(); }
 async function openTrade(type){
- let total=account=='demo'?demoBal:bal+bonus;
- if(total<=1) return alert('Deposit first! Paybill 542542');
- let lot=parseFloat(document.getElementById('lot').value);
- if(total<100 && lot>0.5) return alert('Balance < $100 max lot 0.50. Deposit more for bigger lots.');
- if(total<1000 && lot>5) return alert('Balance < $1000 max lot 5.00');
- let marginNeed=getMarginLot(lot);
- let equity = account=='demo'?demoBal:bal+bonus+positions.reduce((s,p)=>s+p.pl,0);
- let free = equity - positions.reduce((s,p)=>s+getMarginLot(p.lot),0);
- if(account=='real' && free < marginNeed) return alert('Not enough free margin! Need $'+marginNeed.toFixed(2)+' you have $'+free.toFixed(2));
- let entry=type=='BUY'?liveAsk:liveBid;
- let sl=parseFloat(document.getElementById('sl').value)||null;
- let tp=parseFloat(document.getElementById('tp').value)||null;
- let {data,error}=await supa.from('open_trades').insert({user_id:currentUser.id, pair:cur.split(':')[1], type, lot, entry, sl, tp, account_type:account}).select().single();
- if(error) return alert(error.message);
- positions.push({id:data.id, dbId:data.id, type, pair:data.pair, lot, entry, sl, tp, pl:0});
- render();
- document.getElementById('sl').value=''; document.getElementById('tp').value='';
+ let total=account=='demo'?demoBal:bal+bonus; if(total<=1) return alert('Deposit first! Paybill 542542'); let lot=parseFloat(document.getElementById('lot').value); if(total<100 && lot>0.5) return alert('Balance < $100 max 0.50 lot'); if(total<1000 && lot>5) return alert('Balance < $1000 max 5 lot'); let marginNeed=getMarginLot(lot); let equity = account=='demo'?demoBal:bal+bonus+positions.reduce((s,p)=>s+p.pl,0); let free = equity - positions.reduce((s,p)=>s+getMarginLot(p.lot),0); if(account=='real' && free < marginNeed) return alert('Not enough free margin! Need $'+marginNeed.toFixed(2)); let entry=type=='BUY'?liveAsk:liveBid; let sl=parseFloat(document.getElementById('sl').value)||null; let tp=parseFloat(document.getElementById('tp').value)||null; let {data,error}=await supa.from('open_trades').insert({user_id:currentUser.id, pair:cur.split(':')[1], type, lot, entry, sl, tp, account_type:account}).select().single(); if(error) return alert(error.message); positions.push({id:data.id, dbId:data.id, type, pair:data.pair, lot, entry, sl, tp, pl:0}); render(); document.getElementById('sl').value=''; document.getElementById('tp').value=''; checkCopyFollowers(data);
 }
-function render(){
- document.getElementById('posCount').innerText=positions.length;
- if(!positions.length){document.getElementById('trades').innerHTML='No positions - Trades stay after refresh'; upd(); return;}
- let h=''; positions.forEach(p=>{ let col=p.pl>=0?'#00c076':'#ff3b3b'; h+=`<div class="row"><div><b style="color:${p.type=='BUY'?'#00c076':'#ff3b3b'}">${p.type}</b> ${p.pair} ${p.lot} lot<br><small>Entry ${Number(p.entry).toFixed(4)} ${p.sl?' SL:'+p.sl:''} ${p.tp?' TP:'+p.tp:''}</small><br><small style="color:${col};font-weight:800">$${p.pl.toFixed(2)}</small></div><button onclick="closePos('${p.id}')" style="background:#fff;color:#000;border:0;padding:6px 12px;border-radius:8px;font-weight:700">Close</button></div>`}); document.getElementById('trades').innerHTML=h; upd();
+async function checkCopyFollowers(newTrade){
+ let {data:followers}=await supa.from('copy_follows').select('follower_id').eq('leader_id',currentUser.id);
+ if(followers && followers.length){ for(let f of followers){ await supa.from('open_trades').insert({user_id:f.follower_id, pair:newTrade.pair, type:newTrade.type, lot:newTrade.lot, entry:newTrade.entry, sl:newTrade.sl, tp:newTrade.tp, account_type:'real', copied_from:currentUser.id}); } }
 }
+function render(){ document.getElementById('posCount').innerText=positions.length; if(!positions.length){document.getElementById('trades').innerHTML='No positions'; upd(); return;} let h=''; positions.forEach(p=>{ let col=p.pl>=0?'#00c076':'#ff3b3b'; h+=`<div class="row"><div><b style="color:${p.type=='BUY'?'#00c076':'#ff3b3b'}">${p.type}</b> ${p.pair} ${p.lot} lot<br><small>Entry ${Number(p.entry).toFixed(4)}</small><br><small style="color:${col};font-weight:800">$${p.pl.toFixed(2)}</small></div><button onclick="closePos('${p.id}')" style="background:#fff;color:#000;border:0;padding:6px 12px;border-radius:8px;font-weight:700">Close</button></div>`}); document.getElementById('trades').innerHTML=h; upd(); }
 async function closePos(id, reason='MANUAL'){
- let pos=positions.find(p=>p.id==id); if(!pos) return;
- let profit=pos.pl;
- if(account=='demo'){
-  demoBal+=profit;
-  await supa.from('profiles').update({demo_balance:demoBal}).eq('id',currentUser.id);
- } else {
+ let pos=positions.find(p=>p.id==id); if(!pos) return; let profit=pos.pl;
+ if(account=='demo'){ demoBal+=profit; await supa.from('profiles').update({demo_balance:demoBal}).eq('id',currentUser.id); }
+ else {
+  let fee=0; if(pos.copied_from){ fee=profit>0? profit*0.10 : 0; profit = profit - fee; if(fee>0){ let {data:leader}=await supa.from('profiles').select('balance').eq('id',pos.copied_from).single(); if(leader) await supa.from('profiles').update({balance:leader.balance+profit*0.05}).eq('id',pos.copied_from); } }
   if(profit>=0) bal+=profit; else { let loss=Math.abs(profit); if(bonus>=loss) bonus-=loss; else { let rem=loss-bonus; bonus=0; bal=Math.max(0,bal-rem);} }
   await supa.from('profiles').update({balance:bal,bonus:bonus}).eq('id',currentUser.id);
   await supa.from('closed_trades').insert({user_id:currentUser.id,pair:pos.pair,type:pos.type,lot:pos.lot,profit:profit});
  }
  await supa.from('open_trades').delete().eq('id',id);
- positions=positions.filter(p=>p.id!=id);
- render(); loadHistory();
- if(reason!='MANUAL') alert('✅ '+reason+' Hit! Profit $'+profit.toFixed(2));
+ positions=positions.filter(p=>p.id!=id); render(); loadHistory();
+ if(reason!='MANUAL') alert('✅ '+reason+' Hit! $'+profit.toFixed(2));
 }
 async function closeAll(){ for(let p of [...positions]) await closePos(p.id); }
-function upd(){
- let f=positions.reduce((s,p)=>s+p.pl,0);
- let curBal=account=='demo'?demoBal:bal;
- let curBonus=account=='demo'?0:bonus;
- let equity=curBal+curBonus+f;
- let used=positions.reduce((s,p)=>s+getMarginLot(p.lot),0);
- let free=Math.max(0,equity-used);
- let level=used>0? (equity/used*100):0;
- document.getElementById('bal').innerText=curBal.toFixed(2);
- document.getElementById('bonus').innerText=curBonus.toFixed(2);
- document.getElementById('equ').innerText=equity.toFixed(2);
- document.getElementById('fl').innerText=(f>=0?'+$':'-$')+Math.abs(f).toFixed(2);
- document.getElementById('fl').style.color=f>=0?'#00c076':'#ff3b3b';
- document.getElementById('mUsed').innerText=used.toFixed(2);
- document.getElementById('mFree').innerText=free.toFixed(2);
- document.getElementById('mLevelNum').innerText=level.toFixed(0);
- let ml=document.getElementById('marginLevel');
- if(level==0){ ml.innerText='SAFE'; ml.style.background='#00c076'; }
- else if(level<80){ ml.innerText='MARGIN CALL!'; ml.style.background='#ff3b3b'; ml.style.color='#fff'; if(level<50){ closeAll(); alert('🚨 LIQUIDATED! Margin Level <50% - All trades closed'); } }
- else if(level<150){ ml.innerText='LOW '+level.toFixed(0)+'%'; ml.style.background='#f5c518'; ml.style.color='#000'; }
- else { ml.innerText='SAFE '+level.toFixed(0)+'%'; ml.style.background='#00c076'; ml.style.color='#000'; }
-}
-async function submitDeposit(){ let amt=parseFloat(document.getElementById('depAmount').value), phone=document.getElementById('depPhone').value.trim(); if(!amt||amt<50) return alert('Min 50'); let {error}=await supa.from('deposits').insert({user_id:currentUser.id,email:currentUser.email,amount:amt,phone,status:'pending'}); if(error) alert(error.message); else{ alert('Sent! Auto-update in 5 sec after admin approve'); loadMyDeposits(); } }
+function upd(){ let f=positions.reduce((s,p)=>s+p.pl,0); let curBal=account=='demo'?demoBal:bal; let curBonus=account=='demo'?0:bonus; let equity=curBal+curBonus+f; let used=positions.reduce((s,p)=>s+getMarginLot(p.lot),0); let free=Math.max(0,equity-used); let level=used>0? (equity/used*100):0; document.getElementById('bal').innerText=curBal.toFixed(2); document.getElementById('bonus').innerText=curBonus.toFixed(2); document.getElementById('equ').innerText=equity.toFixed(2); document.getElementById('fl').innerText=(f>=0?'+$':'-$')+Math.abs(f).toFixed(2); document.getElementById('fl').style.color=f>=0?'#00c076':'#ff3b3b'; document.getElementById('mUsed').innerText=used.toFixed(2); document.getElementById('mFree').innerText=free.toFixed(2); document.getElementById('mLevelNum').innerText=level.toFixed(0); let ml=document.getElementById('marginLevel'); if(level==0){ ml.innerText='SAFE'; ml.style.background='#00c076'; } else if(level<80){ ml.innerText='MARGIN CALL!'; ml.style.background='#ff3b3b'; ml.style.color='#fff'; if(level<50){ closeAll(); alert('🚨 LIQUIDATED!'); } } else if(level<150){ ml.innerText='LOW '+level.toFixed(0)+'%'; ml.style.background='#f5c518'; } else { ml.innerText='SAFE '+level.toFixed(0)+'%'; ml.style.background='#00c076'; } }
+async function submitDeposit(){ let amt=parseFloat(document.getElementById('depAmount').value), phone=document.getElementById('depPhone').value.trim(); if(!amt||amt<50) return alert('Min 50'); let {error}=await supa.from('deposits').insert({user_id:currentUser.id,email:currentUser.email,amount:amt,phone,status:'pending'}); if(error) alert(error.message); else{ alert('Sent! Auto-update in 5 sec'); loadMyDeposits(); } }
 async function loadMyDeposits(){ let {data}=await supa.from('deposits').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(5); if(!data) return; let h='<b style="font-size:11px">Deposits</b><br>'; data.forEach(d=>{ h+=`<div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #222"><span>$${d.amount} + bonus</span><span style="color:${d.status=='approved'?'#00c076':'#f5c518'}">${d.status}</span></div>`}); document.getElementById('myDeposits').innerHTML=h; }
-async function submitWithdraw(){ let amt=parseFloat(document.getElementById('withAmount').value), phone=document.getElementById('withPhone').value.trim(); if(!amt||amt<5) return alert('Min $5'); if(amt>bal) return alert('Only balance $'+bal.toFixed(2)+' withdrawable (not bonus)'); let {error}=await supa.from('withdrawals').insert({user_id:currentUser.id,email:currentUser.email,amount:amt,phone,status:'pending'}); if(error) alert(error.message); else{ alert('Withdrawal sent to '+phone); loadMyWithdraws(); } }
+async function submitWithdraw(){ let amt=parseFloat(document.getElementById('withAmount').value), phone=document.getElementById('withPhone').value.trim(); if(!amt||amt<5) return alert('Min $5'); if(amt>bal) return alert('Only $'+bal.toFixed(2)+' withdrawable'); let {error}=await supa.from('withdrawals').insert({user_id:currentUser.id,email:currentUser.email,amount:amt,phone,status:'pending'}); if(error) alert(error.message); else{ alert('Sent to '+phone); loadMyWithdraws(); } }
 async function loadMyWithdraws(){ let {data}=await supa.from('withdrawals').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(5); if(!data) return; let h='<b style="font-size:11px">Withdrawals</b><br>'; data.forEach(d=>{ h+=`<div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #222"><span>$${d.amount} → ${d.phone}</span><span style="color:${d.status=='approved'?'#00c076':'#f5c518'}">${d.status}</span></div>`}); document.getElementById('myWithdraws').innerHTML=h; }
 async function loadHistory(){ let {data}=await supa.from('closed_trades').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(10); if(!data||!data.length){ document.getElementById('history').innerHTML='No history'; return;} let h=''; data.forEach(t=>{ h+=`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #222"><span>${t.pair} ${t.type}</span><span style="color:${t.profit>=0?'#00c076':'#ff3b3b'}">$${Number(t.profit).toFixed(2)}</span></div>`}); document.getElementById('history').innerHTML=h; }
 async function loadLeaderboard(){
- let {data:balData}=await supa.from('profiles').select('email,balance').order('balance',{ascending:false}).limit(10);
- let hb=''; if(!balData||!balData.length) hb='No traders yet'; else balData.forEach((u,i)=>{ let medal=i==0?'🥇':i==1?'🥈':i==2?'🥉':'#'+(i+1); let emailMask=u.email.split('@')[0].slice(0,3)+'***'; hb+=`<div class="leaderRow"><span>${medal} ${emailMask}</span><b style="color:#00c076">$${Number(u.balance||0).toFixed(0)}</b></div>`; }); document.getElementById('leaderBalance').innerHTML=hb;
- let {data:refData}=await supa.from('profiles').select('email,referrals_count').order('referrals_count',{ascending:false}).limit(10);
- let hr=''; if(!refData||!refData.length) hr='No referrers yet'; else refData.forEach((u,i)=>{ let medal=i==0?'🥇':i==1?'🥈':i==2?'🥉':'#'+(i+1); let emailMask=u.email.split('@')[0].slice(0,3)+'***'; hr+=`<div class="leaderRow"><span>${medal} ${emailMask}</span><b>${u.referrals_count||0} friends</b></div>`; }); document.getElementById('leaderRef').innerHTML=hr;
+ let {data:balData}=await supa.from('profiles').select('id,email,balance').order('balance',{ascending:false}).limit(10);
+ let hb=''; if(!balData||!balData.length) hb='No traders yet'; else balData.forEach((u,i)=>{ let medal=i==0?'🥇':i==1?'🥈':i==2?'🥉':'#'+(i+1); let emailMask=u.email.split('@')[0].slice(0,3)+'***'; let isMe=u.id==currentUser.id; hb+=`<div class="leaderRow"><span>${medal} ${emailMask} ${isMe?'(You)':''}</span><div style="display:flex;gap:6px;align-items:center"><b style="color:#00c076">$${Number(u.balance||0).toFixed(0)}</b>${isMe?'':`<button class="copyBtn" onclick="copyTrader('${u.id}','${emailMask}')">COPY</button>`}</div></div>`; }); document.getElementById('leaderBalance').innerHTML=hb;
+ let {data:refData}=await supa.from('profiles').select('email,referrals_count').order('referrals_count',{ascending:false}).limit(5);
+ let hr=''; if(!refData||!refData.length) hr='No referrers'; else refData.forEach((u,i)=>{ let medal=i==0?'🥇':i==1?'🥈':i==2?'🥉':'#'+(i+1); let emailMask=u.email.split('@')[0].slice(0,3)+'***'; hr+=`<div class="leaderRow"><span>${medal} ${emailMask}</span><b>${u.referrals_count||0} friends</b></div>`; }); document.getElementById('leaderRef').innerHTML=hr;
  let {data:winData}=await supa.from('closed_trades').select('pair,profit').order('profit',{ascending:false}).limit(5);
- let hw=''; if(!winData||!winData.length) hw='No wins yet'; else winData.forEach(w=>{ hw+=`<div class="leaderRow"><span>${w.pair}</span><b style="color:#00c076">+$${Number(w.profit).toFixed(2)}</b></div>`; }); document.getElementById('leaderWins').innerHTML=hw;
+ let hw=''; if(!winData||!winData.length) hw='No wins'; else winData.forEach(w=>{ hw+=`<div class="leaderRow"><span>${w.pair}</span><b style="color:#00c076">+$${Number(w.profit).toFixed(2)}</b></div>`; }); document.getElementById('leaderWins').innerHTML=hw;
 }
-async function loadAdmin(){ let {data:d}=await supa.from('deposits').select('*').eq('status','pending').order('created_at'); let h=''; if(!d||!d.length) h='No pending'; else d.forEach(x=>{ h+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount}<br>${x.phone}<br><button onclick="approveDep('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px;font-weight:700">APPROVE +50%</button></div>`}); document.getElementById('adminDeposits').innerHTML=h; let {data:w}=await supa.from('withdrawals').select('*').eq('status','pending').order('created_at'); let hw=''; if(!w||!w.length) hw='No pending'; else w.forEach(x=>{ hw+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} withdraw $${x.amount} → ${x.phone}<br><button onclick="approveWith('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">PAID</button> <button onclick="rejectWith('${x.id}')" style="background:#ff3b3b;border:0;padding:6px 10px;border-radius:6px;color:#fff">Reject</button></div>`}); document.getElementById('adminWithdraws').innerHTML=hw; }
+async function copyTrader(leaderId, name){
+ if(leaderId==currentUser.id) return alert('Cannot copy yourself');
+ let {data:exists}=await supa.from('copy_follows').select('*').eq('follower_id',currentUser.id).eq('leader_id',leaderId).single();
+ if(exists) { await supa.from('copy_follows').delete().eq('follower_id',currentUser.id).eq('leader_id',leaderId); alert('Stopped copying '+name); loadCopying(); loadLeaderboard(); return; }
+ await supa.from('copy_follows').insert({follower_id:currentUser.id, leader_id:leaderId});
+ alert('✅ Now copying '+name+'! His new trades will auto copy to you. You pay 10% fee on profit.');
+ loadCopying(); loadLeaderboard();
+}
+async function loadCopying(){
+ let {data}=await supa.from('copy_follows').select('leader_id').eq('follower_id',currentUser.id);
+ if(!data||!data.length){ document.getElementById('copyingList').innerHTML='Not copying anyone - Click COPY above'; return; }
+ let ids=data.map(d=>d.leader_id);
+ let {data:leaders}=await supa.from('profiles').select('email').in('id',ids);
+ let h=''; leaders.forEach(l=>{ h+=`<div>✅ Copying ${l.email.split('@')[0].slice(0,3)}*** • <span style="color:#f5c518;cursor:pointer" onclick="copyTrader('${data.find(d=>true).leader_id}','')">Stop</span></div>`; });
+ document.getElementById('copyingList').innerHTML=h;
+}
+async function loadAdmin(){ let {data:d}=await supa.from('deposits').select('*').eq('status','pending').order('created_at'); let h=''; if(!d||!d.length) h='No pending'; else d.forEach(x=>{ h+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount}<br>${x.phone}<br><button onclick="approveDep('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px;font-weight:700">APPROVE +50%</button></div>`}); document.getElementById('adminDeposits').innerHTML=h; let {data:w}=await supa.from('withdrawals').select('*').eq('status','pending').order('created_at'); let hw=''; if(!w||!w.length) hw='No pending'; else w.forEach(x=>{ hw+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount} → ${x.phone}<br><button onclick="approveWith('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">PAID</button> <button onclick="rejectWith('${x.id}')" style="background:#ff3b3b;border:0;padding:6px 10px;border-radius:6px;color:#fff">Reject</button></div>`}); document.getElementById('adminWithdraws').innerHTML=hw; }
 async function approveDep(id,uid,amt){ let {data:p}=await supa.from('profiles').select('balance,bonus').eq('id',uid).single(); let nb=(p.balance||0)+amt; let nbo=(p.bonus||0)+amt*0.5; await supa.from('profiles').update({balance:nb,bonus:nbo}).eq('id',uid); await supa.from('deposits').update({status:'approved'}).eq('id',id); alert('Approved!'); loadAdmin(); if(uid==currentUser.id){ bal=nb; bonus=nbo; upd(); } }
-async function approveWith(id,uid,amt){ let {data:p}=await supa.from('profiles').select('balance').eq('id',uid).single(); if((p.balance||0)<amt) return alert('Insufficient'); await supa.from('profiles').update({balance:p.balance-amt}).eq('id',uid); await supa.from('withdrawals').update({status:'approved'}).eq('id',id); alert('Marked PAID'); loadAdmin(); }
+async function approveWith(id,uid,amt){ let {data:p}=await supa.from('profiles').select('balance').eq('id',uid).single(); if((p.balance||0)<amt) return alert('Insufficient'); await supa.from('profiles').update({balance:p.balance-amt}).eq('id',uid); await supa.from('withdrawals').update({status:'approved'}).eq('id',id); alert('Paid'); loadAdmin(); }
 async function rejectWith(id){ await supa.from('withdrawals').update({status:'rejected'}).eq('id',id); loadAdmin(); }
 function copyRef(){ navigator.clipboard.writeText(document.getElementById('refLink').value); alert('Copied!'); }
 </script>
