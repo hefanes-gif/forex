@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FX Kenya V6 Supabase</title>
+<title>FX Kenya V6 Supabase LIVE</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -31,7 +31,7 @@ body{margin:0;background:#0f172a;color:#fff}
 <div id="auth">
 <div class="box">
 <h2>FX<b style="color:#f59e0b">KENYA</b> V6</h2>
-<p style="color:#64748b;font-size:13px">Supabase secure auth</p>
+<p style="color:#64748b;font-size:13px">Supabase secure auth LIVE</p>
 <div class="tabs"><div id="tLogin" class="on" onclick="switchTab('login')">Login</div><div id="tReg" onclick="switchTab('reg')">Register</div></div>
 <input id="email" placeholder="you@gmail.com">
 <input id="pass" type="password" placeholder="Password 6+ chars">
@@ -56,9 +56,8 @@ body{margin:0;background:#0f172a;color:#fff}
 
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
-// 🔴 REPLACE WITH YOURS FROM SUPABASE SETTINGS > API
-const SUPA_URL = "https://YOUR_PROJECT.supabase.co";
-const SUPA_KEY = "YOUR_ANON_PUBLIC_KEY";
+const SUPA_URL = "https://bvebgevqlquqpidtzdij.supabase.co";
+const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2ZWJnZXZxbHF1cXBpZHR6ZGlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgzNjA0MzUsImV4cCI6MjEwMzkzNjQzNX0.Y-1-WcD_Z37Frt-YBV1R7Yi2gPKThc_NLoCe3kSj3gQ";
 const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
 
 let mode='login', bal=10000, positions=[], cur='FX:EURUSD';
@@ -72,20 +71,19 @@ async function handleAuth(){
   if(mode=='login'){
    let {error} = await supa.auth.signInWithPassword({email,password:pass});
    if(error) throw error;
+   msg.innerText='Success! Loading...';
   } else {
    let {data,error} = await supa.auth.signUp({email,password:pass});
    if(error) throw error;
-   if(data.user){ await supa.from('profiles').insert({id:data.user.id,email,balance:10000}); }
-   msg.innerText='Registered! Check email to confirm, then Login.';
-   return;
+   if(data.user){ 
+    let {error:insErr} = await supa.from('profiles').insert({id:data.user.id,email,balance:10000});
+    if(insErr) console.log(insErr);
+   }
+   msg.style.color='#16a34a'; msg.innerText='Registered! Now click Login tab and login.';
   }
- } catch(e){ msg.innerText=e.message; }
+ } catch(e){ msg.style.color='#ef4444'; msg.innerText=e.message; }
 }
-
-async function resetPass(){
- let email=document.getElementById('email').value.trim(); if(!email) return alert('Enter email first');
- let {error}=await supa.auth.resetPasswordForEmail(email); alert(error?error.message:'Reset link sent to '+email);
-}
+async function resetPass(){ let email=document.getElementById('email').value.trim(); if(!email) return alert('Enter email first'); let {error}=await supa.auth.resetPasswordForEmail(email); alert(error?error.message:'Reset link sent to '+email); }
 async function logout(){ await supa.auth.signOut(); location.reload(); }
 
 supa.auth.onAuthStateChange(async (event, session)=>{
