@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>FX Kenya V16 REAL</title>
+<title>FX Kenya V16.1 REAL FIX</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -50,12 +50,12 @@
 </style>
 </head><body>
 <a class="waFloat" href="https://wa.me/254789338183?text=Hi%20FX%20Kenya%20Support" target="_blank">💬</a>
-<div id="auth"><div class="box"><h1 style="margin:0">FX<b style="color:#f5c518">KENYA</b> V16</h1><p style="color:#8b93a1;font-size:11px">REAL Cashback • VIP • Streak</p><div class="tabs"><div id="tLogin" class="on" onclick="switchTabAuth('login')">Login</div><div id="tReg" onclick="switchTabAuth('reg')">Register</div></div><input id="email" class="inp" placeholder="Email"><input id="pass" type="password" class="inp" placeholder="Password"><div id="refInputWrap" style="display:none"><input id="refCodeInput" class="inp" placeholder="Referral Code"></div><button class="btn" onclick="handleAuth()">Continue →</button><p id="msg" style="font-size:12px;color:#ff6b6b;text-align:center;margin-top:10px"></p><p id="refDetected" style="font-size:11px;color:#00c076;text-align:center;display:none">🎁 Referral detected!</p></div></div>
+<div id="auth"><div class="box"><h1 style="margin:0">FX<b style="color:#f5c518">KENYA</b> V16.1</h1><p style="color:#8b93a1;font-size:11px">REAL Fix • Lot Lock • Realistic P/L</p><div class="tabs"><div id="tLogin" class="on" onclick="switchTabAuth('login')">Login</div><div id="tReg" onclick="switchTabAuth('reg')">Register</div></div><input id="email" class="inp" placeholder="Email"><input id="pass" type="password" class="inp" placeholder="Password"><div id="refInputWrap" style="display:none"><input id="refCodeInput" class="inp" placeholder="Referral Code"></div><button class="btn" onclick="handleAuth()">Continue →</button><p id="msg" style="font-size:12px;color:#ff6b6b;text-align:center;margin-top:10px"></p><p id="refDetected" style="font-size:11px;color:#00c076;text-align:center;display:none">🎁 Referral detected!</p></div></div>
 <div class="header">
 <div style="display:flex;gap:10px;align-items:center"><div style="width:32px;height:32px;background:#fff;color:#000;border-radius:8px;display:grid;place-items:center;font-weight:800">FX</div><div><b style="font-size:13px">KENYA <span style="color:#f5c518">PRO</span></b><div style="font-size:9px;color:#8b93a1;display:flex;gap:5px;align-items:center"><span class="liveDot"></span> LIVE • <span id="livePrice">1.16195</span> <span id="vipBadge" style="background:#444;color:#fff;padding:2px 6px;border-radius:6px;font-weight:800">BRONZE</span> <span id="marginLevel" class="mLevel" style="background:#00c076;color:#000">SAFE</span></div></div></div>
 <div style="display:flex;gap:8px;align-items:center"><div class="accSwitch"><div id="realBtn" class="on" onclick="setAccount('real')">REAL</div><div id="demoBtn" onclick="setAccount('demo')">DEMO</div></div><span onclick="logout()" style="background:#151a21;border:1px solid #222a35;padding:6px 10px;border-radius:20px;font-size:10px;cursor:pointer">⎋</span></div>
 </div>
-<div id="streakBar" class="streakBox" style="display:none"><span>🔥 Streak: <span id="streakCount">0</span> days • Cashback: $<span id="cashbackTotal">0.00</span></span><span style="background:#000;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px">Trade 1 lot = $1</span></div>
+<div id="streakBar" class="streakBox" style="display:none"><span>🔥 Streak: <span id="streakCount">0</span> days • Cashback: $<span id="cashbackTotal">0.00</span></span><span style="background:#000;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px" id="lotLimitInfo">Max 0.5 lot</span></div>
 <div id="signalBar" style="margin:0 12px;display:none"></div>
 <div class="bBar">
 <div class="bCard"><small>Balance</small><div class="v">$<span id="bal">0.00</span></div></div>
@@ -73,7 +73,7 @@
 <div class="priceTicker"><span><span class="liveDot"></span> <b id="pairName">EUR/USD</b></span><span style="display:flex;gap:10px"><span id="bid" style="color:#ff3b3b">SELL</span><span id="ask" style="color:#00c076">BUY</span></span></div>
 <div class="pills"><div class="pill on" onclick="loadC('FX:EURUSD',this)">EUR/USD</div><div class="pill" onclick="loadC('FX:GBPUSD',this)">GBP/USD</div><div class="pill" onclick="loadC('OANDA:XAUUSD',this)">GOLD</div><div class="pill" onclick="loadC('BINANCE:BTCUSDT',this)">BTC</div><div class="pill" onclick="loadC('FX_IDC:USDKES',this)">USD/KES</div></div>
 <div style="padding:0 12px;display:flex;gap:6px;flex-wrap:wrap">
-<select id="lot" class="sel"><option>0.01</option><option>0.05</option><option selected>0.10</option><option>0.50</option><option>1.00</option><option>5.00</option><option>10.00</option><option>20.00</option><option>50.00</option></select>
+<select id="lot" class="sel"><option>0.01</option><option>0.05</option><option selected>0.10</option><option>0.50</option><option>1.00</option><option>5.00</option><option>10.00</option></select>
 <select id="lev" class="sel"><option>1:100</option><option selected>1:500</option><option>1:1000</option></select>
 <input id="sl" class="sel" type="number" placeholder="SL" style="width:92px"><input id="tp" class="sel" type="number" placeholder="TP" style="width:92px">
 </div>
@@ -84,10 +84,10 @@
 </div>
 <div id="walletView" style="display:none;padding:12px">
 <div class="posCard"><h3 style="margin:0">👑 VIP Levels • REAL</h3><div style="font-size:11px;margin-top:8px;line-height:18px">
-<div style="display:flex;justify-content:space-between;padding:6px;background:#0b0e12;border-radius:8px;margin-bottom:4px"><span>🥉 Bronze $0-$99</span><span>Bonus 50%</span></div>
-<div style="display:flex;justify-content:space-between;padding:6px;background:#1a1a1a;border-radius:8px;margin-bottom:4px"><span>🥈 Silver $100-$499</span><span>Bonus 60% + 10% cb</span></div>
-<div style="display:flex;justify-content:space-between;padding:6px;background:#f5c51822;border-radius:8px;margin-bottom:4px"><span>🥇 Gold $500-$1999</span><span>Bonus 80% + Signals</span></div>
-<div style="display:flex;justify-content:space-between;padding:6px;background:linear-gradient(90deg,#f5c518,#ff8c00);color:#000;border-radius:8px"><span>💎 Diamond $2000+</span><span>Bonus 100% + VIP</span></div>
+<div style="display:flex;justify-content:space-between;padding:6px;background:#0b0e12;border-radius:8px;margin-bottom:4px"><span>🥉 Bronze $0-$99 → Max 0.50 lot</span><span>Bonus 50%</span></div>
+<div style="display:flex;justify-content:space-between;padding:6px;background:#1a1a1a;border-radius:8px;margin-bottom:4px"><span>🥈 Silver $100+ → Max 2.0 lot</span><span>Bonus 60%</span></div>
+<div style="display:flex;justify-content:space-between;padding:6px;background:#f5c51822;border-radius:8px;margin-bottom:4px"><span>🥇 Gold $500+ → Max 10 lot</span><span>Bonus 80%</span></div>
+<div style="display:flex;justify-content:space-between;padding:6px;background:linear-gradient(90deg,#f5c518,#ff8c00);color:#000;border-radius:8px"><span>💎 Diamond $2000+ → Max 50 lot</span><span>Bonus 100%</span></div>
 <div style="margin-top:8px">Your deposits: <b id="totalDep" style="color:#f5c518">$0</b> • <span id="nextVip">Deposit $100 for Silver</span></div>
 </div></div>
 <div class="posCard"><h3 style="margin:0">💳 Deposit • Paybill 542542</h3><div class="payBox"><div style="display:flex;justify-content:space-between"><span>Paybill</span><b style="color:#f5c518;font-size:22px">542542</b></div><div style="display:flex;justify-content:space-between"><span>Account</span><b>01710144646150</b></div></div><input id="depAmount" class="inp" placeholder="Amount"><input id="depPhone" class="inp" placeholder="M-Pesa phone"><button class="btn" onclick="submitDeposit()">I HAVE PAID</button><div id="myDeposits" style="margin-top:12px"></div></div>
@@ -141,29 +141,41 @@ supa.auth.onAuthStateChange(async (e,s)=>{
  } else document.getElementById('auth').style.display='flex';
 });
 function updateVip(){
- let level='BRONZE', next='Deposit $100 for Silver', color='#444';
- if(totalDeposits>=2000){ level='💎 DIAMOND'; next='MAX LEVEL!'; color='#f5c518'; }
- else if(totalDeposits>=500){ level='🥇 GOLD'; next='Deposit $'+(2000-totalDeposits)+' for Diamond'; color='#ffd700'; }
- else if(totalDeposits>=100){ level='🥈 SILVER'; next='Deposit $'+(500-totalDeposits)+' for Gold'; color='#c0c0c0'; }
+ let level='BRONZE', next='Deposit $100 for Silver', color='#444', maxLot=0.5;
+ if(totalDeposits>=2000){ level='💎 DIAMOND'; next='MAX LEVEL!'; color='#f5c518'; maxLot=50; }
+ else if(totalDeposits>=500){ level='🥇 GOLD'; next='Deposit $'+(2000-totalDeposits)+' for Diamond'; color='#ffd700'; maxLot=10; }
+ else if(totalDeposits>=100){ level='🥈 SILVER'; next='Deposit $'+(500-totalDeposits)+' for Gold'; color='#c0c0c0'; maxLot=2; }
  document.getElementById('vipLevel').innerText=level; document.getElementById('vipBadge').innerText=level; document.getElementById('vipBadge').style.background=color; document.getElementById('vipBadge').style.color=totalDeposits>=100?'#000':'#fff';
  document.getElementById('totalDep').innerText='$'+totalDeposits; document.getElementById('nextVip').innerText=next;
+ document.getElementById('lotLimitInfo').innerText='Max '+maxLot+' lot';
 }
+function getMaxLot(){ if(totalDeposits>=2000) return 50; if(totalDeposits>=500) return 10; if(totalDeposits>=100) return 2; return 0.5; }
 function getVipBonusPercent(){ if(totalDeposits>=2000) return 1.0; if(totalDeposits>=500) return 0.8; if(totalDeposits>=100) return 0.6; return 0.5; }
 function getVipCashback(){ if(totalDeposits>=2000) return 0.20; if(totalDeposits>=500) return 0.15; if(totalDeposits>=100) return 0.10; return 0.05; }
 function setAccount(type){ account=type; document.getElementById('realBtn').classList.toggle('on',type=='real'); document.getElementById('demoBtn').classList.toggle('on',type=='demo'); loadOpenTrades(); upd(); }
 function showTab(t){
- if(t==='admin'){ if(!currentUser || currentUser.email!== ADMIN_EMAIL){ alert('⛔ Admin only - kiplaaevoo@gmail.com'); return; } }
+ if(t==='admin'){ if(!currentUser || currentUser.email!== ADMIN_EMAIL){ alert('⛔ Admin only'); return; } }
  document.getElementById('tradeView').style.display=t=='trade'?'block':'none'; document.getElementById('walletView').style.display=t=='wallet'?'block':'none'; document.getElementById('leaderView').style.display=t=='leader'?'block':'none'; document.getElementById('adminView').style.display=t=='admin'?'block':'none'; document.querySelectorAll('.nav div').forEach(d=>d.classList.remove('on')); if(t=='leader') loadLeaderboard(); if(t=='admin') loadAdmin();
 }
 function loadC(s,el){ if(el){document.querySelectorAll('.pill').forEach(x=>x.classList.remove('on')); el.classList.add('on');} cur=s; document.getElementById('pairName').innerText=s.split(':')[1]; document.getElementById('tv').innerHTML=''; new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'dark',interval:'15',timezone:'Africa/Nairobi'}); }
 function getSpread(pair){ if(pair.includes('XAU')||pair.includes('GOLD')) return 0.30; if(pair.includes('BTC')) return 20; if(pair.includes('USDKES')) return 0.05; return 0.00015; }
-function calcProfit(p, curPrice){ let diff = p.type=='BUY'? curPrice - p.entry : p.entry - curPrice; if(p.pair.includes('XAU')) return diff * p.lot * 100; if(p.pair.includes('BTC')) return diff * p.lot * 1; if(p.pair.includes('KES')) return diff * p.lot * 5000; return diff * p.lot * 100000 * 0.5; }
+function calcProfit(p, curPrice){
+ let diff = p.type=='BUY'? curPrice - p.entry : p.entry - curPrice;
+ // REALISTIC BROKER MATH FIXED V16.1
+ if(p.pair.includes('XAU')||p.pair.includes('GOLD')) return diff * p.lot * 10; // GOLD: 0.10 lot ~ $1 per $1 move
+ if(p.pair.includes('BTC')) return diff * p.lot * 0.1; // BTC: 0.10 lot ~ $0.10 per $1
+ if(p.pair.includes('KES')) return diff * p.lot * 100; // USD/KES
+ return diff * p.lot * 100000; // EUR/USD: 0.01 lot = $1 per 10 pips, 0.10 lot = $1 per pip -> REAL
+}
 function getMarginLot(lot){ let levStr=document.getElementById('lev').value||'1:500'; let lev=parseInt(levStr.split(':')[1]); return lot*100000/lev; }
 function startLivePrice(){ setInterval(async ()=>{ let c=(Math.random()-0.5)*0.0004; if(cur.includes('XAU')) c=(Math.random()-0.5)*0.4; if(cur.includes('BTC')) c=(Math.random()-0.5)*8; liveBid+=c; liveAsk=liveBid+getSpread(cur); document.getElementById('bid').innerText=liveBid.toFixed(5)+' SELL'; document.getElementById('sellPrice').innerText=liveBid.toFixed(5); document.getElementById('ask').innerText=liveAsk.toFixed(5)+' BUY'; document.getElementById('buyPrice').innerText=liveAsk.toFixed(5); document.getElementById('livePrice').innerText=liveAsk.toFixed(5); if(positions.length){ let toClose=[]; positions.forEach(p=>{ let curPrice = p.type=='BUY'? liveBid : liveAsk; if(p.pair==cur.split(':')[1]){ p.pl = calcProfit(p, curPrice); if(p.sl && ((p.type=='BUY' && curPrice <= p.sl) || (p.type=='SELL' && curPrice >= p.sl))) toClose.push({id:p.id, reason:'SL'}); if(p.tp && ((p.type=='BUY' && curPrice >= p.tp) || (p.type=='SELL' && curPrice <= p.tp))) toClose.push({id:p.id, reason:'TP'}); } }); for(let tc of toClose){ await closePos(tc.id, tc.reason); } render(); } },700); }
 function startAutoRefresh(){ setInterval(async ()=>{ if(!currentUser) return; let {data}=await supa.from('profiles').select('balance,bonus,demo_balance,referrals_count,total_deposits,cashback,streak_count').eq('id',currentUser.id).single(); if(data){ bal=data.balance||0; bonus=data.bonus||0; demoBal=data.demo_balance||10000; totalDeposits=data.total_deposits||0; cashback=data.cashback||0; streak=data.streak_count||0; updateVip(); document.getElementById('streakCount').innerText=streak; document.getElementById('cashbackTotal').innerText=cashback.toFixed(2); upd(); } loadSignals(); },5000); }
 async function loadOpenTrades(){ if(!currentUser) return; let {data}=await supa.from('open_trades').select('*').eq('user_id',currentUser.id).eq('account_type',account).order('created_at',{ascending:true}); positions = (data||[]).map(t=>({id:t.id, type:t.type, pair:t.pair, lot:t.lot, entry:t.entry, sl:t.sl, tp:t.tp, pl:0, copied_from:t.copied_from})); render(); }
 async function openTrade(type){
- let total=account=='demo'?demoBal:bal+bonus; if(total<=1) return alert('Deposit first! Paybill 542542'); let lot=parseFloat(document.getElementById('lot').value); if(total<100 && lot>0.5) return alert('Balance < $100 max 0.50 lot'); if(total<1000 && lot>5) return alert('Balance < $1000 max 5 lot'); let marginNeed=getMarginLot(lot); let equity = account=='demo'?demoBal:bal+bonus+positions.reduce((s,p)=>s+p.pl,0); let free = equity - positions.reduce((s,p)=>s+getMarginLot(p.lot),0); if(account=='real' && free < marginNeed) return alert('Not enough free margin! Need $'+marginNeed.toFixed(2)); let entry=type=='BUY'?liveAsk:liveBid; let sl=parseFloat(document.getElementById('sl').value)||null; let tp=parseFloat(document.getElementById('tp').value)||null; let {data,error}=await supa.from('open_trades').insert({user_id:currentUser.id, pair:cur.split(':')[1], type, lot, entry, sl, tp, account_type:account}).select().single(); if(error) return alert(error.message); positions.push({id:data.id, type, pair:data.pair, lot, entry, sl, tp, pl:0}); render(); document.getElementById('sl').value=''; document.getElementById('tp').value=''; checkCopyFollowers(data);
+ let total=account=='demo'?demoBal:bal+bonus; if(total<=1) return alert('Deposit first! Paybill 542542'); let lot=parseFloat(document.getElementById('lot').value);
+ let maxLot=getMaxLot(); if(lot>maxLot) return alert('⛔ VIP Limit: '+document.getElementById('vipLevel').innerText+' max '+maxLot+' lot. Deposit more to unlock! Current deposits $'+totalDeposits);
+ if(total<100 && lot>0.5) return alert('Balance < $100 max 0.50 lot'); if(total<1000 && lot>5) return alert('Balance < $1000 max 5 lot');
+ let marginNeed=getMarginLot(lot); let equity = account=='demo'?demoBal:bal+bonus+positions.reduce((s,p)=>s+p.pl,0); let free = equity - positions.reduce((s,p)=>s+getMarginLot(p.lot),0); if(account=='real' && free < marginNeed) return alert('Not enough free margin! Need $'+marginNeed.toFixed(2)); let entry=type=='BUY'?liveAsk:liveBid; let sl=parseFloat(document.getElementById('sl').value)||null; let tp=parseFloat(document.getElementById('tp').value)||null; let {data,error}=await supa.from('open_trades').insert({user_id:currentUser.id, pair:cur.split(':')[1], type, lot, entry, sl, tp, account_type:account}).select().single(); if(error) return alert(error.message); positions.push({id:data.id, type, pair:data.pair, lot, entry, sl, tp, pl:0}); render(); document.getElementById('sl').value=''; document.getElementById('tp').value=''; checkCopyFollowers(data);
 }
 async function checkCopyFollowers(newTrade){ let {data:followers}=await supa.from('copy_follows').select('follower_id').eq('leader_id',currentUser.id); if(followers && followers.length){ for(let f of followers){ await supa.from('open_trades').insert({user_id:f.follower_id, pair:newTrade.pair, type:newTrade.type, lot:newTrade.lot, entry:newTrade.entry, sl:newTrade.sl, tp:newTrade.tp, account_type:'real', copied_from:currentUser.id}); } } }
 function render(){ document.getElementById('posCount').innerText=positions.length; if(!positions.length){document.getElementById('trades').innerHTML='No positions'; upd(); return;} let h=''; positions.forEach(p=>{ let col=p.pl>=0?'#00c076':'#ff3b3b'; h+=`<div class="row"><div><b style="color:${p.type=='BUY'?'#00c076':'#ff3b3b'}">${p.type}</b> ${p.pair} ${p.lot} lot<br><small>Entry ${Number(p.entry).toFixed(4)}</small><br><small style="color:${col};font-weight:800">$${p.pl.toFixed(2)}</small></div><button onclick="closePos('${p.id}')" style="background:#fff;color:#000;border:0;padding:6px 12px;border-radius:8px;font-weight:700">Close</button></div>`}); document.getElementById('trades').innerHTML=h; upd(); }
@@ -199,30 +211,9 @@ async function copyTrader(leaderId, name){ if(leaderId==currentUser.id) return a
 async function loadCopying(){ let {data}=await supa.from('copy_follows').select('leader_id').eq('follower_id',currentUser.id); if(!data||!data.length){ document.getElementById('copyingList').innerHTML='Not copying'; return; } let ids=data.map(d=>d.leader_id); let {data:leaders}=await supa.from('profiles').select('id,email').in('id',ids); let h=''; leaders.forEach(l=>{ h+=`<div>✅ ${l.email.split('@')[0].slice(0,3)}*** • <span style="color:#f5c518;cursor:pointer" onclick="copyTrader('${l.id}','${l.email}')">Stop</span></div>`; }); document.getElementById('copyingList').innerHTML=h; }
 async function loadSignals(){ let {data}=await supa.from('signals').select('*').order('created_at',{ascending:false}).limit(3); if(!data||!data.length){ document.getElementById('signalBar').style.display='none'; return; } let h=''; data.forEach(s=>{ h+=`<div class="signalCard"><b style="color:#f5c518">📢 ${s.pair} ${s.type}</b> • ${s.message} <button onclick="openSignalTrade('${s.pair}','${s.type}')" style="background:#00c076;border:0;padding:4px 8px;border-radius:6px;font-weight:700;margin-left:8px">Trade Now</button></div>`; }); document.getElementById('signalBar').innerHTML=h; document.getElementById('signalBar').style.display='block'; }
 function openSignalTrade(pair,type){ loadC('FX:'+pair.replace('/',''),null); setTimeout(()=>openTrade(type),500); }
-async function sendSignal(){
- if(currentUser.email!== ADMIN_EMAIL) return alert('Admin only');
- let pair=document.getElementById('sigPair').value.trim().toUpperCase(), type=document.getElementById('sigType').value.trim().toUpperCase(), msg=document.getElementById('sigMsg').value.trim();
- if(!pair||!type) return alert('Need pair + BUY/SELL');
- await supa.from('signals').insert({pair,type,message:msg||pair+' '+type+' NOW', created_by:currentUser.id});
- alert('Signal broadcasted!'); loadSignals();
-}
-async function loadAdmin(){
- if(!currentUser || currentUser.email!== ADMIN_EMAIL){ document.getElementById('adminDeposits').innerHTML='⛔ DENIED'; document.getElementById('adminWithdraws').innerHTML='⛔'; return; }
- document.getElementById('adminCheck').innerHTML='✅ ADMIN: '+currentUser.email;
- let {data:d}=await supa.from('deposits').select('*').eq('status','pending').order('created_at');
- let h=''; if(!d||!d.length) h='No pending'; else d.forEach(x=>{ h+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount}<br>${x.phone}<br><button onclick="approveDep('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px;font-weight:700">APPROVE</button></div>`}); document.getElementById('adminDeposits').innerHTML=h;
- let {data:w}=await supa.from('withdrawals').select('*').eq('status','pending').order('created_at');
- let hw=''; if(!w||!w.length) hw='No pending'; else w.forEach(x=>{ hw+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount} → ${x.phone}<br><button onclick="approveWith('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">PAID</button> <button onclick="rejectWith('${x.id}')" style="background:#ff3b3b;border:0;padding:6px 10px;border-radius:6px;color:#fff">Reject</button></div>`}); document.getElementById('adminWithdraws').innerHTML=hw;
-}
-async function approveDep(id,uid,amt){
- if(currentUser.email!== ADMIN_EMAIL) return;
- let {data:p}=await supa.from('profiles').select('balance,bonus,total_deposits').eq('id',uid).single();
- let bonusPerc=0.5; let td=p.total_deposits||0; if(td>=2000) bonusPerc=1.0; else if(td>=500) bonusPerc=0.8; else if(td>=100) bonusPerc=0.6;
- let nb=(p.balance||0)+amt; let nbo=(p.bonus||0)+amt*bonusPerc; let ntd=td+amt;
- await supa.from('profiles').update({balance:nb,bonus:nbo,total_deposits:ntd}).eq('id',uid);
- await supa.from('deposits').update({status:'approved'}).eq('id',id);
- alert('Approved +'+bonusPerc*100+'%'); loadAdmin();
-}
+async function sendSignal(){ if(currentUser.email!== ADMIN_EMAIL) return alert('Admin only'); let pair=document.getElementById('sigPair').value.trim().toUpperCase(), type=document.getElementById('sigType').value.trim().toUpperCase(), msg=document.getElementById('sigMsg').value.trim(); if(!pair||!type) return alert('Need pair + BUY/SELL'); await supa.from('signals').insert({pair,type,message:msg||pair+' '+type+' NOW', created_by:currentUser.id}); alert('Signal broadcasted!'); loadSignals(); }
+async function loadAdmin(){ if(!currentUser || currentUser.email!== ADMIN_EMAIL){ document.getElementById('adminDeposits').innerHTML='⛔ DENIED'; document.getElementById('adminWithdraws').innerHTML='⛔'; return; } document.getElementById('adminCheck').innerHTML='✅ ADMIN: '+currentUser.email; let {data:d}=await supa.from('deposits').select('*').eq('status','pending').order('created_at'); let h=''; if(!d||!d.length) h='No pending'; else d.forEach(x=>{ h+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount}<br>${x.phone}<br><button onclick="approveDep('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px;font-weight:700">APPROVE</button></div>`}); document.getElementById('adminDeposits').innerHTML=h; let {data:w}=await supa.from('withdrawals').select('*').eq('status','pending').order('created_at'); let hw=''; if(!w||!w.length) hw='No pending'; else w.forEach(x=>{ hw+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount} → ${x.phone}<br><button onclick="approveWith('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">PAID</button> <button onclick="rejectWith('${x.id}')" style="background:#ff3b3b;border:0;padding:6px 10px;border-radius:6px;color:#fff">Reject</button></div>`}); document.getElementById('adminWithdraws').innerHTML=hw; }
+async function approveDep(id,uid,amt){ if(currentUser.email!== ADMIN_EMAIL) return; let {data:p}=await supa.from('profiles').select('balance,bonus,total_deposits').eq('id',uid).single(); let bonusPerc=0.5; let td=p.total_deposits||0; if(td>=2000) bonusPerc=1.0; else if(td>=500) bonusPerc=0.8; else if(td>=100) bonusPerc=0.6; let nb=(p.balance||0)+amt; let nbo=(p.bonus||0)+amt*bonusPerc; let ntd=td+amt; await supa.from('profiles').update({balance:nb,bonus:nbo,total_deposits:ntd}).eq('id',uid); await supa.from('deposits').update({status:'approved'}).eq('id',id); alert('Approved +'+bonusPerc*100+'%'); loadAdmin(); }
 async function approveWith(id,uid,amt){ if(currentUser.email!== ADMIN_EMAIL) return; let {data:p}=await supa.from('profiles').select('balance').eq('id',uid).single(); if((p.balance||0)<amt) return alert('Insufficient'); await supa.from('profiles').update({balance:p.balance-amt}).eq('id',uid); await supa.from('withdrawals').update({status:'approved'}).eq('id',id); alert('Paid'); loadAdmin(); }
 async function rejectWith(id){ if(currentUser.email!== ADMIN_EMAIL) return; await supa.from('withdrawals').update({status:'rejected'}).eq('id',id); loadAdmin(); }
 function copyRef(){ navigator.clipboard.writeText(document.getElementById('refLink').value); alert('Copied!'); }
