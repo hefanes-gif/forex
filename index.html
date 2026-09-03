@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>FX Kenya V17</title>
+<title>FX Kenya V17.1</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -47,17 +47,17 @@
 .copyBtn{background:#f5c518;color:#000;border:0;padding:5px 10px;border-radius:8px;font-weight:800;font-size:10px;cursor:pointer}
 .streakBox{background:linear-gradient(90deg,#ff5a00,#f5c518);color:#000;border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin:8px 12px;font-weight:800;font-size:12px}
 .signalCard{border-left:4px solid #00c076;background:#0b0e12;border-radius:10px;padding:10px;margin:8px 0}
-.chatBox{height:260px;overflow:auto;background:#0b0e12;border:1px solid #222a35;border-radius:12px;padding:10px;margin:8px 0}
-.msg{margin:6px 0;padding:8px 10px;border-radius:10px;font-size:11px;max-width:80%}
-.msg.user{background:#f5c518;color:#000;margin-left:auto}
-.msg.admin{background:#151a21;border:1px solid #222a35}
+.chatBox{display:flex;flex-direction:column;gap:6px;height:300px;overflow:auto;background:#0b0e12;border:1px solid #222a35;border-radius:12px;padding:10px;margin:8px 0}
+.msg{padding:8px 12px;border-radius:14px;font-size:11px;max-width:75%;width:fit-content;word-break:break-word;line-height:1.4}
+.msg.user{background:#f5c518;color:#000;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.admin{background:#1e252f;border:1px solid #222a35;align-self:flex-start;border-bottom-left-radius:4px}
 .affStat{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
 .affStat div{background:#0b0e12;border:1px solid #222a35;border-radius:10px;padding:8px;text-align:center}
 .affStat b{font-size:16px;display:block;color:#f5c518}
 </style>
 </head><body>
 <a class="waFloat" href="https://wa.me/254789338183?text=Hi%20FX%20Kenya%20Support" target="_blank">💬</a>
-<div id="auth"><div class="box"><h1 style="margin:0">FX<b style="color:#f5c518">KENYA</b> V17</h1><p style="color:#8b93a1;font-size:11px">Affiliate PRO + Live Chat</p><div class="tabs"><div id="tLogin" class="on" onclick="switchTabAuth('login')">Login</div><div id="tReg" onclick="switchTabAuth('reg')">Register</div></div><input id="email" class="inp" placeholder="Email"><input id="pass" type="password" class="inp" placeholder="Password"><div id="refInputWrap" style="display:none"><input id="refCodeInput" class="inp" placeholder="Referral Code"></div><button class="btn" onclick="handleAuth()">Continue →</button><p id="msg" style="font-size:12px;color:#ff6b6b;text-align:center;margin-top:10px"></p><p id="refDetected" style="font-size:11px;color:#00c076;text-align:center;display:none">🎁 Referral detected!</p></div></div>
+<div id="auth"><div class="box"><h1 style="margin:0">FX<b style="color:#f5c518">KENYA</b> V17.1</h1><p style="color:#8b93a1;font-size:11px">Fixed Chat • Affiliate PRO</p><div class="tabs"><div id="tLogin" class="on" onclick="switchTabAuth('login')">Login</div><div id="tReg" onclick="switchTabAuth('reg')">Register</div></div><input id="email" class="inp" placeholder="Email"><input id="pass" type="password" class="inp" placeholder="Password"><div id="refInputWrap" style="display:none"><input id="refCodeInput" class="inp" placeholder="Referral Code"></div><button class="btn" onclick="handleAuth()">Continue →</button><p id="msg" style="font-size:12px;color:#ff6b6b;text-align:center;margin-top:10px"></p><p id="refDetected" style="font-size:11px;color:#00c076;text-align:center;display:none">🎁 Referral detected!</p></div></div>
 <div class="header">
 <div style="display:flex;gap:10px;align-items:center"><div style="width:32px;height:32px;background:#fff;color:#000;border-radius:8px;display:grid;place-items:center;font-weight:800">FX</div><div><b style="font-size:13px">KENYA <span style="color:#f5c518">PRO</span></b><div style="font-size:9px;color:#8b93a1;display:flex;gap:5px;align-items:center"><span class="liveDot"></span> LIVE • <span id="livePrice">1.16195</span> <span id="vipBadge" style="background:#444;color:#fff;padding:2px 6px;border-radius:6px;font-weight:800">BRONZE</span> <span id="marginLevel" class="mLevel" style="background:#00c076;color:#000">SAFE</span></div></div></div>
 <div style="display:flex;gap:8px;align-items:center"><div class="accSwitch"><div id="realBtn" class="on" onclick="setAccount('real')">REAL</div><div id="demoBtn" onclick="setAccount('demo')">DEMO</div></div><span onclick="logout()" style="background:#151a21;border:1px solid #222a35;padding:6px 10px;border-radius:20px;font-size:10px;cursor:pointer">⎋</span></div>
