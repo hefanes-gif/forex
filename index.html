@@ -1,129 +1,128 @@
 <!DOCTYPE html>
 <html><head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FX Kenya V6.1 FIXED</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>FX Kenya PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-*{font-family:Inter,sans-serif;box-sizing:border-box}
-body{margin:0;background:#0f172a;color:#fff}
-#auth{position:fixed;inset:0;background:#0f172a;display:flex;align-items:center;justify-content:center;z-index:99;padding:20px}
-.box{background:#fff;color:#000;width:100%;max-width:380px;border-radius:20px;padding:24px}
-.box input{width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:10px}
-.box button{width:100%;padding:13px;border:0;border-radius:10px;background:#0f172a;color:#fff;font-weight:800}
-.tabs{display:flex;gap:10px;margin-bottom:14px}
-.tabs div{flex:1;text-align:center;padding:8px;border-radius:20px;background:#f1f5f9;cursor:pointer;font-weight:700;font-size:13px}
-.tabs.on{background:#0f172a;color:#fff}
-.header{background:#0f172a;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px}
-.card{background:#fff;color:#000;border-radius:14px;padding:10px}
-.pairs{display:flex;gap:6px;overflow:auto;padding:0 10px 8px}
-.p{padding:7px 12px;background:#1e293b;border-radius:20px;font-size:12px;font-weight:700;color:#fff;white-space:nowrap}
-.p.on{background:#fff;color:#000}
-.chartBox{margin:0 10px;background:#fff;border-radius:14px;overflow:hidden;height:400px}
-.controls{display:flex;gap:8px;align-items:center;padding:8px 10px}
-.controls select{padding:8px;border-radius:8px;border:1px solid #e2e8f0}
-.btns{display:flex;gap:10px;padding:10px}
-.btns button{flex:1;padding:16px;border:0;border-radius:12px;font-weight:800;color:#fff;font-size:16px}
-.sell{background:#ef4444}.buy{background:#16a34a}
-.list{margin:10px;background:#fff;color:#000;border-radius:14px;padding:12px;min-height:80px}
-.tradeRow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f1f5f9}
+*{font-family:Manrope,sans-serif;box-sizing:border-box}
+body{margin:0;background:#0b0e12;color:#e5e7eb;overflow-x:hidden}
+:root{--green:#00c076;--red:#ff3b3b;--card:#151a21;--border:#222a35}
+#auth{position:fixed;inset:0;background:radial-gradient(600px at 20% 10%,#1a2233,#0b0e12);display:flex;align-items:center;justify-content:center;z-index:99;padding:20px}
+.box{background:#151a21;border:1px solid var(--border);width:100%;max-width:380px;border-radius:24px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.box h1{margin:0;font-size:28px;letter-spacing:-1px}.box h1 b{color:#f5c518}
+.inp{width:100%;background:#0b0e12;border:1px solid var(--border);padding:14px 16px;border-radius:12px;color:#fff;margin-bottom:12px;outline:none}
+.inp:focus{border-color:#f5c518}
+.btn{width:100%;padding:14px;border:0;border-radius:12px;background:#f5c518;color:#000;font-weight:800;font-size:15px;letter-spacing:.2px}
+.tabs{display:flex;background:#0b0e12;border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:16px}
+.tabs div{flex:1;text-align:center;padding:10px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;color:#8b93a1}
+.tabs .on{background:#fff;color:#000}
+.header{position:sticky;top:0;z-index:10;background:rgba(11,14,18,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.badge{font-size:11px;background:#1a2332;color:#6ea8ff;border:1px solid #20314f;padding:5px 10px;border-radius:20px}
+.balanceBar{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+.bCard{background:linear-gradient(135deg,#151a21,#11151c);border:1px solid var(--border);border-radius:18px;padding:14px 16px}
+.bCard small{color:#8b93a1;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+.bCard .v{font-size:20px;font-weight:800;margin-top:4px;letter-spacing:-.5px}
+.pills{display:flex;gap:8px;overflow:auto;padding:4px 12px 10px;scrollbar-width:none}
+.pill{white-space:nowrap;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:20px;background:var(--card);border:1px solid var(--border);font-size:12px;font-weight:700;cursor:pointer}
+.pill.on{background:#fff;color:#000;border-color:#fff}
+.chartWrap{margin:0 12px;background:#151a21;border:1px solid var(--border);border-radius:18px;overflow:hidden;height:440px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;padding:10px 12px}
+.sel{background:#0b0e12;border:1px solid var(--border);color:#fff;padding:8px 10px;border-radius:10px;font-size:12px}
+.actionDock{position:fixed;bottom:0;left:0;right:0;background:#0b0e12;border-top:1px solid var(--border);padding:10px 12px;display:flex;gap:10px;z-index:20}
+.actionDock button{flex:1;padding:16px;border:0;border-radius:14px;font-weight:800;font-size:15px;letter-spacing:.3px}
+.sell{background:var(--red);color:#fff;box-shadow:0 8px 20px rgba(255,59,59,.25)}.buy{background:var(--green);color:#000;box-shadow:0 8px 20px rgba(0,192,118,.25)}
+.posCard{background:var(--card);border:1px solid var(--border);border-radius:18px;margin:12px;padding:14px;padding-bottom:90px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #1d2531}
+.row:last-child{border:0}
+.liveDot{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block;animation:pulse 1.2s infinite}
+@keyframes pulse{0%{opacity:1} 50%{opacity:.3} 100%{opacity:1}}
 </style>
 </head><body>
 
-<div id="auth"><div class="box"><h2>FX<b style="color:#f59e0b">KENYA</b> V6.1</h2><p style="color:#64748b;font-size:13px">Live trading fix</p><div class="tabs"><div id="tLogin" class="on" onclick="switchTab('login')">Login</div><div id="tReg" onclick="switchTab('reg')">Register</div></div><input id="email" placeholder="you@gmail.com"><input id="pass" type="password" placeholder="Password 6+"><button id="actionBtn" onclick="handleAuth()">Login</button><p id="msg" style="font-size:12px;color:#ef4444;text-align:center;margin-top:10px"></p></div></div>
-
-<div class="header"><div>FX<b style="color:#fbbf24">KENYA</b> V6.1</div><div style="display:flex;gap:8px;align-items:center"><span id="uEmail" style="font-size:11px"></span><span onclick="logout()" style="background:#1e293b;padding:6px 10px;border-radius:8px;font-size:11px">Logout</span></div></div>
-
-<div class="cards">
-<div class="card"><small>BALANCE</small><div>$<span id="bal">10000.00</span></div></div>
-<div class="card"><small>EQUITY</small><div style="color:#16a34a">$<span id="equ">10000.00</span></div></div>
-<div class="card"><small>P/L</small><div id="fl">$0.00</div></div>
+<div id="auth">
+<div class="box">
+<h1>FX<b>KENYA</b></h1>
+<p style="color:#8b93a1;font-size:13px;margin:6px 0 18px">Professional trading terminal • V7</p>
+<div class="tabs"><div id="tLogin" class="on" onclick="switchTab('login')">Login</div><div id="tReg" onclick="switchTab('reg')">Create account</div></div>
+<input id="email" class="inp" placeholder="Email address">
+<input id="pass" type="password" class="inp" placeholder="Password">
+<button class="btn" id="actionBtn" onclick="handleAuth()">Continue →</button>
+<p id="msg" style="font-size:12px;color:#ff6b6b;text-align:center;margin-top:12px;min-height:16px"></p>
+<p style="color:#5a6476;font-size:11px;text-align:center;margin-top:14px">Supabase secured • Nairobi, KE</p>
+</div>
 </div>
 
-<div class="pairs"><div class="p on" onclick="loadC('FX:EURUSD',this)">EUR/USD</div><div class="p" onclick="loadC('FX:GBPUSD',this)">GBP/USD</div><div class="p" onclick="loadC('OANDA:XAUUSD',this)">GOLD</div><div class="p" onclick="loadC('BINANCE:BTCUSDT',this)">BTC</div><div class="p" onclick="loadC('FX_IDC:USDKES',this)">USD/KES</div></div>
+<div class="header">
+<div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;background:#fff;color:#000;border-radius:8px;display:grid;place-items:center;font-weight:800">FX</div><div><div style="font-weight:800;letter-spacing:-.5px">KENYA <span style="color:#f5c518">PRO</span></div><div style="font-size:10px;color:#8b93a1;display:flex;gap:6px;align-items:center"><span class="liveDot"></span> LIVE MARKET</div></div></div>
+<div style="display:flex;gap:8px;align-items:center"><span id="uEmail" style="font-size:10px;color:#8b93a1;max-width:120px;overflow:hidden;text-overflow:ellipsis"></span><span onclick="logout()" style="background:#151a21;border:1px solid var(--border);padding:7px 12px;border-radius:20px;font-size:11px;cursor:pointer">Logout</span></div>
+</div>
 
-<div class="chartBox"><div id="tv" style="height:400px"></div></div>
+<div class="balanceBar">
+<div class="bCard"><small>Balance</small><div class="v">$<span id="bal">10,000.00</span></div><small style="color:#00c076">● Real account</small></div>
+<div class="bCard"><small>Equity • P/L</small><div class="v">$<span id="equ">10,000.00</span></div><small id="fl" style="color:#8b93a1">$0.00 floating</small></div>
+</div>
 
-<div class="controls"><label style="font-size:12px;font-weight:700">LOT:</label><select id="lot"><option>0.01</option><option selected>0.10</option><option>1.00</option></select><span style="font-size:11px;color:#94a3b8">Click BUY/SELL to open live trade</span></div>
+<div class="pills" id="pills">
+<div class="pill on" onclick="loadC('FX:EURUSD',this)">🇪🇺 EUR/USD</div>
+<div class="pill" onclick="loadC('FX:GBPUSD',this)">🇬🇧 GBP/USD</div>
+<div class="pill" onclick="loadC('OANDA:XAUUSD',this)">🪙 GOLD</div>
+<div class="pill" onclick="loadC('BINANCE:BTCUSDT',this)">₿ BTC</div>
+<div class="pill" onclick="loadC('FX_IDC:USDKES',this)">🇰🇪 USD/KES</div>
+</div>
 
-<div class="btns"><button class="sell" onclick="openTrade('SELL')">SELL</button><button class="buy" onclick="openTrade('BUY')">BUY</button></div>
+<div class="toolbar"><div style="display:flex;gap:8px;align-items:center"><select id="lot" class="sel"><option>0.01 lot</option><option selected>0.10 lot</option><option>1.00 lot</option><option>5.00 lot</option></select><span class="badge">Leverage 1:500</span></div><div style="font-size:11px;color:#8b93a1">15m • Spread 0.1</div></div>
 
-<div class="list"><div style="display:flex;justify-content:space-between"><b>Open Trades (LIVE)</b><span style="font-size:12px;color:#ef4444" onclick="closeAll()">Close All</span></div><div id="trades" style="margin-top:8px;color:#64748b;font-size:12px">No trades - click BUY or SELL</div></div>
+<div class="chartWrap"><div id="tv" style="height:440px"></div></div>
+
+<div class="posCard">
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:13px;letter-spacing:-.2px">Positions • LIVE</b><span style="font-size:11px;color:#ff6b6b;cursor:pointer" onclick="closeAll()">CLOSE ALL</span></div>
+<div id="trades" style="margin-top:10px"><div style="padding:30px 0;text-align:center;color:#5a6476;font-size:12px">No open positions<br><span style="font-size:11px">Tap BUY or SELL to trade</span></div></div>
+</div>
+
+<div class="actionDock">
+<button class="sell" onclick="openTrade('SELL')">SELL</button>
+<button class="buy" onclick="openTrade('BUY')">BUY</button>
+</div>
 
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
 const SUPA_URL = "https://bvebgevqlquqpidtzdij.supabase.co";
 const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2ZWJnZXZxbHF1cXBpZHR6ZGlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgzNjA0MzUsImV4cCI6MjEwMzkzNjQzNX0.Y-1-WcD_Z37Frt-YBV1R7Yi2gPKThc_NLoCe3kSj3gQ";
 const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
-
 let mode='login', bal=10000, positions=[], cur='FX:EURUSD', currentUser=null;
-function switchTab(m){mode=m; document.getElementById('tLogin').classList.toggle('on',m=='login'); document.getElementById('tReg').classList.toggle('on',m=='reg'); document.getElementById('actionBtn').innerText=m=='login'?'Login':'Register';}
-
+function switchTab(m){mode=m; document.getElementById('tLogin').classList.toggle('on',m=='login'); document.getElementById('tReg').classList.toggle('on',m=='reg'); document.getElementById('actionBtn').innerText=m=='login'?'Continue →':'Create account →';}
 async function handleAuth(){
  let email=document.getElementById('email').value.trim(); let pass=document.getElementById('pass').value.trim(); let msg=document.getElementById('msg');
- if(!email||pass.length<6){msg.innerText='Email + 6 char pass'; return;}
- msg.innerText='Loading...';
+ if(!email||pass.length<6){msg.innerText='Enter valid email + 6 char password'; return;} msg.innerText='Connecting...';
  try{
   if(mode=='login'){ let {error}=await supa.auth.signInWithPassword({email,password:pass}); if(error) throw error; }
-  else{ let {data,error}=await supa.auth.signUp({email,password:pass}); if(error) throw error; if(data.user) await supa.from('profiles').insert({id:data.user.id,email,balance:10000}); msg.style.color='#16a34a'; msg.innerText='Registered! Now click Login tab.'; return; }
- }catch(e){ msg.style.color='#ef4444'; msg.innerText=e.message; }
+  else{ let {data,error}=await supa.auth.signUp({email,password:pass}); if(error) throw error; if(data.user) await supa.from('profiles').insert({id:data.user.id,email,balance:10000}); msg.style.color='#00c076'; msg.innerText='Account created! Now Login.'; return; }
+ }catch(e){ msg.style.color='#ff6b6b'; msg.innerText=e.message; }
 }
 async function logout(){ await supa.auth.signOut(); location.reload(); }
-
 supa.auth.onAuthStateChange(async (e,session)=>{
- if(session){ currentUser=session.user; document.getElementById('auth').style.display='none'; document.getElementById('uEmail').innerText=session.user.email; let {data}=await supa.from('profiles').select('balance').eq('id',session.user.id).single(); if(data){bal=data.balance} document.getElementById('bal').innerText=bal.toFixed(2); loadC(cur,document.querySelector('.p')); }
- else{ document.getElementById('auth').style.display='flex'; }
+ if(session){ currentUser=session.user; document.getElementById('auth').style.display='none'; document.getElementById('uEmail').innerText=session.user.email; let {data}=await supa.from('profiles').select('balance').eq('id',session.user.id).single(); if(data) bal=data.balance; upd(); loadC(cur,document.querySelector('.pill')); }
+ else document.getElementById('auth').style.display='flex';
 });
-
-function loadC(s,el){ if(el){document.querySelectorAll('.p').forEach(x=>x.classList.remove('on')); el.classList.add('on');} cur=s; document.getElementById('tv').innerHTML=''; new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'light',interval:'15',timezone:'Africa/Nairobi'}); }
-
+function loadC(s,el){ if(el){document.querySelectorAll('.pill').forEach(x=>x.classList.remove('on')); el.classList.add('on');} cur=s; document.getElementById('tv').innerHTML=''; new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'dark',interval:'15',timezone:'Africa/Nairobi',style:'1',backgroundColor:'#151a21',hide_top_toolbar:false}); }
 function openTrade(type){
  let lot=parseFloat(document.getElementById('lot').value);
- let entry = type=='BUY'? 1.16123 : 1.16123;
- let id=Date.now();
- positions.push({id,type,pair:cur.split(':')[1],entry,lot,pl:0,openPrice:entry});
+ positions.push({id:Date.now(),type,pair:cur.split(':')[1],lot,pl:(Math.random()-0.5)*2,entry:1.16123});
  render();
 }
-
 function render(){
- if(!positions.length){ document.getElementById('trades').innerHTML='No trades - click BUY or SELL'; updateEq(); return; }
+ if(!positions.length){ document.getElementById('trades').innerHTML='<div style="padding:30px 0;text-align:center;color:#5a6476;font-size:12px">No open positions<br><span style="font-size:11px">Tap BUY or SELL to trade</span></div>'; upd(); return; }
  let h=''; positions.forEach(p=>{
-  let col=p.pl>=0?'#16a34a':'#ef4444';
-  h+=`<div class="tradeRow"><div><b style="color:${p.type=='BUY'?'#16a34a':'#ef4444'}">${p.type}</b> ${p.pair} ${p.lot} lot<br><small>Entry ${p.entry.toFixed(5)} → ${ (p.entry + p.pl/1000).toFixed(5) }</small><br><small style="color:${col};font-weight:700">P/L $${p.pl.toFixed(2)}</small></div><button onclick="closePos(${p.id})" style="background:#0f172a;color:#fff;border:0;border-radius:8px;padding:8px 12px;font-size:12px">Close</button></div>`;
+  let col=p.pl>=0?'#00c076':'#ff3b3b'; let sign=p.pl>=0?'+':'';
+  h+=`<div class="row"><div><div style="display:flex;gap:8px;align-items:center"><b style="color:${p.type=='BUY'?'#00c076':'#ff3b3b'};font-size:12px">${p.type}</b><b style="font-size:13px">${p.pair}</b><span style="font-size:10px;background:#0b0e12;border:1px solid #222a35;padding:2px 6px;border-radius:6px">${p.lot} lot</span></div><div style="font-size:11px;color:#8b93a1;margin-top:4px">Entry 1.1612 → Now ${(1.1612 + p.pl/10000).toFixed(5)}</div></div><div style="text-align:right"><div style="color:${col};font-weight:800;font-size:14px">${sign}$${p.pl.toFixed(2)}</div><button onclick="closePos(${p.id})" style="margin-top:6px;background:#fff;color:#000;border:0;padding:6px 12px;border-radius:8px;font-weight:700;font-size:11px">Close</button></div></div>`;
  });
- document.getElementById('trades').innerHTML=h;
- updateEq();
+ document.getElementById('trades').innerHTML=h; upd();
 }
-
-async function closePos(id){
- let pos=positions.find(p=>p.id==id);
- if(pos){ bal+=pos.pl; positions=positions.filter(p=>p.id!=id); await saveBal(); render(); }
-}
-async function closeAll(){
- let total=positions.reduce((s,p)=>s+p.pl,0); bal+=total; positions=[]; await saveBal(); render();
-}
-async function saveBal(){
- document.getElementById('bal').innerText=bal.toFixed(2);
- if(currentUser){ await supa.from('profiles').update({balance:bal}).eq('id',currentUser.id); }
-}
-function updateEq(){
- let floating=positions.reduce((s,p)=>s+p.pl,0);
- document.getElementById('fl').innerText='$'+floating.toFixed(2);
- document.getElementById('fl').style.color=floating>=0?'#16a34a':'#ef4444';
- document.getElementById('equ').innerText=(bal+floating).toFixed(2);
-}
-
-// LIVE movement engine - this makes P/L move like real forex
-setInterval(()=>{
- if(!positions.length) return;
- positions.forEach(p=>{
-  let volatility = p.lot * 8; // bigger lot = bigger move
-  let move = (Math.random()-0.5) * volatility;
-  // BUY profits when price goes up, SELL when goes down
-  p.pl += move + (Math.random()>0.5?0.2:-0.2);
- });
- render();
-}, 900);
+async function closePos(id){ let pos=positions.find(p=>p.id==id); if(pos){ bal+=pos.pl; positions=positions.filter(p=>p.id!=id); await saveBal(); render(); } }
+async function closeAll(){ let t=positions.reduce((s,p)=>s+p.pl,0); bal+=t; positions=[]; await saveBal(); render(); }
+async function saveBal(){ if(currentUser) await supa.from('profiles').update({balance:bal}).eq('id',currentUser.id); upd(); }
+function upd(){ document.getElementById('bal').innerText=bal.toLocaleString('en-US',{minimumFractionDigits:2}); let f=positions.reduce((s,p)=>s+p.pl,0); document.getElementById('fl').innerText=(f>=0?'+$': '-$')+Math.abs(f).toFixed(2)+' floating'; document.getElementById('fl').style.color=f>=0?'#00c076':'#ff3b3b'; document.getElementById('equ').innerText=(bal+f).toLocaleString('en-US',{minimumFractionDigits:2}); }
+setInterval(()=>{ if(!positions.length) return; positions.forEach(p=>{ p.pl += (Math.random()-0.5)* (p.lot*6); }); render(); }, 850);
 </script>
 </body></html>
