@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>FX Kenya PRO V24</title>
+<title>FX Kenya PRO V25 - Pro Trading</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -68,7 +68,7 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 .pill.on{background:#fff;color:#000}
 .priceTicker{display:flex;justify-content:space-between;padding:8px 12px;background:#151a21;margin:0 12px;border-radius:10px;border:1px solid #222a35;font-size:11px}
 .liveDot{width:7px;height:7px;background:#00c076;border-radius:50%;display:inline-block}
-.chartWrap{margin:8px 12px;background:#151a21;border:1px solid #222a35;border-radius:18px;overflow:hidden;height:420px}
+.chartWrap{margin:8px 12px;background:#151a21;border:1px solid #222a35;border-radius:18px;overflow:hidden;height:500px}
 .sel{background:#151a21;border:1px solid #222a35;color:#fff;padding:7px 8px;border-radius:8px;font-size:11px}
 .actionDock{position:fixed;bottom:10px;left:0;right:0;padding:10px 12px;display:flex;gap:10px;z-index:20;background:linear-gradient(0deg,#0b0e12 70%,transparent)}
 .actionDock button{flex:1;padding:14px;border:0;border-radius:14px;font-weight:800;font-size:14px}
@@ -103,9 +103,9 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 <a class="waFloat" href="https://wa.me/254789338183" target="_blank">💬</a>
 <div id="landing">
 <div class="landHeader"><div style="font-weight:800">FX<span style="color:#f5c518">KENYA</span> PRO</div><div style="display:flex;gap:8px"><button class="landBtn outline" onclick="openAuth('login')">Sign In</button><button class="landBtn gold" onclick="openAuth('signup')">Sign Up</button></div></div>
-<div class="hero"><div><h1>Kenya's <span>#1 Forex</span> in 20 Sec</h1><p>Magic link for sign up, direct password for sign in. Reset password fixed. Bonus trade-only $5-$50k/day real.</p><div class="heroStats"><div class="heroStat"><b>20s</b><small>Sign Up</small></div><div class="heroStat"><b>50-100%</b><small>Bonus</small></div><div class="heroStat"><b>Fixed</b><small>Reset Pass</small></div></div><button class="btn" style="width:auto;padding:12px 22px" onclick="openAuth('signup')">🚀 Magic Link Sign Up →</button></div><div class="heroCard"><div style="font-size:12px;display:flex;justify-content:space-between"><span>💹 Live</span><span style="color:#00c076">● LIVE</span></div><div class="mockBal"><span>EUR/USD</span><span style="color:#00c076">1.16195 ▲</span></div><div class="mockBal"><span>GOLD</span><span style="color:#00c076">$2,045 ▲</span></div><div class="mockBal"><span>Balance</span><b style="color:#00c076">$1,250 REAL</b></div><div class="mockBal"><span>Bonus</span><b style="color:#f5c518">$620 trade-only</b></div></div></div>
-<div class="features"><div class="feat"><b>⚡ Magic Sign Up Only</b><small>Email+password → verify link.</small></div><div class="feat"><b>🔑 Direct Sign In</b><small>Password direct + Google + FB + forgot fixed.</small></div><div class="feat"><b>🔥 Once/Day</b><small>Streak + spin once/day no spam.</small></div><div class="feat"><b>💳 M-Pesa 542542</b><small>Deposit KES, bonus trade-only.</small></div></div>
-<div class="ctaBig"><h2 style="margin:0">Start in 20 Sec</h2><button class="btn" style="background:#000;color:#fff;max-width:280px" onclick="openAuth('signup')">Get Magic Link →</button></div>
+<div class="hero"><div><h1>Pro <span>Forex Trading</span> with Auto SL/TP</h1><p>Magic link signup, direct signin, reset fixed, once/day bonus, PRO chart with RSI/MA/drawing + Auto SL/TP close.</p><div class="heroStats"><div class="heroStat"><b>Auto</b><small>SL/TP</small></div><div class="heroStat"><b>PRO</b><small>Chart</small></div><div class="heroStat"><b>Once/Day</b><small>Bonus</small></div></div><button class="btn" style="width:auto;padding:12px 22px" onclick="openAuth('signup')">🚀 Start Trading →</button></div><div class="heroCard"><div style="font-size:12px;display:flex;justify-content:space-between"><span>💹 Live</span><span style="color:#00c076">🤖 AUTO SL/TP ON</span></div><div class="mockBal"><span>EUR/USD</span><span style="color:#00c076">1.16195 ▲ Auto TP Hit</span></div><div class="mockBal"><span>GOLD</span><span style="color:#ff3b3b">SL Auto Close</span></div><div class="mockBal"><span>Balance</span><b style="color:#00c076">$1,250 REAL</b></div><div class="mockBal"><span>Bonus</span><b style="color:#f5c518">$620 trade-only</b></div></div></div>
+<div class="features"><div class="feat"><b>🤖 Auto SL/TP</b><small>Set SL/TP → auto closes when hit, even offline.</small></div><div class="feat"><b>📈 Pro Chart</b><small>1m-1D, RSI, MA, volume, drawing tools.</small></div><div class="feat"><b>🔑 Auth Fixed</b><small>Magic signup, direct signin, reset works, forgot email.</small></div><div class="feat"><b>💳 M-Pesa 542542</b><small>Deposit KES, bonus trade-only.</small></div></div>
+<div class="ctaBig"><h2 style="margin:0">Trade Like Pro</h2><button class="btn" style="background:#000;color:#fff;max-width:280px" onclick="openAuth('signup')">Start Trading →</button></div>
 </div>
 <div id="auth"><div class="authTop"><div><b>FX<span style="color:#f5c518">KENYA</span> PRO</b><div style="font-size:10px;color:#8b93a1"><span id="authStepNum">1</span> • <span id="authStepName">Email</span></div></div><div onclick="closeAuth()" style="cursor:pointer;background:#151a21;padding:8px 12px;border-radius:8px">✕</div></div><div class="authProgress"><div id="authProgressBar" class="authProgressBar" style="width:25%"></div></div><div class="authBody" id="authBody">Loading...</div></div>
 <div class="sideOverlay" id="sideOverlay" onclick="toggleSide(false)"></div>
@@ -114,7 +114,7 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 <div class="sideUser"><div style="font-size:12px;color:#8b93a1">Logged as</div><b id="sideEmail" style="font-size:12px;word-break:break-all">-</b><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span id="sideVip" style="background:#444;color:#fff;padding:2px 6px;border-radius:6px;font-size:9px">BRONZE</span><span id="sideBal" style="color:#00c076;font-weight:800;font-size:12px">$0.00</span><span id="sideBonus" style="color:#f5c518;font-weight:800;font-size:11px">B $0</span></div><div style="margin-top:8px;font-size:10px;color:#8b93a1">🔥 <span id="sideStreak">0</span> days • $<span id="sideCash">0.00</span></div></div>
 <div class="sideMenu">
 <div class="sideItem on" onclick="goView('dashboard')"><span>📊</span> Dashboard <span class="sideBadge">LIVE</span></div>
-<div class="sideItem" onclick="goView('trade')"><span>📈</span> Trade</div>
+<div class="sideItem" onclick="goView('trade')"><span>📈</span> Trade <span class="sideBadge" style="background:#00c076">AUTO</span></div>
 <div class="sideItem" onclick="toggleWallet()"><span>💳</span> Wallet <span style="margin-left:auto">▾</span></div>
 <div class="sideSub" id="walletSub"><div onclick="goView('wallet','deposit')">💰 Deposit 542542</div><div onclick="goView('wallet','withdraw')">💸 Withdraw $5-$50k</div><div onclick="goView('wallet','history')">📜 History</div></div>
 <div class="sideItem" onclick="goView('copy')"><span>🏆</span> Copy</div>
@@ -134,11 +134,21 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 <div id="dashboardView" style="display:none">
 <div class="dashGrid"><div class="dashCard"><small>Real withdrawable</small><b id="dBal">$0.00</b><small>$5 min $50k max/day</small></div><div class="dashCard"><small>Bonus trade-only</small><b id="dBonus" style="color:#f5c518">$0.00</b></div><div class="dashCard"><small>Equity</small><b id="dEqu">$0.00</b><div class="progressBar"><div id="dEquBar" style="width:50%"></div></div></div><div class="dashCard"><small>P/L</small><b id="dPl">$0.00</b><small id="dTrades">0 trades</small></div></div>
 <div class="posCard"><b style="font-size:12px">🔥 Streak (once/day)</b><div style="display:flex;justify-content:space-between;font-size:11px;margin-top:6px"><span id="vipLevel">BRONZE</span><span id="nextVip">Deposit $100 for Silver</span></div><div class="progressBar"><div id="vipProg" style="width:10%"></div></div><div style="display:flex;gap:4px;margin-top:8px" id="streakDots"></div><div style="font-size:10px;color:#8b93a1;margin-top:6px">Deposited: <span id="totalDep">$0</span> • Today: <span id="todayBonus" style="color:#f5c518">$0</span></div></div>
-<div class="posCard"><b style="font-size:12px">🎡 Spin (once/day)</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn" onclick="openSpin()">🎡 SPIN $0.10-$2</button><button class="btn-outline" onclick="requestNotif()">🔔 Alerts</button></div><div style="margin-top:12px"><small>Weekly 5 lots → $5 bonus</small><div class="challengeBar"><div id="challengeBar" style="width:0%"></div></div><small id="challengeText" style="font-size:10px;color:#8b93a1">0 / 5 lots</small></div></div>
-<div class="posCard"><b style="font-size:12px">Quick</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn" onclick="goView('wallet','deposit')">💰 Deposit</button><button class="btn" style="background:#00c076;color:#fff" onclick="goView('trade')">📈 Trade</button><button class="btn-outline" onclick="goView('copy')">🏆 Copy</button><button class="btn-outline" onclick="goView('affiliate')">👥 Invite $5</button></div></div>
-<div class="posCard"><b style="font-size:12px">Open Positions</b><div id="dashTrades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:10px">No positions</div></div>
+<div class="posCard"><b style="font-size:12px">🤖 Auto SL/TP Status</b><div style="background:#00c07622;border:1px solid #00c07655;border-radius:10px;padding:10px;margin-top:8px;font-size:11px"><div style="display:flex;justify-content:space-between"><span>Auto Close</span><b style="color:#00c076">● ACTIVE</b></div><small style="color:#8b93a1">SL/TP auto closes every second, works for all pairs even when chart on different pair.</small></div><div style="margin-top:10px"><small>Weekly 5 lots → $5 bonus</small><div class="challengeBar"><div id="challengeBar" style="width:0%"></div></div><small id="challengeText" style="font-size:10px;color:#8b93a1">0 / 5 lots</small></div></div>
+<div class="posCard"><b style="font-size:12px">Quick</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn" onclick="goView('wallet','deposit')">💰 Deposit</button><button class="btn" style="background:#00c076;color:#fff" onclick="goView('trade')">📈 Trade PRO</button><button class="btn-outline" onclick="goView('copy')">🏆 Copy</button><button class="btn-outline" onclick="goView('affiliate')">👥 Invite $5</button></div></div>
+<div class="posCard"><b style="font-size:12px">Open Positions (Auto)</b><div id="dashTrades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:10px">No positions</div></div>
 </div>
-<div id="tradeView" style="display:none"><div class="priceTicker"><span><span class="liveDot"></span> <b id="pairName">EUR/USD</b></span><span style="display:flex;gap:10px"><span id="bid" style="color:#ff3b3b">SELL</span><span id="ask" style="color:#00c076">BUY</span></span></div><div class="pills"><div class="pill on" onclick="loadC('FX:EURUSD',this)">EUR/USD</div><div class="pill" onclick="loadC('FX:GBPUSD',this)">GBP/USD</div><div class="pill" onclick="loadC('OANDA:XAUUSD',this)">GOLD</div><div class="pill" onclick="loadC('BINANCE:BTCUSDT',this)">BTC</div><div class="pill" onclick="loadC('FX_IDC:USDKES',this)">USD/KES</div></div><div style="padding:0 12px;display:flex;gap:6px;flex-wrap:wrap"><select id="lot" class="sel"><option>0.01</option><option>0.05</option><option selected>0.10</option><option>0.50</option><option>1.00</option></select><select id="lev" class="sel"><option>1:100</option><option selected>1:500</option><option>1:1000</option></select><input id="sl" class="sel" type="number" placeholder="SL" style="width:92px"><input id="tp" class="sel" type="number" placeholder="TP" style="width:92px"></div><div class="chartWrap"><div id="tv" style="height:420px"></div></div><div class="posCard"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">Open</b><span style="font-size:11px;color:#ff3b3b;cursor:pointer" onclick="closeAll()">CLOSE ALL</span></div><div id="trades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:20px">No positions</div></div><div class="posCard"><b style="font-size:12px">History</b><div id="history" style="margin-top:8px;font-size:11px;color:#8b93a1">No history</div></div><div class="actionDock"><button class="sell" onclick="openTrade('SELL')">SELL<br><small id="sellPrice">-</small></button><button class="buy" onclick="openTrade('BUY')">BUY<br><small id="buyPrice">-</small></button></div></div>
+<div id="tradeView" style="display:none">
+<div class="priceTicker"><span><span class="liveDot"></span> <b id="pairName">EUR/USD</b> • <span style="color:#00c076" id="autoIndicator">🤖 AUTO ON</span></span><span style="display:flex;gap:10px"><span id="bid" style="color:#ff3b3b">SELL</span><span id="ask" style="color:#00c076">BUY</span></span></div>
+<div class="pills"><div class="pill on" onclick="loadC('FX:EURUSD',this)">EUR/USD</div><div class="pill" onclick="loadC('FX:GBPUSD',this)">GBP/USD</div><div class="pill" onclick="loadC('OANDA:XAUUSD',this)">GOLD</div><div class="pill" onclick="loadC('BINANCE:BTCUSDT',this)">BTC</div><div class="pill" onclick="loadC('FX_IDC:USDKES',this)">USD/KES</div></div>
+<div style="padding:6px 12px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:#151a21;margin:0 12px;border-radius:10px;border:1px solid #222a35"><span style="font-size:10px;color:#8b93a1">TF:</span><div class="pill on" id="tf-15" onclick="changeTF('15',this)">15m</div><div class="pill" id="tf-1" onclick="changeTF('1',this)">1m</div><div class="pill" id="tf-5" onclick="changeTF('5',this)">5m</div><div class="pill" id="tf-60" onclick="changeTF('60',this)">1h</div><div class="pill" id="tf-240" onclick="changeTF('240',this)">4h</div><div class="pill" id="tf-D" onclick="changeTF('D',this)">1D</div><span style="margin-left:auto;font-size:9px;color:#f5c518">RSI+MA+Vol</span></div>
+<div style="padding:0 12px;display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><select id="lot" class="sel"><option>0.01</option><option>0.05</option><option selected>0.10</option><option>0.50</option><option>1.00</option></select><select id="lev" class="sel"><option>1:100</option><option selected>1:500</option><option>1:1000</option></select><input id="sl" class="sel" type="number" placeholder="SL price" style="width:110px"><input id="tp" class="sel" type="number" placeholder="TP price" style="width:110px"></div>
+<div style="padding:0 12px;font-size:9px;color:#8b93a1">💡 Tip: Set SL/TP → auto closes when hit. Works for all pairs at same time.</div>
+<div class="chartWrap" style="height:520px"><div id="tv" style="height:520px"></div></div>
+<div class="posCard"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">Open (Auto SL/TP)</b><span style="font-size:11px;color:#ff3b3b;cursor:pointer" onclick="closeAll()">CLOSE ALL</span></div><div id="trades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:20px">No positions</div></div>
+<div class="posCard"><b style="font-size:12px">History (with reason)</b><div id="history" style="margin-top:8px;font-size:11px;color:#8b93a1">No history</div></div>
+<div class="actionDock"><button class="sell" onclick="openTrade('SELL')">SELL<br><small id="sellPrice">-</small></button><button class="buy" onclick="openTrade('BUY')">BUY<br><small id="buyPrice">-</small></button></div>
+</div>
 <div id="walletView" style="display:none;padding:12px">
 <div class="bBar"><div class="bCard"><small>Real</small><div class="v">$<span id="bal">0.00</span></div></div><div class="bCard"><small>Bonus</small><div class="v" style="color:#f5c518">$<span id="bonus">0.00</span></div></div><div class="bCard"><small>Equity</small><div class="v">$<span id="equ">0.00</span></div></div><div class="bCard"><small>P/L</small><div class="v" id="fl">$0.00</div></div></div>
 <div class="posCard" id="depositCard"><h3 style="margin:0">💳 Deposit 542542</h3><div class="payBox"><div style="display:flex;justify-content:space-between"><span>Paybill</span><b style="color:#f5c518;font-size:22px">542542</b></div><div style="display:flex;justify-content:space-between"><span>Account</span><b>01710144646150</b></div></div><input id="depAmount" class="inp" placeholder="Amount KES"><input id="depPhone" class="inp" placeholder="M-Pesa phone"><button class="btn" onclick="submitDeposit()">I PAID → Bonus Instant</button><div id="myDeposits" style="margin-top:12px"></div></div>
@@ -157,7 +167,7 @@ const SUPA_URL="https://bvebgevqlquqpidtzdij.supabase.co";
 const SUPA_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2ZWJnZXZxbHF1cXBpZHR6ZGlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgzNjA0MzUsImV4cCI6MjEwMzkzNjQzNX0.Y-1-WcD_Z37Frt-YBV1R7Yi2gPKThc_NLoCe3kSj3gQ";
 const supa=supabase.createClient(SUPA_URL,SUPA_KEY);
 const ADMIN_EMAIL="kiplaaevoo@gmail.com";
-let bal=0,bonus=0,demoBal=10000,positions=[],cur='FX:EURUSD',currentUser=null,account='real',liveBid=1.16185,liveAsk=1.16195,myRefCode='',referralFromUrl=null,totalDeposits=0,streak=0,cashback=0,kycStatus='none',dailyStreak=0,todayWithdrawn=0;
+let bal=0,bonus=0,demoBal=10000,positions=[],cur='FX:EURUSD',currentUser=null,account='real',liveBid=1.16185,liveAsk=1.16195,myRefCode='',referralFromUrl=null,totalDeposits=0,streak=0,cashback=0,kycStatus='none',dailyStreak=0,todayWithdrawn=0,chartInterval='15',livePrices={};
 const urlParams=new URLSearchParams(window.location.search);
 if(urlParams.get('ref')){referralFromUrl=urlParams.get('ref'); try{localStorage.setItem('fx_ref',referralFromUrl);}catch(e){}}
 let obStep=1; let obData={email:'',password:'',firstName:'',lastName:'',refCode:''};
@@ -166,7 +176,7 @@ function saveOb(){try{localStorage.setItem('fx_easy_ob',JSON.stringify(obData));
 function updateProgress(p,txt){let a=document.getElementById('authStepNum'); let b=document.getElementById('authStepName'); let c=document.getElementById('authProgressBar'); if(a) a.innerText=p+'%'; if(b) b.innerText=txt; if(c) c.style.width=p+'%';}
 function toggleSide(o){let s=document.getElementById('sidebar');let ov=document.getElementById('sideOverlay'); if(o){s.classList.add('open');ov.classList.add('show');}else{s.classList.remove('open');ov.classList.remove('show');}}
 function toggleWallet(){document.getElementById('walletSub').classList.toggle('open');}
-function goView(v,sub){toggleSide(false);['dashboard','trade','wallet','copy','profile','affiliate','support','admin','kyc'].forEach(x=>{let el=document.getElementById(x+'View'); if(el) el.style.display=x==v?'block':'none';}); if(v=='wallet'){let dep=document.getElementById('depositCard'); let withd=document.getElementById('withdrawCard'); let tx=document.getElementById('txCard'); if(sub=='deposit'){dep.style.display='block';withd.style.display='none';tx.style.display='none';}else if(sub=='withdraw'){dep.style.display='none';withd.style.display='block';tx.style.display='none';loadWithdrawStats();}else if(sub=='history'){dep.style.display='none';withd.style.display='none';tx.style.display='block';loadAllTx();}else{dep.style.display='block';withd.style.display='block';tx.style.display='block';loadWithdrawStats();}} if(v=='trade') loadC(cur,document.querySelector('.pill')); if(v=='copy') loadLeaderboard(); if(v=='profile') loadProfile(); if(v=='affiliate') loadAffList(); if(v=='admin') loadAdmin(); if(v=='kyc') loadKycStatus(); if(v=='support') loadChat(); if(v=='dashboard') loadChallenge();}
+function goView(v,sub){toggleSide(false);['dashboard','trade','wallet','copy','profile','affiliate','support','admin','kyc'].forEach(x=>{let el=document.getElementById(x+'View'); if(el) el.style.display=x==v?'block':'none';}); if(v=='wallet'){let dep=document.getElementById('depositCard'); let withd=document.getElementById('withdrawCard'); let tx=document.getElementById('txCard'); if(sub=='deposit'){dep.style.display='block';withd.style.display='none';tx.style.display='none';}else if(sub=='withdraw'){dep.style.display='none';withd.style.display='block';tx.style.display='none';loadWithdrawStats();}else if(sub=='history'){dep.style.display='none';withd.style.display='none';tx.style.display='block';loadAllTx();}else{dep.style.display='block';withd.style.display='block';tx.style.display='block';loadWithdrawStats();}} if(v=='trade') loadC(cur,null,chartInterval); if(v=='copy') loadLeaderboard(); if(v=='profile') loadProfile(); if(v=='affiliate') loadAffList(); if(v=='admin') loadAdmin(); if(v=='kyc') loadKycStatus(); if(v=='support') loadChat(); if(v=='dashboard') loadChallenge();}
 function openAuth(mode){document.getElementById('auth').style.display='flex'; document.getElementById('landing').style.display='none'; if(mode=='login'){showLogin();} else {obStep=1; renderSignup();}}
 function closeAuth(){if(isRecoveryFlow){return;} if(currentUser){document.getElementById('auth').style.display='none';}else{document.getElementById('auth').style.display='none'; document.getElementById('landing').style.display='block';}}
 let isRecoveryFlow=false;
@@ -175,17 +185,9 @@ isRecoveryFlow=true;
 updateProgress(100,'New Password');
 document.getElementById('landing').style.display='none';
 document.getElementById('appHeader').style.display='none';
-document.getElementById('dashboardView').style.display='none';
-document.getElementById('tradeView').style.display='none';
-document.getElementById('walletView').style.display='none';
-document.getElementById('copyView').style.display='none';
-document.getElementById('profileView').style.display='none';
-document.getElementById('affiliateView').style.display='none';
-document.getElementById('supportView').style.display='none';
-document.getElementById('adminView').style.display='none';
-document.getElementById('kycView').style.display='none';
+['dashboard','trade','wallet','copy','profile','affiliate','support','admin','kyc'].forEach(x=>{let el=document.getElementById(x+'View'); if(el) el.style.display='none';});
 document.getElementById('auth').style.display='flex';
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔑</div><div class="stepTitle">Set New Password</div><div class="stepDesc">Reset link verified ✅ Enter new password now. This will UPDATE your password.</div><input id="npPass" type="password" class="inp" placeholder="New password 8+ chars"><input id="npPass2" type="password" class="inp" placeholder="Confirm new password"><button class="btn" id="npBtn" onclick="doUpdatePassword()">UPDATE PASSWORD →</button><p id="npErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p><p id="npMsg" style="color:#00c076;font-size:12px;text-align:center"></p><div style="font-size:10px;color:#5a6476;text-align:center;margin-top:8px">Link from email verified. After update you will sign in with new password.</div>`;
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔑</div><div class="stepTitle">Set New Password</div><div class="stepDesc">Reset link verified ✅ Enter new password now.</div><input id="npPass" type="password" class="inp" placeholder="New password 8+ chars"><input id="npPass2" type="password" class="inp" placeholder="Confirm new password"><button class="btn" id="npBtn" onclick="doUpdatePassword()">UPDATE PASSWORD →</button><p id="npErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p><p id="npMsg" style="color:#00c076;font-size:12px;text-align:center"></p>`;
 }
 async function doUpdatePassword(){
 let p1=document.getElementById('npPass').value.trim();
@@ -193,28 +195,20 @@ let p2=document.getElementById('npPass2').value.trim();
 let errEl=document.getElementById('npErr');
 let msgEl=document.getElementById('npMsg');
 if(errEl) errEl.innerText='';
-if(p1.length<8){if(errEl) errEl.innerText='Password must be 8+ characters'; return;}
+if(p1.length<8){if(errEl) errEl.innerText='Password must be 8+'; return;}
 if(p1!==p2){if(errEl) errEl.innerText='Passwords do not match'; return;}
 let btn=document.getElementById('npBtn'); if(btn){btn.innerText='Updating...'; btn.disabled=true;}
-let {data,error}=await supa.auth.updateUser({password:p1});
+let {error}=await supa.auth.updateUser({password:p1});
 if(error){if(errEl) errEl.innerText=error.message; if(btn){btn.innerText='UPDATE PASSWORD →'; btn.disabled=false;}}
 else{
-if(msgEl) msgEl.innerText='✅ Password updated! Logging you in...';
-setTimeout(async()=>{
-isRecoveryFlow=false;
-try{localStorage.removeItem('fx_daily_'+currentUser?.id+'_'+new Date().toISOString().split('T')[0]);}catch(e){}
-await supa.auth.signOut();
-window.history.replaceState({}, document.title, window.location.pathname);
-showLogin();
-let liErr=document.getElementById('liErr');
-if(liErr){liErr.style.color='#00c076'; liErr.innerText='✅ Password updated! Sign in with new password';}
-},1200);
+if(msgEl) msgEl.innerText='✅ Updated! Redirecting...';
+setTimeout(async()=>{isRecoveryFlow=false; await supa.auth.signOut(); window.history.replaceState({}, document.title, window.location.pathname); showLogin(); let liErr=document.getElementById('liErr'); if(liErr){liErr.style.color='#00c076'; liErr.innerText='✅ Password updated! Sign in with new password';}},1200);
 }
 }
 function checkRecoveryOnLoad(){
 const href=window.location.href;
 const hash=window.location.hash;
-if(href.includes('type=recovery') || hash.includes('type=recovery') || (hash.includes('access_token') && href.includes('recovery'))){
+if(href.includes('type=recovery') || hash.includes('type=recovery')){
 showNewPasswordForm();
 return true;
 }
@@ -229,7 +223,7 @@ document.getElementById('authBody').innerHTML=`<div class="bigIcon">📧</div><d
 }
 else if(obStep==2){
 updateProgress(50,'Check Email');
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">✉️</div><div class="stepTitle">Check Email</div><div class="stepDesc">Magic link sent to <b style="color:#fff">${obData.email}</b>. Tap link to verify account.</div><div style="background:#00c07622;border:1px solid #00c07655;border-radius:12px;padding:14px;text-align:center;margin:12px 0"><div style="font-size:32px">📨</div><b style="color:#00c076">Link Sent!</b><br><small>Open Gmail → tap verification link</small></div><button class="btn" onclick="resendSignupLink()">Resend Link →</button><button class="btn-outline" onclick="obStep=1;renderSignup()">Change Email</button><p id="suErr" style="color:#ff6b6b;font-size:12px"></p>`;
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">✉️</div><div class="stepTitle">Check Email</div><div class="stepDesc">Magic link sent to <b style="color:#fff">${obData.email}</b>. Tap link to verify.</div><div style="background:#00c07622;border:1px solid #00c07655;border-radius:12px;padding:14px;text-align:center;margin:12px 0"><div style="font-size:32px">📨</div><b style="color:#00c076">Link Sent!</b><br><small>Open Gmail → tap verification link</small></div><button class="btn" onclick="resendSignupLink()">Resend Link →</button><button class="btn-outline" onclick="obStep=1;renderSignup()">Change Email</button><p id="suErr" style="color:#ff6b6b;font-size:12px"></p>`;
 }
 else if(obStep==3){
 updateProgress(75,'Name');
@@ -301,11 +295,11 @@ let btn=document.getElementById('fpBtn'); if(btn){btn.innerText='Sending...'; bt
 let {error}=await supa.auth.resetPasswordForEmail(em,{redirectTo:window.location.origin + window.location.pathname});
 let msg=document.getElementById('fpMsg');
 if(error){msg.style.color='#ff6b6b'; msg.innerText=error.message; if(btn){btn.innerText='Send Reset Link →'; btn.disabled=false;}}
-else{msg.style.color='#00c076'; msg.innerText='✅ Reset link sent to '+em+' → Open email → Tap link → You will see Set New Password screen'; if(btn) btn.innerText='Sent! Check Email';}
+else{msg.style.color='#00c076'; msg.innerText='✅ Reset link sent to '+em+' → Open email → Tap link → Set New Password'; if(btn) btn.innerText='Sent! Check Email';}
 }
 function showForgotEmail(){
 updateProgress(30,'Forgot Email');
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">📧</div><div class="stepTitle">Forgot Email?</div><div class="stepDesc">Search by phone.</div><input id="fePhone" class="inp" placeholder="M-Pesa Phone or Name"><button class="btn" onclick="doForgotEmail()">Search My Email</button><p id="feMsg" style="font-size:12px;text-align:center;margin-top:8px"></p><div style="text-align:center;margin-top:12px;font-size:11px;color:#8b93a1">WhatsApp +254789338183</div><div style="text-align:center;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showLogin()">Back to Sign In</span></div>`;
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">📧</div><div class="stepTitle">Forgot Email?</div><div class="stepDesc">Search by phone.</div><input id="fePhone" class="inp" placeholder="M-Pesa Phone"><button class="btn" onclick="doForgotEmail()">Search My Email</button><p id="feMsg" style="font-size:12px;text-align:center;margin-top:8px"></p><div style="text-align:center;margin-top:12px;font-size:11px;color:#8b93a1">WhatsApp +254789338183</div><div style="text-align:center;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showLogin()">Back to Sign In</span></div>`;
 }
 async function doForgotEmail(){
 let ph=document.getElementById('fePhone').value.trim();
@@ -313,20 +307,13 @@ let msg=document.getElementById('feMsg');
 if(!ph){msg.innerText='Enter phone'; return;}
 let {data}=await supa.from('profiles').select('email,phone').eq('phone',ph).limit(1);
 if(data&&data.length){msg.style.color='#00c076'; msg.innerText='✅ Your email: '+data[0].email;}
-else{msg.style.color='#ff6b6b'; msg.innerText='Not found. Contact WhatsApp +254789338183';}
+else{msg.style.color='#ff6b6b'; msg.innerText='Not found. WhatsApp +254789338183';}
 }
 async function logout(){try{localStorage.removeItem('fx_easy_ob');}catch(e){} await supa.auth.signOut(); location.reload();}
 supa.auth.onAuthStateChange(async (ev,sess)=>{
-if(ev==='PASSWORD_RECOVERY'){
-console.log('PASSWORD_RECOVERY event');
-showNewPasswordForm();
-return;
-}
+if(ev==='PASSWORD_RECOVERY'){showNewPasswordForm(); return;}
 if(sess && sess.user){
-if(isRecoveryFlow){
-console.log('In recovery flow, waiting for password update');
-return;
-}
+if(isRecoveryFlow){return;}
 let {data:prof}=await supa.from('profiles').select('id,first_name').eq('id',sess.user.id).single();
 let hasOb=false; try{hasOb=!!localStorage.getItem('fx_easy_ob');}catch(e){}
 if((!prof ||!prof.first_name) && (hasOb || ev=='SIGNED_IN' || window.location.hash.includes('access_token') || window.location.search.includes('code'))){
@@ -344,7 +331,7 @@ let {data}=await supa.from('profiles').select('*').eq('id',sess.user.id).single(
 if(!data){let code=sess.user.email.split('@')[0].slice(0,4).toUpperCase()+Math.floor(100+Math.random()*900); let ref=localStorage.getItem('fx_ref')||obData.refCode||null; await supa.from('profiles').insert({id:sess.user.id,email:sess.user.email,balance:0,bonus:2,demo_balance:10000,referral_code:code,referred_by:ref,total_deposits:0,first_name:obData.firstName||null,last_name:obData.lastName||null,region:'Kenya'}); let {data:nd}=await supa.from('profiles').select('*').eq('id',sess.user.id).single(); data=nd;}
 if(data){bal=data.balance||0;bonus=data.bonus||0;demoBal=data.demo_balance||10000;myRefCode=data.referral_code||'';totalDeposits=data.total_deposits||0;streak=data.streak_count||0;cashback=data.cashback||0;if(!myRefCode){myRefCode=currentUser.email.split('@')[0].slice(0,4).toUpperCase()+Math.floor(100+Math.random()*900);await supa.from('profiles').update({referral_code:myRefCode}).eq('id',sess.user.id);}let se=document.getElementById('sideEmail'); if(se) se.innerText=data.email;let sb=document.getElementById('sideBal'); if(sb) sb.innerText='$'+bal.toFixed(2);let sbo=document.getElementById('sideBonus'); if(sbo) sbo.innerText='B $'+bonus.toFixed(2);updateVip();let sc=document.getElementById('streakCount'); if(sc){document.getElementById('streakBar').style.display='flex'; sc.innerText=streak;}let ct=document.getElementById('cashbackTotal'); if(ct) ct.innerText=cashback.toFixed(2);let sSt=document.getElementById('sideStreak'); if(sSt) sSt.innerText=streak;let sCa=document.getElementById('sideCash'); if(sCa) sCa.innerText=cashback.toFixed(2);}
 let link=window.location.origin+window.location.pathname+'?ref='+myRefCode;let rl=document.getElementById('refLink'); if(rl) rl.value=link;
-upd();loadC(cur,document.querySelector('.pill'));loadMyDeposits();loadMyWithdraws();loadHistory();loadOpenTrades();loadLeaderboard();loadCopying();loadSignals();loadChat();loadAffList();loadKycStatus();loadProfile();startLivePrice();startAutoRefresh();goView('dashboard');checkDailyOnce();loadWithdrawStats();loadChallenge();
+upd();loadC(cur,null,chartInterval);loadMyDeposits();loadMyWithdraws();loadHistory();loadOpenTrades();loadLeaderboard();loadCopying();loadSignals();loadChat();loadAffList();loadKycStatus();loadProfile();startLivePrice();startAutoRefresh();goView('dashboard');checkDailyOnce();loadWithdrawStats();loadChallenge();
 try{localStorage.removeItem('fx_easy_ob');}catch(e){}
 }else{
 if(!isRecoveryFlow){
@@ -393,18 +380,173 @@ function closeSpin(){document.getElementById('spinModal').classList.remove('show
 async function doSpin(){let btn=document.getElementById('spinBtn'); if(btn){btn.disabled=true; btn.innerText='Spinning...';} let rewards=[0.10,0.15,0.20,0.25,0.30,0.50,1.00,2.00]; let weights=[30,20,15,15,10,5,4,1]; let total=weights.reduce((a,b)=>a+b,0); let r=Math.random()*total; let idx=0,acc=0; for(let i=0;i<weights.length;i++){acc+=weights[i]; if(r<acc){idx=i;break;}} let win=rewards[idx]; let wheel=document.getElementById('wheel'); let deg=1080+idx*45+Math.random()*30; wheel.style.transform='rotate('+deg+'deg)'; setTimeout(async()=>{let today=new Date().toISOString().split('T')[0]; await supa.from('spins').insert({user_id:currentUser.id,reward:win}); await addBonus(win); localStorage.setItem('fx_spin_'+currentUser.id+'_'+today,'done'); document.getElementById('spinResult').innerHTML='<b style="color:#00c076;font-size:16px">🎉 Won $'+win.toFixed(2)+' bonus!</b><br><small>Once per day</small>'; if(btn){btn.innerText='Claimed!';} setTimeout(()=>{closeSpin();},1500);},3000);}
 function getMaxLot(){if(totalDeposits>=2000) return 50;if(totalDeposits>=500) return 10;if(totalDeposits>=100) return 2;return 0.5;}
 function setAccount(t){account=t;let rb=document.getElementById('realBtn'); let db=document.getElementById('demoBtn'); if(rb) rb.classList.toggle('on',t=='real'); if(db) db.classList.toggle('on',t=='demo');loadOpenTrades();upd();}
-function loadC(s,el){if(el){document.querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));el.classList.add('on');}cur=s;let pn=document.getElementById('pairName'); if(pn) pn.innerText=s.split(':')[1];let tvd=document.getElementById('tv'); if(tvd) tvd.innerHTML='';new TradingView.widget({symbol:s,container_id:'tv',autosize:true,theme:'dark',interval:'15',timezone:'Africa/Nairobi'});}
-function getSpread(p){if(p.includes('XAU')) return 0.30;if(p.includes('BTC')) return 20;if(p.includes('USDKES')) return 0.05;return 0.00015;}
+function changeTF(tf,el){if(el){document.querySelectorAll('[id^=tf-]').forEach(x=>x.classList.remove('on'));el.classList.add('on');} chartInterval=tf; loadC(cur,null,tf);}
+function loadC(s,el,interval){
+if(s) cur=s;
+if(interval) chartInterval=interval;
+if(el &&!el.id.startsWith('tf-')){document.querySelectorAll('.pills.pill').forEach(x=>{if(!x.id||!x.id.startsWith('tf-')) x.classList.remove('on');}); el.classList.add('on');}
+let pn=document.getElementById('pairName'); if(pn) pn.innerText=cur.split(':')[1];
+let tvd=document.getElementById('tv'); if(tvd) tvd.innerHTML='';
+new TradingView.widget({
+symbol:cur,
+container_id:'tv',
+autosize:true,
+theme:'dark',
+interval:chartInterval,
+timezone:'Africa/Nairobi',
+style:'1',
+locale:'en',
+toolbar_bg:'#0b0e12',
+enable_publishing:false,
+hide_side_toolbar:false,
+allow_symbol_change:true,
+studies:['RSI@tv-basicstudies','MASimple@tv-basicstudies','Volume@tv-basicstudies'],
+show_popup_button:true,
+popup_width:'1000',
+popup_height:'650',
+details:true,
+hotlist:true,
+calendar:true
+});
+}
+function getSpread(p){if(p.includes('XAU')) return 0.30;if(p.includes('BTC')) return 20;if(p.includes('USDKES')) return 0.05;if(p.includes('EUR')) return 0.00015;if(p.includes('GBP')) return 0.00018;return 0.00015;}
 function calcProfit(p,c){let d=p.type=='BUY'?c-p.entry:p.entry-c;if(p.pair.includes('XAU')) return d*p.lot*10;if(p.pair.includes('BTC')) return d*p.lot*0.1;if(p.pair.includes('KES')) return d*p.lot*100;return d*p.lot*100000;}
 function getMarginLot(l){let ls=document.getElementById('lev').value||'1:500';let lev=parseInt(ls.split(':')[1]);return l*100000/lev;}
-function startLivePrice(){setInterval(()=>{let c=(Math.random()-0.5)*0.0004;if(cur.includes('XAU')) c=(Math.random()-0.5)*0.4;if(cur.includes('BTC')) c=(Math.random()-0.5)*8;liveBid+=c;liveAsk=liveBid+getSpread(cur);let bidEl=document.getElementById('bid'); if(bidEl) bidEl.innerText=liveBid.toFixed(5)+' SELL';let sp=document.getElementById('sellPrice'); if(sp) sp.innerText=liveBid.toFixed(5);let askEl=document.getElementById('ask'); if(askEl) askEl.innerText=liveAsk.toFixed(5)+' BUY';let bp=document.getElementById('buyPrice'); if(bp) bp.innerText=liveAsk.toFixed(5);let lp=document.getElementById('livePrice'); if(lp) lp.innerText=liveAsk.toFixed(5);if(positions.length){positions.forEach(p=>{let cp=p.type=='BUY'?liveBid:liveAsk;if(p.pair==cur.split(':')[1]){p.pl=calcProfit(p,cp);}});render();}},700);}
+function startLivePrice(){
+livePrices['EUR/USD']={bid:1.16185,ask:1.16195};
+livePrices['GBP/USD']={bid:1.27450,ask:1.27465};
+livePrices['XAUUSD']={bid:2045.10,ask:2045.40};
+livePrices['BTCUSDT']={bid:43200,ask:43220};
+livePrices['USD/KES']={bid:129.50,ask:129.60};
+livePrices['EURUSD']={bid:1.16185,ask:1.16195};
+livePrices['GBPUSD']={bid:1.27450,ask:1.27465};
+setInterval(()=>{
+Object.keys(livePrices).forEach(pair=>{
+let vol=0.0004; if(pair.includes('XAU')) vol=0.4; if(pair.includes('BTC')) vol=8; if(pair.includes('KES')) vol=0.05;
+let c=(Math.random()-0.5)*vol;
+livePrices[pair].bid+=c;
+livePrices[pair].ask=livePrices[pair].bid+getSpread(pair);
+});
+let ck=cur.split(':')[1];
+let map={'EURUSD':'EUR/USD','GBPUSD':'GBP/USD','XAUUSD':'XAUUSD','BTCUSDT':'BTCUSDT','USDKES':'USD/KES'};
+let lookup=map[ck]||ck;
+let lp=livePrices[lookup]||livePrices['EUR/USD'];
+if(lp){liveBid=lp.bid; liveAsk=lp.ask;}
+let bidEl=document.getElementById('bid'); if(bidEl) bidEl.innerText=liveBid.toFixed(5)+' SELL';
+let sp=document.getElementById('sellPrice'); if(sp) sp.innerText=liveBid.toFixed(5);
+let askEl=document.getElementById('ask'); if(askEl) askEl.innerText=liveAsk.toFixed(5)+' BUY';
+let bp=document.getElementById('buyPrice'); if(bp) bp.innerText=liveAsk.toFixed(5);
+let liveP=document.getElementById('livePrice'); if(liveP) liveP.innerText=liveAsk.toFixed(5);
+if(positions.length){
+positions.forEach(p=>{
+let pd=livePrices[p.pair]||livePrices[lookup]||{bid:liveBid,ask:liveAsk};
+let cp=p.type=='BUY'?pd.bid:pd.ask;
+p.pl=calcProfit(p,cp);
+});
+render();
+}
+},700);
+startAutoSLTP();
+}
+function startAutoSLTP(){
+setInterval(async()=>{
+if(!positions.length||!currentUser) return;
+for(let p of [...positions]){
+let pd=livePrices[p.pair];
+if(!pd) continue;
+let currPrice=p.type=='BUY'?pd.bid:pd.ask;
+let hit=false; let reason='';
+if(p.sl!==null && p.sl!==undefined){
+if(p.type=='BUY' && currPrice <= Number(p.sl)){hit=true; reason='SL Hit';}
+if(p.type=='SELL' && currPrice >= Number(p.sl)){hit=true; reason='SL Hit';}
+}
+if(!hit && p.tp!==null && p.tp!==undefined){
+if(p.type=='BUY' && currPrice >= Number(p.tp)){hit=true; reason='TP Hit';}
+if(p.type=='SELL' && currPrice <= Number(p.tp)){hit=true; reason='TP Hit';}
+}
+if(hit){
+positions.find(x=>x.id==p.id).pl=calcProfit(p,currPrice);
+await closePosAuto(p.id,reason,currPrice);
+}
+}
+},1000);
+}
+async function closePosAuto(id,reason,price){
+let pos=positions.find(p=>p.id==id); if(!pos) return;
+let profit=pos.pl;
+if(account=='real'){
+if(profit>=0){bal+=profit;}else{let loss=Math.abs(profit); if(bonus>=loss) bonus-=loss; else{let rem=loss-bonus; bonus=0; bal=Math.max(0,bal-rem);}}
+cashback+=Math.abs(pos.lot)*0.05*2; bal+=Math.abs(pos.lot)*0.05*2;
+await supa.from('profiles').update({balance:bal,bonus:bonus,cashback:cashback}).eq('id',currentUser.id);
+await supa.from('closed_trades').insert({user_id:currentUser.id,pair:pos.pair,type:pos.type,lot:pos.lot,profit:profit,close_reason:reason});
+}else{demoBal+=profit; await supa.from('profiles').update({demo_balance:demoBal}).eq('id',currentUser.id);}
+await supa.from('open_trades').delete().eq('id',id);
+positions=positions.filter(p=>p.id!=id);
+render(); loadHistory(); loadChallenge();
+try{if(Notification.permission=='granted'){new Notification('FX Kenya: '+reason+' '+pos.pair,{body:pos.type+' '+pos.lot+' closed $'+profit.toFixed(2)});}}catch(e){}
+let ai=document.getElementById('autoIndicator'); if(ai){ai.innerText='🤖 '+reason+' '+pos.pair+' $'+profit.toFixed(2); ai.style.color=profit>=0?'#00c076':'#ff3b3b'; setTimeout(()=>{ai.innerText='🤖 AUTO ON'; ai.style.color='#00c076';},4000);}
+}
 function startAutoRefresh(){setInterval(async()=>{if(!currentUser) return;let {data}=await supa.from('profiles').select('balance,bonus,demo_balance,total_deposits,cashback').eq('id',currentUser.id).single();if(data){bal=data.balance||0;bonus=data.bonus||0;demoBal=data.demo_balance||10000;totalDeposits=data.total_deposits||0;cashback=data.cashback||0;updateVip();upd();}},5000);}
 async function loadOpenTrades(){if(!currentUser) return;let {data}=await supa.from('open_trades').select('*').eq('user_id',currentUser.id).eq('account_type',account).order('created_at',{ascending:true});positions=(data||[]).map(t=>({id:t.id,type:t.type,pair:t.pair,lot:t.lot,entry:t.entry,sl:t.sl,tp:t.tp,pl:0}));render();}
-async function openTrade(type){let total=account=='demo'?demoBal:bal+bonus;if(total<=1) return alert('Deposit first!');let lot=parseFloat(document.getElementById('lot').value);let maxLot=getMaxLot();if(lot>maxLot) return alert('Max '+maxLot+' lot');let entry=type=='BUY'?liveAsk:liveBid;let sl=parseFloat(document.getElementById('sl').value)||null;let tp=parseFloat(document.getElementById('tp').value)||null;let {data,error}=await supa.from('open_trades').insert({user_id:currentUser.id,pair:cur.split(':')[1],type,lot,entry,sl,tp,account_type:account}).select().single();if(error) return alert(error.message);positions.push({id:data.id,type,pair:data.pair,lot,entry,sl,tp,pl:0});render();loadChallenge();}
-function render(){let h='';if(!positions.length){h='No positions';}else{positions.forEach(p=>{let col=p.pl>=0?'#00c076':'#ff3b3b';h+=`<div class="row"><div><b style="color:${p.type=='BUY'?'#00c076':'#ff3b3b'}">${p.type}</b> ${p.pair} ${p.lot} lot<br><small>Entry ${Number(p.entry).toFixed(4)}</small><br><small style="color:${col};font-weight:800">$${p.pl.toFixed(2)}</small></div><button onclick="closePos('${p.id}')" style="background:#fff;color:#000;border:0;padding:6px 12px;border-radius:8px;font-weight:700">Close</button></div>`});}let tr=document.getElementById('trades'); if(tr) tr.innerHTML=h;let dt=document.getElementById('dashTrades'); if(dt) dt.innerHTML=h;upd();}
-async function closePos(id){let pos=positions.find(p=>p.id==id);if(!pos) return;let profit=pos.pl;if(account=='real'){if(profit>=0){bal+=profit;}else{let loss=Math.abs(profit);if(bonus>=loss) bonus-=loss;else{let rem=loss-bonus;bonus=0;bal=Math.max(0,bal-rem);}}cashback+=Math.abs(pos.lot)*0.05*2;bal+=Math.abs(pos.lot)*0.05*2;await supa.from('profiles').update({balance:bal,bonus:bonus,cashback:cashback}).eq('id',currentUser.id);await supa.from('closed_trades').insert({user_id:currentUser.id,pair:pos.pair,type:pos.type,lot:pos.lot,profit:profit});}else{demoBal+=profit;await supa.from('profiles').update({demo_balance:demoBal}).eq('id',currentUser.id);}await supa.from('open_trades').delete().eq('id',id);positions=positions.filter(p=>p.id!=id);render();loadHistory();loadChallenge();}
+async function openTrade(type){
+let total=account=='demo'?demoBal:bal+bonus;
+if(total<=1) return alert('Deposit first! Wallet → Deposit');
+let lot=parseFloat(document.getElementById('lot').value);
+let maxLot=getMaxLot(); if(lot>maxLot) return alert('Max '+maxLot+' lot for your VIP');
+let entry=type=='BUY'?liveAsk:liveBid;
+let slVal=document.getElementById('sl').value.trim();
+let tpVal=document.getElementById('tp').value.trim();
+let sl=slVal?parseFloat(slVal):null;
+let tp=tpVal?parseFloat(tpVal):null;
+if(sl && isNaN(sl)) sl=null;
+if(tp && isNaN(tp)) tp=null;
+if(sl && tp){
+if(type=='BUY' && sl>=entry){return alert('BUY SL must be below entry '+entry.toFixed(5));}
+if(type=='BUY' && tp<=entry){return alert('BUY TP must be above entry '+entry.toFixed(5));}
+if(type=='SELL' && sl<=entry){return alert('SELL SL must be above entry '+entry.toFixed(5));}
+if(type=='SELL' && tp>=entry){return alert('SELL TP must be below entry '+entry.toFixed(5));}
+}
+let pairKey=cur.split(':')[1];
+let {data,error}=await supa.from('open_trades').insert({user_id:currentUser.id,pair:pairKey,type,lot,entry,sl,tp,account_type:account}).select().single();
+if(error) return alert(error.message);
+positions.push({id:data.id,type,pair:data.pair,lot,entry,sl,tp,pl:0});
+render(); loadChallenge();
+}
+function render(){
+let h=''; if(!positions.length){h='No positions - set SL/TP for auto close';}else{
+positions.forEach(p=>{
+let col=p.pl>=0?'#00c076':'#ff3b3b';
+let slTxt=p.sl?' SL:'+Number(p.sl).toFixed(5):'';
+let tpTxt=p.tp?' TP:'+Number(p.tp).toFixed(5):'';
+h+=`<div class="row"><div><b style="color:${p.type=='BUY'?'#00c076':'#ff3b3b'}">${p.type}</b> ${p.pair} ${p.lot} lot<br><small>Entry ${Number(p.entry).toFixed(5)}${slTxt}${tpTxt}</small><br><small style="color:${col};font-weight:800">$${p.pl.toFixed(2)} ${p.pl>=0?'▲':'▼'} Auto</small></div><button onclick="closePos('${p.id}')" style="background:#fff;color:#000;border:0;padding:6px 12px;border-radius:8px;font-weight:700">Close</button></div>`;
+});
+}
+let tr=document.getElementById('trades'); if(tr) tr.innerHTML=h;
+let dt=document.getElementById('dashTrades'); if(dt) dt.innerHTML=h;
+upd();
+}
+async function closePos(id){let pos=positions.find(p=>p.id==id);if(!pos) return;let profit=pos.pl;if(account=='real'){if(profit>=0){bal+=profit;}else{let loss=Math.abs(profit);if(bonus>=loss) bonus-=loss;else{let rem=loss-bonus;bonus=0;bal=Math.max(0,bal-rem);}}cashback+=Math.abs(pos.lot)*0.05*2;bal+=Math.abs(pos.lot)*0.05*2;await supa.from('profiles').update({balance:bal,bonus:bonus,cashback:cashback}).eq('id',currentUser.id);await supa.from('closed_trades').insert({user_id:currentUser.id,pair:pos.pair,type:pos.type,lot:pos.lot,profit:profit,close_reason:'Manual'});}else{demoBal+=profit;await supa.from('profiles').update({demo_balance:demoBal}).eq('id',currentUser.id);}await supa.from('open_trades').delete().eq('id',id);positions=positions.filter(p=>p.id!=id);render();loadHistory();loadChallenge();}
 async function closeAll(){for(let p of [...positions]) await closePos(p.id);}
-function upd(){let f=positions.reduce((s,p)=>s+p.pl,0);let curBal=account=='demo'?demoBal:bal;let curBonus=account=='demo'?0:bonus;let equity=curBal+curBonus+f;let used=positions.reduce((s,p)=>s+getMarginLot(p.lot),0);let level=used>0?(equity/used*100):0;let dBal=document.getElementById('dBal'); if(dBal) dBal.innerText='$'+curBal.toFixed(2);let dBo=document.getElementById('dBonus'); if(dBo) dBo.innerText='$'+curBonus.toFixed(2);let dEq=document.getElementById('dEqu'); if(dEq) dEq.innerText='$'+equity.toFixed(2);let dPl=document.getElementById('dPl'); if(dPl){dPl.innerText=(f>=0?'+$':'-$')+Math.abs(f).toFixed(2); dPl.style.color=f>=0?'#00c076':'#ff3b3b';}let dTr=document.getElementById('dTrades'); if(dTr) dTr.innerText=positions.length+' trades';let balEl=document.getElementById('bal'); if(balEl) balEl.innerText=curBal.toFixed(2);let bo=document.getElementById('bonus'); if(bo) bo.innerText=curBonus.toFixed(2);let eq=document.getElementById('equ'); if(eq) eq.innerText=equity.toFixed(2);let fl=document.getElementById('fl'); if(fl){fl.innerText=(f>=0?'+$':'-$')+Math.abs(f).toFixed(2); fl.style.color=f>=0?'#00c076':'#ff3b3b';}let eb=document.getElementById('dEquBar'); if(eb) eb.style.width=Math.min(100,level)+'%';let seBal=document.getElementById('sideBal'); if(seBal) seBal.innerText='$'+bal.toFixed(2);let seBo=document.getElementById('sideBonus'); if(seBo) seBo.innerText='B $'+bonus.toFixed(2);}
+function upd(){
+let f=positions.reduce((s,p)=>s+p.pl,0);
+let curBal=account=='demo'?demoBal:bal;
+let curBonus=account=='demo'?0:bonus;
+let equity=curBal+curBonus+f;
+let used=positions.reduce((s,p)=>s+getMarginLot(p.lot),0);
+let level=used>0?(equity/used*100):0;
+let dBal=document.getElementById('dBal'); if(dBal) dBal.innerText='$'+curBal.toFixed(2);
+let dBo=document.getElementById('dBonus'); if(dBo) dBo.innerText='$'+curBonus.toFixed(2);
+let dEq=document.getElementById('dEqu'); if(dEq) dEq.innerText='$'+equity.toFixed(2);
+let dPl=document.getElementById('dPl'); if(dPl){dPl.innerText=(f>=0?'+$':'-$')+Math.abs(f).toFixed(2); dPl.style.color=f>=0?'#00c076':'#ff3b3b';}
+let dTr=document.getElementById('dTrades'); if(dTr) dTr.innerText=positions.length+' trades';
+let balEl=document.getElementById('bal'); if(balEl) balEl.innerText=curBal.toFixed(2);
+let bo=document.getElementById('bonus'); if(bo) bo.innerText=curBonus.toFixed(2);
+let eq=document.getElementById('equ'); if(eq) eq.innerText=equity.toFixed(2);
+let fl=document.getElementById('fl'); if(fl){fl.innerText=(f>=0?'+$':'-$')+Math.abs(f).toFixed(2); fl.style.color=f>=0?'#00c076':'#ff3b3b';}
+let eb=document.getElementById('dEquBar'); if(eb) eb.style.width=Math.min(100,level)+'%';
+let seBal=document.getElementById('sideBal'); if(seBal) seBal.innerText='$'+bal.toFixed(2);
+let seBo=document.getElementById('sideBonus'); if(seBo) seBo.innerText='B $'+bonus.toFixed(2);
+}
 async function loadWithdrawStats(){if(!currentUser) return;let today=new Date().toISOString().split('T')[0];let {data}=await supa.from('withdrawals').select('amount').eq('user_id',currentUser.id).eq('status','approved').gte('created_at',today+'T00:00:00');let sum=0; if(data) data.forEach(d=>sum+=Number(d.amount)||0);let el=document.getElementById('todayWithdrawn'); if(el) el.innerText=sum.toFixed(2);let pend=await supa.from('withdrawals').select('amount').eq('user_id',currentUser.id).eq('status','pending').gte('created_at',today+'T00:00:00');let pendSum=0; if(pend.data) pend.data.forEach(d=>pendSum+=Number(d.amount)||0); todayWithdrawn=sum+pendSum; if(el) el.innerText=todayWithdrawn.toFixed(2);}
 async function loadChallenge(){if(!currentUser) return;let weekAgo=new Date(); weekAgo.setDate(weekAgo.getDate()-7);let {data}=await supa.from('closed_trades').select('lot').eq('user_id',currentUser.id).gte('created_at',weekAgo.toISOString());let lots=0; if(data) data.forEach(d=>lots+=Number(d.lot)||0);let pct=Math.min(100,(lots/5)*100);let bar=document.getElementById('challengeBar'); if(bar) bar.style.width=pct+'%';let txt=document.getElementById('challengeText'); if(txt) txt.innerText=lots.toFixed(2)+' / 5 lots';}
 async function loadProfile(){if(!currentUser) return;let {data}=await supa.from('profiles').select('*').eq('id',currentUser.id).single();if(!data) return;let f=document.getElementById('profFirst'); if(f) f.value=data.first_name||'';let l=document.getElementById('profLast'); if(l) l.value=data.last_name||'';let a=document.getElementById('profAddress'); if(a) a.value=data.address||'';let ph=document.getElementById('profPhone'); if(ph) ph.value=data.phone||'';let em=document.getElementById('profEmail'); if(em) em.value=data.email||'';}
@@ -417,7 +559,7 @@ async function loadMyDeposits(){let {data}=await supa.from('deposits').select('*
 async function submitWithdraw(){let amt=parseFloat(document.getElementById('withAmount').value),phone=document.getElementById('withPhone').value.trim();if(!amt||isNaN(amt)) return alert('Enter amount');if(amt<5) return alert('Min $5');if(amt>50000) return alert('Max $50k/day');if(amt>bal) return alert('Only $'+bal.toFixed(2)+' real. Bonus $'+bonus.toFixed(2)+' trade-only');if((todayWithdrawn+amt)>50000) return alert('Daily limit $50k exceeded. Today: $'+todayWithdrawn.toFixed(2));if(amt>20&&kycStatus!=='approved') return alert('🔒 Verify KYC to withdraw >$20');await supa.from('withdrawals').insert({user_id:currentUser.id,email:currentUser.email,amount:amt,phone,status:'pending'});alert('✅ Withdraw $'+amt+' requested');loadMyWithdraws();loadAllTx();loadWithdrawStats();}
 async function loadMyWithdraws(){let {data}=await supa.from('withdrawals').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(5);if(!data) return;let h='<b style="font-size:11px">Recent Withdraws</b><br>';data.forEach(d=>{h+=`<div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #222"><span>$${d.amount} → ${d.phone}</span><span style="color:${d.status=='approved'?'#00c076':'#f5c518'}">${d.status}</span></div>`});let el=document.getElementById('myWithdraws'); if(el) el.innerHTML=h;}
 async function loadAllTx(){let {data:d}=await supa.from('deposits').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(20);let {data:w}=await supa.from('withdrawals').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(20);let h='';if(d) d.forEach(x=>{h+=`<div style="display:flex;justify-content:space-between;font-size:11px;padding:6px 0;border-bottom:1px solid #222"><span>💰 Deposit KES ${x.amount}</span><span style="color:${x.status=='approved'?'#00c076':'#f5c518'}">${x.status}</span></div>`;});if(w) w.forEach(x=>{h+=`<div style="display:flex;justify-content:space-between;font-size:11px;padding:6px 0;border-bottom:1px solid #222"><span>💸 Withdraw $${x.amount}</span><span style="color:${x.status=='approved'?'#00c076':'#f5c518'}">${x.status}</span></div>`;});if(!h) h='No transactions';let el=document.getElementById('allTx'); if(el) el.innerHTML=h;}
-async function loadHistory(){let {data}=await supa.from('closed_trades').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(10);let he=document.getElementById('history'); if(!he) return;if(!data||!data.length){he.innerHTML='No history';return;}let h='';data.forEach(t=>{h+=`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #222"><span>${t.pair} ${t.type} ${t.lot}</span><span style="color:${t.profit>=0?'#00c076':'#ff3b3b'}">$${Number(t.profit).toFixed(2)}</span></div>`});he.innerHTML=h;}
+async function loadHistory(){let {data}=await supa.from('closed_trades').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(15);let he=document.getElementById('history'); if(!he) return;if(!data||!data.length){he.innerHTML='No history';return;}let h='';data.forEach(t=>{let rs=t.close_reason||'Manual'; let col=rs.includes('TP')?'#00c076':rs.includes('SL')?'#ff3b3b':'#8b93a1'; h+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222"><span>${t.pair} ${t.type} ${t.lot} <small style="color:${col}">[${rs}]</small></span><span style="color:${t.profit>=0?'#00c076':'#ff3b3b'}">$${Number(t.profit).toFixed(2)}</span></div>`});he.innerHTML=h;}
 async function loadLeaderboard(){let {data:balData}=await supa.from('profiles').select('id,email,balance,total_deposits').order('balance',{ascending:false}).limit(10);let hb='';if(!balData||!balData.length) hb='No traders';else balData.forEach((u,i)=>{let medal=i==0?'🥇':i==1?'🥈':i==2?'🥉':'#'+(i+1);let emailMask=u.email.split('@')[0].slice(0,3)+'***';let isMe=currentUser&&u.id==currentUser.id;let vip=u.total_deposits>=2000?'💎':u.total_deposits>=500?'🥇':u.total_deposits>=100?'🥈':'🥉';hb+=`<div class="leaderRow"><span>${medal} ${vip} ${emailMask} ${isMe?'(You)':''}</span><div style="display:flex;gap:6px;align-items:center"><b style="color:#00c076">$${Number(u.balance||0).toFixed(0)}</b>${isMe?'':`<button class="copyBtn" onclick="copyTrader('${u.id}','${emailMask}')">COPY</button>`}</div></div>`;});let lb=document.getElementById('leaderBalance'); if(lb) lb.innerHTML=hb;}
 async function copyTrader(l,id){let {data:exists}=await supa.from('copy_follows').select('*').eq('follower_id',currentUser.id).eq('leader_id',l).single();if(exists){await supa.from('copy_follows').delete().eq('follower_id',currentUser.id).eq('leader_id',l);alert('Stopped copying');loadCopying();return;}await supa.from('copy_follows').insert({follower_id:currentUser.id,leader_id:l});alert('Now copying '+id);loadCopying();}
 async function loadCopying(){let {data}=await supa.from('copy_follows').select('leader_id').eq('follower_id',currentUser.id);let cl=document.getElementById('copyingList'); if(!cl) return;if(!data||!data.length){cl.innerHTML='Not copying';return;}let ids=data.map(d=>d.leader_id);let {data:leaders}=await supa.from('profiles').select('id,email').in('id',ids);let h='';leaders.forEach(l=>{h+=`<div>✅ ${l.email.split('@')[0].slice(0,3)}*** <span style="color:#ff3b3b;cursor:pointer" onclick="copyTrader('${l.id}','')">✕ stop</span></div>`;});cl.innerHTML=h;}
@@ -425,12 +567,13 @@ async function loadAffList(){if(!myRefCode) return;let {data}=await supa.from('p
 function copyRef(){let el=document.getElementById('refLink'); if(el){navigator.clipboard.writeText(el.value); alert('✅ Copied!');}}
 function shareRef(){let el=document.getElementById('refLink'); if(!el) return;let url=el.value;let text=encodeURIComponent('Join FX Kenya Pro - $2 bonus! '+url); window.open('https://wa.me/?text='+text,'_blank');}
 async function loadSignals(){let {data}=await supa.from('signals').select('*').order('created_at',{ascending:false}).limit(3);let sb=document.getElementById('signalBar'); if(!sb) return;if(!data||!data.length){sb.style.display='none';return;}let h='';data.forEach(s=>{h+=`<div class="signalCard"><b style="color:#f5c518">📢 ${s.pair} ${s.type}</b> • ${s.message}</div>`;});sb.innerHTML=h;sb.style.display='block';}
-function requestNotif(){if(!('Notification' in window)) return alert('No support'); Notification.requestPermission().then(p=>{if(p=='granted'){new Notification('FX Kenya: Alerts ON'); alert('✅ ON');} else alert('Allow');});}
-async function loadChat(){if(!currentUser) return;let {data}=await supa.from('chats').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:true}).limit(40);let cb=document.getElementById('chatBox'); if(!cb) return;if(!data||!data.length){cb.innerHTML='<div style="text-align:center;color:#5a6476;font-size:11px;padding:20px">Support 24/7</div>';return;}let h='';data.forEach(c=>{let t=new Date(c.created_at); let tm=t.getHours().toString().padStart(2,'0')+':'+t.getMinutes().toString().padStart(2,'0'); h+=`<div class="msg ${c.sender=='user'?'user':'admin'}">${c.message}<br><small style="opacity:.6">${tm}</small></div>`;});cb.innerHTML=h;cb.scrollTop=cb.scrollHeight;}
+function requestNotif(){if(!('Notification' in window)) return alert('No support'); Notification.requestPermission().then(p=>{if(p=='granted'){new Notification('FX Kenya: Auto SL/TP ON 🤖'); alert('✅ ON - Auto SL/TP alerts');} else alert('Allow');});}
+async function loadChat(){if(!currentUser) return;let {data}=await supa.from('chats').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:true}).limit(40);let cb=document.getElementById('chatBox'); if(!cb) return;if(!data||!data.length){cb.innerHTML='<div style="text-align:center;color:#5a6476;font-size:11px;padding:20px">Support 24/7 - Ask about Auto SL/TP</div>';return;}let h='';data.forEach(c=>{let t=new Date(c.created_at); let tm=t.getHours().toString().padStart(2,'0')+':'+t.getMinutes().toString().padStart(2,'0'); h+=`<div class="msg ${c.sender=='user'?'user':'admin'}">${c.message}<br><small style="opacity:.6">${tm}</small></div>`;});cb.innerHTML=h;cb.scrollTop=cb.scrollHeight;}
 async function sendChat(){let inp=document.getElementById('chatInput'); if(!inp) return;let msg=inp.value.trim();if(!msg) return;await supa.from('chats').insert({user_id:currentUser.id,email:currentUser.email,message:msg,sender:'user'});inp.value='';loadChat();}
-async function loadAdmin(){if(!currentUser||currentUser.email!==ADMIN_EMAIL){let ad=document.getElementById('adminDeposits'); if(ad) ad.innerHTML='⛔';return;}let ac=document.getElementById('adminCheck'); if(ac) ac.innerHTML='✅ '+currentUser.email;let {data:kycData}=await supa.from('kyc').select('*').eq('status','pending').order('created_at');let hk='';if(!kycData||!kycData.length) hk='No pending KYC';else kycData.forEach(x=>{hk+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:11px">${x.email}<br>${x.full_name}<br><a href="${x.id_front_url}" target="_blank" style="color:#f5c518">ID</a> | <a href="${x.selfie_url}" target="_blank" style="color:#00c076">Selfie</a><br><button onclick="approveKyc('${x.id}','${x.user_id}')" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px;margin-top:4px">APPROVE +$2</button></div>`;});let ak=document.getElementById('adminKyc'); if(ak) ak.innerHTML=hk;let {data:d}=await supa.from('deposits').select('*').eq('status','pending').order('created_at');let h='';if(!d||!d.length) h='No pending';else d.forEach(x=>{h+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} KES ${x.amount}<br>${x.phone}<br><button onclick="approveDep('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">APPROVE + BONUS</button></div>`});let ad=document.getElementById('adminDeposits'); if(ad) ad.innerHTML=h;let {data:w}=await supa.from('withdrawals').select('*').eq('status','pending').order('created_at');let hw='';if(!w||!w.length) hw='No pending';else w.forEach(x=>{hw+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount} → ${x.phone}<br><button onclick="approveWith('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">PAID</button></div>`});let aw=document.getElementById('adminWithdraws'); if(aw) aw.innerHTML=hw;}
+async function loadAdmin(){if(!currentUser||currentUser.email!==ADMIN_EMAIL){let ad=document.getElementById('adminDeposits'); if(ad) ad.innerHTML='⛔';return;}let ac=document.getElementById('adminCheck'); if(ac) ac.innerHTML='✅ '+currentUser.email+' • Auto SL/TP Active';let {data:kycData}=await supa.from('kyc').select('*').eq('status','pending').order('created_at');let hk='';if(!kycData||!kycData.length) hk='No pending KYC';else kycData.forEach(x=>{hk+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:11px">${x.email}<br>${x.full_name}<br><a href="${x.id_front_url}" target="_blank" style="color:#f5c518">ID</a> | <a href="${x.selfie_url}" target="_blank" style="color:#00c076">Selfie</a><br><button onclick="approveKyc('${x.id}','${x.user_id}')" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px;margin-top:4px">APPROVE +$2</button></div>`;});let ak=document.getElementById('adminKyc'); if(ak) ak.innerHTML=hk;let {data:d}=await supa.from('deposits').select('*').eq('status','pending').order('created_at');let h='';if(!d||!d.length) h='No pending';else d.forEach(x=>{h+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} KES ${x.amount}<br>${x.phone}<br><button onclick="approveDep('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">APPROVE + BONUS</button></div>`});let ad=document.getElementById('adminDeposits'); if(ad) ad.innerHTML=h;let {data:w}=await supa.from('withdrawals').select('*').eq('status','pending').order('created_at');let hw='';if(!w||!w.length) hw='No pending';else w.forEach(x=>{hw+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount} → ${x.phone}<br><button onclick="approveWith('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">PAID</button></div>`});let aw=document.getElementById('adminWithdraws'); if(aw) aw.innerHTML=hw;}
 async function approveKyc(id,uid){await supa.from('kyc').update({status:'approved'}).eq('id',id);let {data:p}=await supa.from('profiles').select('bonus').eq('id',uid).single();await supa.from('profiles').update({bonus:(p.bonus||0)+2}).eq('id',uid);alert('Approved +$2 BONUS');loadAdmin();}
 async function approveDep(id,uid,amt){let {data:p}=await supa.from('profiles').select('balance,bonus,total_deposits,referred_by').eq('id',uid).single();let td=p.total_deposits||0;let perc=td>=2000?1:td>=500?0.8:td>=100?0.6:0.5;let bonusAdd=amt*perc;await supa.from('profiles').update({balance:(p.balance||0)+amt,bonus:(p.bonus||0)+bonusAdd,total_deposits:td+amt}).eq('id',uid);await supa.from('deposits').update({status:'approved'}).eq('id',id);if(p.referred_by&&td==0){let {data:ref}=await supa.from('profiles').select('id,balance').eq('referral_code',p.referred_by).single(); if(ref) await supa.from('profiles').update({balance:ref.balance+5}).eq('id',ref.id);}alert('Approved: $'+amt+' REAL + $'+bonusAdd.toFixed(2)+' BONUS');loadAdmin();}
 async function approveWith(id,uid,amt){let today=new Date().toISOString().split('T')[0];let {data:todayData}=await supa.from('withdrawals').select('amount').eq('user_id',uid).eq('status','approved').gte('created_at',today+'T00:00:00');let sum=0; if(todayData) todayData.forEach(d=>sum+=Number(d.amount)||0);if((sum+amt)>50000) return alert('Exceeds $50k daily. Already: $'+sum);let {data:p}=await supa.from('profiles').select('balance').eq('id',uid).single();if(amt>p.balance) return alert('Not enough REAL. Real: $'+p.balance);await supa.from('profiles').update({balance:p.balance-amt}).eq('id',uid);await supa.from('withdrawals').update({status:'approved'}).eq('id',id);alert('Paid $'+amt);loadAdmin();}
 </script>
 </body></html>
+
