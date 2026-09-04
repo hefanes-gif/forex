@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>FX Kenya PRO V25 - Pro Trading</title>
+<title>FX Kenya PRO V26 AUTO BOT</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -68,7 +68,7 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 .pill.on{background:#fff;color:#000}
 .priceTicker{display:flex;justify-content:space-between;padding:8px 12px;background:#151a21;margin:0 12px;border-radius:10px;border:1px solid #222a35;font-size:11px}
 .liveDot{width:7px;height:7px;background:#00c076;border-radius:50%;display:inline-block}
-.chartWrap{margin:8px 12px;background:#151a21;border:1px solid #222a35;border-radius:18px;overflow:hidden;height:500px}
+.chartWrap{margin:8px 12px;background:#151a21;border:1px solid #222a35;border-radius:18px;overflow:hidden;height:600px;position:relative}
 .sel{background:#151a21;border:1px solid #222a35;color:#fff;padding:7px 8px;border-radius:8px;font-size:11px}
 .actionDock{position:fixed;bottom:10px;left:0;right:0;padding:10px 12px;display:flex;gap:10px;z-index:20;background:linear-gradient(0deg,#0b0e12 70%,transparent)}
 .actionDock button{flex:1;padding:14px;border:0;border-radius:14px;font-weight:800;font-size:14px}
@@ -98,23 +98,28 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 .wheel span{width:44px;height:44px;background:#000;border-radius:50%;display:grid;place-items:center;font-size:20px}
 .challengeBar{height:8px;background:#222a35;border-radius:10px;overflow:hidden;margin:6px 0}
 .challengeBar div{height:8px;background:linear-gradient(90deg,#00c076,#f5c518)}
+.botCard{background:linear-gradient(135deg,#1a2332,#151a21);border:1px solid #00c07655;border-radius:16px;padding:14px;margin:8px 12px}
+.botToggle{width:48px;height:28px;background:#222a35;border-radius:20px;position:relative;cursor:pointer;transition:.3s}
+.botToggle.on{background:#00c076}
+.botToggle div{width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:.3s}
+.botToggle.on div{left:23px}
 </style>
 </head><body>
 <a class="waFloat" href="https://wa.me/254789338183" target="_blank">💬</a>
 <div id="landing">
 <div class="landHeader"><div style="font-weight:800">FX<span style="color:#f5c518">KENYA</span> PRO</div><div style="display:flex;gap:8px"><button class="landBtn outline" onclick="openAuth('login')">Sign In</button><button class="landBtn gold" onclick="openAuth('signup')">Sign Up</button></div></div>
-<div class="hero"><div><h1>Pro <span>Forex Trading</span> with Auto SL/TP</h1><p>Magic link signup, direct signin, reset fixed, once/day bonus, PRO chart with RSI/MA/drawing + Auto SL/TP close.</p><div class="heroStats"><div class="heroStat"><b>Auto</b><small>SL/TP</small></div><div class="heroStat"><b>PRO</b><small>Chart</small></div><div class="heroStat"><b>Once/Day</b><small>Bonus</small></div></div><button class="btn" style="width:auto;padding:12px 22px" onclick="openAuth('signup')">🚀 Start Trading →</button></div><div class="heroCard"><div style="font-size:12px;display:flex;justify-content:space-between"><span>💹 Live</span><span style="color:#00c076">🤖 AUTO SL/TP ON</span></div><div class="mockBal"><span>EUR/USD</span><span style="color:#00c076">1.16195 ▲ Auto TP Hit</span></div><div class="mockBal"><span>GOLD</span><span style="color:#ff3b3b">SL Auto Close</span></div><div class="mockBal"><span>Balance</span><b style="color:#00c076">$1,250 REAL</b></div><div class="mockBal"><span>Bonus</span><b style="color:#f5c518">$620 trade-only</b></div></div></div>
-<div class="features"><div class="feat"><b>🤖 Auto SL/TP</b><small>Set SL/TP → auto closes when hit, even offline.</small></div><div class="feat"><b>📈 Pro Chart</b><small>1m-1D, RSI, MA, volume, drawing tools.</small></div><div class="feat"><b>🔑 Auth Fixed</b><small>Magic signup, direct signin, reset works, forgot email.</small></div><div class="feat"><b>💳 M-Pesa 542542</b><small>Deposit KES, bonus trade-only.</small></div></div>
-<div class="ctaBig"><h2 style="margin:0">Trade Like Pro</h2><button class="btn" style="background:#000;color:#fff;max-width:280px" onclick="openAuth('signup')">Start Trading →</button></div>
+<div class="hero"><div><h1>Auto Trade Bot + <span>Ultra Pro Chart</span></h1><p>Bot trades for you using MA crossover + RSI. Pro chart with Heikin Ashi, 100+ indicators, drawings, fullscreen.</p><div class="heroStats"><div class="heroStat"><b>🤖 BOT</b><small>Auto Trade</small></div><div class="heroStat"><b>📈 ULTRA</b><small>Pro Chart</small></div><div class="heroStat"><b>Auto SL/TP</b><small>ON</small></div></div><button class="btn" style="width:auto;padding:12px 22px" onclick="openAuth('signup')">🚀 Start Bot Trading →</button></div><div class="heroCard"><div style="font-size:12px;display:flex;justify-content:space-between"><span>🤖 BOT ACTIVE</span><span style="color:#00c076">● +$42.50 today</span></div><div class="mockBal"><span>Strategy</span><span style="color:#f5c518">MA Cross + RSI</span></div><div class="mockBal"><span>EUR/USD</span><span style="color:#00c076">BUY Auto → TP Hit +$5.20</span></div><div class="mockBal"><span>Balance</span><b style="color:#00c076">$1,850 REAL</b></div><div class="mockBal"><span>Bot Trades</span><b style="color:#00c076">12 today</b></div></div></div>
+<div class="features"><div class="feat"><b>🤖 Auto Bot</b><small>MA20/50 crossover + RSI filter, auto lot, auto SL/TP.</small></div><div class="feat"><b>📈 Ultra Chart</b><small>Candles, Heikin, Line, 100+ indicators, drawings, compare.</small></div><div class="feat"><b>⚡ Auto SL/TP</b><small>Every second check, works for all pairs.</small></div><div class="feat"><b>💳 M-Pesa</b><small>542542 Paybill, bonus trade-only.</small></div></div>
+<div class="ctaBig"><h2 style="margin:0">Let Bot Trade For You</h2><button class="btn" style="background:#000;color:#fff;max-width:280px" onclick="openAuth('signup')">Activate Bot →</button></div>
 </div>
 <div id="auth"><div class="authTop"><div><b>FX<span style="color:#f5c518">KENYA</span> PRO</b><div style="font-size:10px;color:#8b93a1"><span id="authStepNum">1</span> • <span id="authStepName">Email</span></div></div><div onclick="closeAuth()" style="cursor:pointer;background:#151a21;padding:8px 12px;border-radius:8px">✕</div></div><div class="authProgress"><div id="authProgressBar" class="authProgressBar" style="width:25%"></div></div><div class="authBody" id="authBody">Loading...</div></div>
 <div class="sideOverlay" id="sideOverlay" onclick="toggleSide(false)"></div>
 <div class="sidebar" id="sidebar">
 <div class="sideTop"><b>FX<span style="color:#f5c518">KENYA</span> PRO</b><span onclick="toggleSide(false)" style="cursor:pointer;background:#151a21;padding:6px 10px;border-radius:8px">✕</span></div>
-<div class="sideUser"><div style="font-size:12px;color:#8b93a1">Logged as</div><b id="sideEmail" style="font-size:12px;word-break:break-all">-</b><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span id="sideVip" style="background:#444;color:#fff;padding:2px 6px;border-radius:6px;font-size:9px">BRONZE</span><span id="sideBal" style="color:#00c076;font-weight:800;font-size:12px">$0.00</span><span id="sideBonus" style="color:#f5c518;font-weight:800;font-size:11px">B $0</span></div><div style="margin-top:8px;font-size:10px;color:#8b93a1">🔥 <span id="sideStreak">0</span> days • $<span id="sideCash">0.00</span></div></div>
+<div class="sideUser"><div style="font-size:12px;color:#8b93a1">Logged as</div><b id="sideEmail" style="font-size:12px;word-break:break-all">-</b><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span id="sideVip" style="background:#444;color:#fff;padding:2px 6px;border-radius:6px;font-size:9px">BRONZE</span><span id="sideBal" style="color:#00c076;font-weight:800;font-size:12px">$0.00</span><span id="sideBonus" style="color:#f5c518;font-weight:800;font-size:11px">B $0</span></div><div style="margin-top:8px;font-size:10px;color:#8b93a1">🤖 Bot: <span id="sideBotStatus" style="color:#8b93a1">OFF</span> • 🔥 <span id="sideStreak">0</span> days</div></div>
 <div class="sideMenu">
 <div class="sideItem on" onclick="goView('dashboard')"><span>📊</span> Dashboard <span class="sideBadge">LIVE</span></div>
-<div class="sideItem" onclick="goView('trade')"><span>📈</span> Trade <span class="sideBadge" style="background:#00c076">AUTO</span></div>
+<div class="sideItem" onclick="goView('trade')"><span>📈</span> Trade <span class="sideBadge" style="background:#00c076">BOT</span></div>
 <div class="sideItem" onclick="toggleWallet()"><span>💳</span> Wallet <span style="margin-left:auto">▾</span></div>
 <div class="sideSub" id="walletSub"><div onclick="goView('wallet','deposit')">💰 Deposit 542542</div><div onclick="goView('wallet','withdraw')">💸 Withdraw $5-$50k</div><div onclick="goView('wallet','history')">📜 History</div></div>
 <div class="sideItem" onclick="goView('copy')"><span>🏆</span> Copy</div>
@@ -127,30 +132,31 @@ body{margin:0;background:#0b0e12;color:#e5e7eb;padding-bottom:20px;overflow-x:hi
 </div>
 </div>
 <div class="header" id="appHeader" style="display:none"><div style="display:flex;gap:10px;align-items:center"><div class="burger" onclick="toggleSide(true)">☰</div><div style="width:32px;height:32px;background:#fff;color:#000;border-radius:8px;display:grid;place-items:center;font-weight:800">FX</div><div><b style="font-size:13px">KENYA <span style="color:#f5c518">PRO</span></b><div style="font-size:9px;color:#8b93a1;display:flex;gap:5px;align-items:center"><span class="liveDot"></span> LIVE <span id="livePrice">1.16195</span> <span id="vipBadge" style="background:#444;color:#fff;padding:2px 6px;border-radius:6px">BRONZE</span></div></div></div><div class="accSwitch"><div id="realBtn" class="on" onclick="setAccount('real')">REAL</div><div id="demoBtn" onclick="setAccount('demo')">DEMO</div></div></div>
-<div id="streakBar" class="streakBox" style="display:none"><span>🔥 Day <span id="streakCount">0</span>/7 • Cashback $<span id="cashbackTotal">0.00</span></span><span style="background:#000;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px" id="lotLimitInfo">Max 0.5 lot</span></div>
+<div id="streakBar" class="streakBox" style="display:none"><span>🔥 Day <span id="streakCount">0</span>/7 • 🤖 Bot: <span id="botStatusText">OFF</span> • $<span id="cashbackTotal">0.00</span></span><span style="background:#000;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px" id="lotLimitInfo">Max 0.5 lot</span></div>
 <div id="signalBar" style="margin:0 12px;display:none"></div>
 <div id="dailyModal" class="modal"><div class="modalBox"><div style="font-size:40px">🔥</div><h3>Daily Check-in</h3><p style="font-size:12px;color:#8b93a1">Day <b id="modalDay">1</b> → <b id="modalReward" style="color:#f5c518">$0.10</b> trade-only</p><div style="background:#0b0e12;border:1px solid #222a35;border-radius:10px;padding:8px;margin:8px 0;display:flex;gap:4px;justify-content:center"><span id="d1">⬜</span><span id="d2">⬜</span><span id="d3">⬜</span><span id="d4">⬜</span><span id="d5">⬜</span><span id="d6">⬜</span><span id="d7">⬜</span></div><button class="btn" onclick="closeDaily()">CLAIM & TRADE →</button><div style="font-size:10px;color:#5a6476;margin-top:6px">Once per day</div></div></div>
 <div id="spinModal" class="modal"><div class="modalBox"><h3>🎡 Daily Spin</h3><div id="wheel" class="wheel"><span>🎯</span></div><p id="spinResult" style="font-size:12px;color:#8b93a1">Once per day $0.10-$2 bonus</p><button class="btn" id="spinBtn" onclick="doSpin()">SPIN NOW →</button><button class="btn-outline" onclick="closeSpin()">Later</button></div></div>
 <div id="dashboardView" style="display:none">
-<div class="dashGrid"><div class="dashCard"><small>Real withdrawable</small><b id="dBal">$0.00</b><small>$5 min $50k max/day</small></div><div class="dashCard"><small>Bonus trade-only</small><b id="dBonus" style="color:#f5c518">$0.00</b></div><div class="dashCard"><small>Equity</small><b id="dEqu">$0.00</b><div class="progressBar"><div id="dEquBar" style="width:50%"></div></div></div><div class="dashCard"><small>P/L</small><b id="dPl">$0.00</b><small id="dTrades">0 trades</small></div></div>
+<div class="dashGrid"><div class="dashCard"><small>Real</small><b id="dBal">$0.00</b><small>$5-$50k/day</small></div><div class="dashCard"><small>Bonus</small><b id="dBonus" style="color:#f5c518">$0.00</b></div><div class="dashCard"><small>Bot P/L Today</small><b id="dBotPl" style="color:#00c076">$0.00</b><small id="dBotTrades">0 bot trades</small></div><div class="dashCard"><small>Equity</small><b id="dEqu">$0.00</b><div class="progressBar"><div id="dEquBar" style="width:50%"></div></div></div></div>
+<div class="botCard"><div style="display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:13px">🤖 Auto Trade Bot</b><div style="font-size:10px;color:#8b93a1">MA20/50 + RSI 30/70 • Auto SL/TP</div></div><div class="botToggle" id="botToggle" onclick="toggleBot()"><div></div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><select id="botStrategy" class="sel" style="width:100%"><option value="ma_rsi">MA Cross + RSI (Safe)</option><option value="scalping">Scalping 1m (Aggressive)</option><option value="trend">Trend Follow</option></select><select id="botLot" class="sel" style="width:100%"><option>0.01</option><option selected>0.05</option><option>0.10</option></select></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><select id="botMaxTrades" class="sel"><option>1</option><option selected>3</option><option>5</option><option>10</option></select><select id="botPair" class="sel"><option>All Pairs</option><option>EUR/USD Only</option><option>GOLD Only</option><option>BTC Only</option></select></div><div id="botLog" style="background:#0b0e12;border:1px solid #222a35;border-radius:8px;padding:8px;margin-top:8px;font-size:10px;height:80px;overflow:auto;color:#8b93a1">Bot OFF - Toggle to start auto trading</div></div>
 <div class="posCard"><b style="font-size:12px">🔥 Streak (once/day)</b><div style="display:flex;justify-content:space-between;font-size:11px;margin-top:6px"><span id="vipLevel">BRONZE</span><span id="nextVip">Deposit $100 for Silver</span></div><div class="progressBar"><div id="vipProg" style="width:10%"></div></div><div style="display:flex;gap:4px;margin-top:8px" id="streakDots"></div><div style="font-size:10px;color:#8b93a1;margin-top:6px">Deposited: <span id="totalDep">$0</span> • Today: <span id="todayBonus" style="color:#f5c518">$0</span></div></div>
-<div class="posCard"><b style="font-size:12px">🤖 Auto SL/TP Status</b><div style="background:#00c07622;border:1px solid #00c07655;border-radius:10px;padding:10px;margin-top:8px;font-size:11px"><div style="display:flex;justify-content:space-between"><span>Auto Close</span><b style="color:#00c076">● ACTIVE</b></div><small style="color:#8b93a1">SL/TP auto closes every second, works for all pairs even when chart on different pair.</small></div><div style="margin-top:10px"><small>Weekly 5 lots → $5 bonus</small><div class="challengeBar"><div id="challengeBar" style="width:0%"></div></div><small id="challengeText" style="font-size:10px;color:#8b93a1">0 / 5 lots</small></div></div>
-<div class="posCard"><b style="font-size:12px">Quick</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn" onclick="goView('wallet','deposit')">💰 Deposit</button><button class="btn" style="background:#00c076;color:#fff" onclick="goView('trade')">📈 Trade PRO</button><button class="btn-outline" onclick="goView('copy')">🏆 Copy</button><button class="btn-outline" onclick="goView('affiliate')">👥 Invite $5</button></div></div>
-<div class="posCard"><b style="font-size:12px">Open Positions (Auto)</b><div id="dashTrades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:10px">No positions</div></div>
+<div class="posCard"><b style="font-size:12px">Quick</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn" onclick="goView('wallet','deposit')">💰 Deposit</button><button class="btn" style="background:#00c076;color:#fff" onclick="goView('trade')">📈 Trade + Bot</button><button class="btn-outline" onclick="goView('copy')">🏆 Copy</button><button class="btn-outline" onclick="toggleBot()">🤖 Bot ON/OFF</button></div></div>
+<div class="posCard"><b style="font-size:12px">Open Positions (Auto + Manual)</b><div id="dashTrades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:10px">No positions</div></div>
 </div>
 <div id="tradeView" style="display:none">
-<div class="priceTicker"><span><span class="liveDot"></span> <b id="pairName">EUR/USD</b> • <span style="color:#00c076" id="autoIndicator">🤖 AUTO ON</span></span><span style="display:flex;gap:10px"><span id="bid" style="color:#ff3b3b">SELL</span><span id="ask" style="color:#00c076">BUY</span></span></div>
+<div class="priceTicker"><span><span class="liveDot"></span> <b id="pairName">EUR/USD</b> • <span id="autoIndicator" style="color:#00c076">🤖 Bot OFF</span> • <span id="botPLTicker" style="color:#f5c518">Bot: $0.00</span></span><span style="display:flex;gap:10px"><span id="bid" style="color:#ff3b3b">SELL</span><span id="ask" style="color:#00c076">BUY</span></span></div>
+<div class="botCard" style="margin:8px 12px;padding:10px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;font-weight:800">🤖 BOT</span><div style="display:flex;gap:8px;align-items:center"><span style="font-size:10px;color:#8b93a1" id="botStatusSmall">OFF</span><div class="botToggle" id="botToggle2" onclick="toggleBot()" style="width:40px;height:22px"><div style="width:18px;height:18px;top:2px"></div></div></div></div><div style="font-size:10px;color:#8b93a1;margin-top:4px" id="botSignal">Waiting...</div></div>
 <div class="pills"><div class="pill on" onclick="loadC('FX:EURUSD',this)">EUR/USD</div><div class="pill" onclick="loadC('FX:GBPUSD',this)">GBP/USD</div><div class="pill" onclick="loadC('OANDA:XAUUSD',this)">GOLD</div><div class="pill" onclick="loadC('BINANCE:BTCUSDT',this)">BTC</div><div class="pill" onclick="loadC('FX_IDC:USDKES',this)">USD/KES</div></div>
-<div style="padding:6px 12px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:#151a21;margin:0 12px;border-radius:10px;border:1px solid #222a35"><span style="font-size:10px;color:#8b93a1">TF:</span><div class="pill on" id="tf-15" onclick="changeTF('15',this)">15m</div><div class="pill" id="tf-1" onclick="changeTF('1',this)">1m</div><div class="pill" id="tf-5" onclick="changeTF('5',this)">5m</div><div class="pill" id="tf-60" onclick="changeTF('60',this)">1h</div><div class="pill" id="tf-240" onclick="changeTF('240',this)">4h</div><div class="pill" id="tf-D" onclick="changeTF('D',this)">1D</div><span style="margin-left:auto;font-size:9px;color:#f5c518">RSI+MA+Vol</span></div>
-<div style="padding:0 12px;display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><select id="lot" class="sel"><option>0.01</option><option>0.05</option><option selected>0.10</option><option>0.50</option><option>1.00</option></select><select id="lev" class="sel"><option>1:100</option><option selected>1:500</option><option>1:1000</option></select><input id="sl" class="sel" type="number" placeholder="SL price" style="width:110px"><input id="tp" class="sel" type="number" placeholder="TP price" style="width:110px"></div>
-<div style="padding:0 12px;font-size:9px;color:#8b93a1">💡 Tip: Set SL/TP → auto closes when hit. Works for all pairs at same time.</div>
-<div class="chartWrap" style="height:520px"><div id="tv" style="height:520px"></div></div>
-<div class="posCard"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">Open (Auto SL/TP)</b><span style="font-size:11px;color:#ff3b3b;cursor:pointer" onclick="closeAll()">CLOSE ALL</span></div><div id="trades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:20px">No positions</div></div>
-<div class="posCard"><b style="font-size:12px">History (with reason)</b><div id="history" style="margin-top:8px;font-size:11px;color:#8b93a1">No history</div></div>
+<div style="padding:6px 12px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:#151a21;margin:0 12px;border-radius:10px;border:1px solid #222a35"><span style="font-size:10px;color:#8b93a1">TF:</span><div class="pill on" id="tf-15" onclick="changeTF('15',this)">15m</div><div class="pill" id="tf-1" onclick="changeTF('1',this)">1m</div><div class="pill" id="tf-5" onclick="changeTF('5',this)">5m</div><div class="pill" id="tf-60" onclick="changeTF('60',this)">1h</div><div class="pill" id="tf-240" onclick="changeTF('240',this)">4h</div><div class="pill" id="tf-D" onclick="changeTF('D',this)">1D</div><select id="chartType" class="sel" onchange="changeChartType(this.value)" style="margin-left:auto"><option value="1">Candles</option><option value="3">Line</option><option value="8">Heikin Ashi</option><option value="2">Bars</option></select></div>
+<div style="padding:0 12px;display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><select id="lot" class="sel"><option>0.01</option><option>0.05</option><option selected>0.10</option><option>0.50</option><option>1.00</option></select><select id="lev" class="sel"><option>1:100</option><option selected>1:500</option><option>1:1000</option></select><input id="sl" class="sel" type="number" placeholder="SL price" style="width:100px"><input id="tp" class="sel" type="number" placeholder="TP price" style="width:100px"><button class="sel" style="background:#00c076;color:#000;font-weight:800" onclick="toggleBot()">🤖 AUTO</button></div>
+<div style="padding:0 12px;font-size:9px;color:#8b93a1">💡 Bot: MA20/50 crossover + RSI 30/70 filter. Manual SL/TP also auto-closes.</div>
+<div class="chartWrap" style="height:620px"><div id="tv" style="height:620px"></div></div>
+<div class="posCard"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">Open (Bot + Manual • Auto SL/TP)</b><span style="font-size:11px;color:#ff3b3b;cursor:pointer" onclick="closeAll()">CLOSE ALL</span></div><div id="trades" style="margin-top:8px;color:#5a6476;font-size:12px;text-align:center;padding:20px">No positions</div></div>
+<div class="posCard"><b style="font-size:12px">History (Manual + Bot)</b><div id="history" style="margin-top:8px;font-size:11px;color:#8b93a1">No history</div></div>
 <div class="actionDock"><button class="sell" onclick="openTrade('SELL')">SELL<br><small id="sellPrice">-</small></button><button class="buy" onclick="openTrade('BUY')">BUY<br><small id="buyPrice">-</small></button></div>
 </div>
 <div id="walletView" style="display:none;padding:12px">
-<div class="bBar"><div class="bCard"><small>Real</small><div class="v">$<span id="bal">0.00</span></div></div><div class="bCard"><small>Bonus</small><div class="v" style="color:#f5c518">$<span id="bonus">0.00</span></div></div><div class="bCard"><small>Equity</small><div class="v">$<span id="equ">0.00</span></div></div><div class="bCard"><small>P/L</small><div class="v" id="fl">$0.00</div></div></div>
+<div class="bBar"><div class="bCard"><small>Real</small><div class="v">$<span id="bal">0.00</span></div></div><div class="bCard"><small>Bonus</small><div class="v" style="color:#f5c518">$<span id="bonus">0.00</span></div></div><div class="bCard"><small>Bot P/L</small><div class="v" style="color:#00c076">$<span id="botBal">0.00</span></div></div><div class="bCard"><small>P/L</small><div class="v" id="fl">$0.00</div></div></div>
 <div class="posCard" id="depositCard"><h3 style="margin:0">💳 Deposit 542542</h3><div class="payBox"><div style="display:flex;justify-content:space-between"><span>Paybill</span><b style="color:#f5c518;font-size:22px">542542</b></div><div style="display:flex;justify-content:space-between"><span>Account</span><b>01710144646150</b></div></div><input id="depAmount" class="inp" placeholder="Amount KES"><input id="depPhone" class="inp" placeholder="M-Pesa phone"><button class="btn" onclick="submitDeposit()">I PAID → Bonus Instant</button><div id="myDeposits" style="margin-top:12px"></div></div>
 <div class="posCard" id="withdrawCard"><h3 style="margin:0">💸 Withdraw $5-$50k/day</h3><div style="font-size:10px;color:#8b93a1;margin:6px 0">REAL only. Bonus trade-only.</div><div id="kycWithdrawLock" style="display:none;background:#ff3b3b22;border:1px solid #ff3b3b55;padding:8px;border-radius:8px;font-size:11px;color:#ff3b3b;margin-bottom:8px">🔒 KYC needed >$20</div><div style="background:#0b0e12;border:1px solid #222a35;border-radius:8px;padding:8px;font-size:11px;margin-bottom:8px">Today: $<span id="todayWithdrawn">0</span> / $50k</div><input id="withAmount" class="inp" placeholder="Amount USD 5-50000"><input id="withPhone" class="inp" placeholder="M-Pesa Phone"><button class="btn" style="background:#00c076;color:#fff" onclick="submitWithdraw()">REQUEST WITHDRAW</button><div id="myWithdraws" style="margin-top:12px"></div></div>
 <div class="posCard" id="txCard"><h3 style="margin:0">📜 Transactions</h3><div id="allTx"></div></div>
@@ -167,7 +173,7 @@ const SUPA_URL="https://bvebgevqlquqpidtzdij.supabase.co";
 const SUPA_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2ZWJnZXZxbHF1cXBpZHR6ZGlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgzNjA0MzUsImV4cCI6MjEwMzkzNjQzNX0.Y-1-WcD_Z37Frt-YBV1R7Yi2gPKThc_NLoCe3kSj3gQ";
 const supa=supabase.createClient(SUPA_URL,SUPA_KEY);
 const ADMIN_EMAIL="kiplaaevoo@gmail.com";
-let bal=0,bonus=0,demoBal=10000,positions=[],cur='FX:EURUSD',currentUser=null,account='real',liveBid=1.16185,liveAsk=1.16195,myRefCode='',referralFromUrl=null,totalDeposits=0,streak=0,cashback=0,kycStatus='none',dailyStreak=0,todayWithdrawn=0,chartInterval='15',livePrices={};
+let bal=0,bonus=0,demoBal=10000,positions=[],cur='FX:EURUSD',currentUser=null,account='real',liveBid=1.16185,liveAsk=1.16195,myRefCode='',referralFromUrl=null,totalDeposits=0,streak=0,cashback=0,kycStatus='none',dailyStreak=0,todayWithdrawn=0,chartInterval='15',livePrices={},botEnabled=false,botPL=0,botTrades=0,priceHistory={},botInterval=null;
 const urlParams=new URLSearchParams(window.location.search);
 if(urlParams.get('ref')){referralFromUrl=urlParams.get('ref'); try{localStorage.setItem('fx_ref',referralFromUrl);}catch(e){}}
 let obStep=1; let obData={email:'',password:'',firstName:'',lastName:'',refCode:''};
@@ -231,7 +237,7 @@ document.getElementById('authBody').innerHTML=`<div class="bigIcon">👤</div><d
 }
 else if(obStep==4){
 updateProgress(100,'Done');
-document.getElementById('authBody').innerHTML=`<div style="text-align:center"><div style="font-size:56px">🎉</div><div class="stepTitle">You're in!</div><div class="stepDesc">Welcome ${obData.firstName}! $2 bonus trade-only.</div><button class="btn" onclick="finishOnboarding()">Go Dashboard →</button></div>`;
+document.getElementById('authBody').innerHTML=`<div style="text-align:center"><div style="font-size:56px">🎉</div><div class="stepTitle">You're in!</div><div class="stepDesc">Welcome ${obData.firstName}! $2 bonus + 🤖 Bot ready.</div><button class="btn" onclick="finishOnboarding()">Go Dashboard →</button></div>`;
 }
 }
 async function doSignup(){
@@ -272,7 +278,7 @@ obStep=4; renderSignup(); localStorage.removeItem('fx_easy_ob');
 function finishOnboarding(){document.getElementById('auth').style.display='none'; location.reload();}
 function showLogin(){
 updateProgress(25,'Sign In Direct');
-document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔑</div><div class="stepTitle">Sign In Direct</div><div class="stepDesc">Direct password login ONLY. No magic link for sign in.</div><input id="liEmail" class="inp" placeholder="Email"><input id="liPass" type="password" class="inp" placeholder="Password"><button class="btn" id="liBtn" onclick="doDirectLogin()">Sign In →</button><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><button class="btn-outline" onclick="realGoogle()">🔵 Google</button><button class="btn-outline" onclick="realFacebook()">🔵 Facebook</button></div><div style="display:flex;justify-content:space-between;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showForgotPass()">Forgot Password?</span><span style="color:#8b93a1;cursor:pointer" onclick="showForgotEmail()">Forgot Email?</span></div><div style="text-align:center;margin-top:12px;font-size:12px">No account? <span style="color:#f5c518;font-weight:800;cursor:pointer" onclick="obStep=1;renderSignup()">Sign Up (Magic)</span></div><p id="liErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p>`;
+document.getElementById('authBody').innerHTML=`<div class="bigIcon">🔑</div><div class="stepTitle">Sign In Direct</div><div class="stepDesc">Direct password login ONLY.</div><input id="liEmail" class="inp" placeholder="Email"><input id="liPass" type="password" class="inp" placeholder="Password"><button class="btn" id="liBtn" onclick="doDirectLogin()">Sign In →</button><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><button class="btn-outline" onclick="realGoogle()">🔵 Google</button><button class="btn-outline" onclick="realFacebook()">🔵 Facebook</button></div><div style="display:flex;justify-content:space-between;margin-top:12px;font-size:12px"><span style="color:#f5c518;cursor:pointer" onclick="showForgotPass()">Forgot Password?</span><span style="color:#8b93a1;cursor:pointer" onclick="showForgotEmail()">Forgot Email?</span></div><div style="text-align:center;margin-top:12px;font-size:12px">No account? <span style="color:#f5c518;font-weight:800;cursor:pointer" onclick="obStep=1;renderSignup()">Sign Up (Magic)</span></div><p id="liErr" style="color:#ff6b6b;font-size:12px;text-align:center;margin-top:8px"></p>`;
 }
 async function doDirectLogin(){
 let em=document.getElementById('liEmail').value.trim();
@@ -309,7 +315,7 @@ let {data}=await supa.from('profiles').select('email,phone').eq('phone',ph).limi
 if(data&&data.length){msg.style.color='#00c076'; msg.innerText='✅ Your email: '+data[0].email;}
 else{msg.style.color='#ff6b6b'; msg.innerText='Not found. WhatsApp +254789338183';}
 }
-async function logout(){try{localStorage.removeItem('fx_easy_ob');}catch(e){} await supa.auth.signOut(); location.reload();}
+async function logout(){botEnabled=false; try{localStorage.removeItem('fx_easy_ob');}catch(e){} await supa.auth.signOut(); location.reload();}
 supa.auth.onAuthStateChange(async (ev,sess)=>{
 if(ev==='PASSWORD_RECOVERY'){showNewPasswordForm(); return;}
 if(sess && sess.user){
@@ -331,7 +337,7 @@ let {data}=await supa.from('profiles').select('*').eq('id',sess.user.id).single(
 if(!data){let code=sess.user.email.split('@')[0].slice(0,4).toUpperCase()+Math.floor(100+Math.random()*900); let ref=localStorage.getItem('fx_ref')||obData.refCode||null; await supa.from('profiles').insert({id:sess.user.id,email:sess.user.email,balance:0,bonus:2,demo_balance:10000,referral_code:code,referred_by:ref,total_deposits:0,first_name:obData.firstName||null,last_name:obData.lastName||null,region:'Kenya'}); let {data:nd}=await supa.from('profiles').select('*').eq('id',sess.user.id).single(); data=nd;}
 if(data){bal=data.balance||0;bonus=data.bonus||0;demoBal=data.demo_balance||10000;myRefCode=data.referral_code||'';totalDeposits=data.total_deposits||0;streak=data.streak_count||0;cashback=data.cashback||0;if(!myRefCode){myRefCode=currentUser.email.split('@')[0].slice(0,4).toUpperCase()+Math.floor(100+Math.random()*900);await supa.from('profiles').update({referral_code:myRefCode}).eq('id',sess.user.id);}let se=document.getElementById('sideEmail'); if(se) se.innerText=data.email;let sb=document.getElementById('sideBal'); if(sb) sb.innerText='$'+bal.toFixed(2);let sbo=document.getElementById('sideBonus'); if(sbo) sbo.innerText='B $'+bonus.toFixed(2);updateVip();let sc=document.getElementById('streakCount'); if(sc){document.getElementById('streakBar').style.display='flex'; sc.innerText=streak;}let ct=document.getElementById('cashbackTotal'); if(ct) ct.innerText=cashback.toFixed(2);let sSt=document.getElementById('sideStreak'); if(sSt) sSt.innerText=streak;let sCa=document.getElementById('sideCash'); if(sCa) sCa.innerText=cashback.toFixed(2);}
 let link=window.location.origin+window.location.pathname+'?ref='+myRefCode;let rl=document.getElementById('refLink'); if(rl) rl.value=link;
-upd();loadC(cur,null,chartInterval);loadMyDeposits();loadMyWithdraws();loadHistory();loadOpenTrades();loadLeaderboard();loadCopying();loadSignals();loadChat();loadAffList();loadKycStatus();loadProfile();startLivePrice();startAutoRefresh();goView('dashboard');checkDailyOnce();loadWithdrawStats();loadChallenge();
+upd();loadC(cur,null,chartInterval);loadMyDeposits();loadMyWithdraws();loadHistory();loadOpenTrades();loadLeaderboard();loadCopying();loadSignals();loadChat();loadAffList();loadKycStatus();loadProfile();startLivePrice();startAutoRefresh();goView('dashboard');checkDailyOnce();loadWithdrawStats();loadChallenge();loadBotState();
 try{localStorage.removeItem('fx_easy_ob');}catch(e){}
 }else{
 if(!isRecoveryFlow){
@@ -381,9 +387,11 @@ async function doSpin(){let btn=document.getElementById('spinBtn'); if(btn){btn.
 function getMaxLot(){if(totalDeposits>=2000) return 50;if(totalDeposits>=500) return 10;if(totalDeposits>=100) return 2;return 0.5;}
 function setAccount(t){account=t;let rb=document.getElementById('realBtn'); let db=document.getElementById('demoBtn'); if(rb) rb.classList.toggle('on',t=='real'); if(db) db.classList.toggle('on',t=='demo');loadOpenTrades();upd();}
 function changeTF(tf,el){if(el){document.querySelectorAll('[id^=tf-]').forEach(x=>x.classList.remove('on'));el.classList.add('on');} chartInterval=tf; loadC(cur,null,tf);}
-function loadC(s,el,interval){
+function changeChartType(type){loadC(cur,null,chartInterval,type);}
+function loadC(s,el,interval,chartType){
 if(s) cur=s;
 if(interval) chartInterval=interval;
+let cType=chartType||document.getElementById('chartType')?.value||'1';
 if(el &&!el.id.startsWith('tf-')){document.querySelectorAll('.pills.pill').forEach(x=>{if(!x.id||!x.id.startsWith('tf-')) x.classList.remove('on');}); el.classList.add('on');}
 let pn=document.getElementById('pairName'); if(pn) pn.innerText=cur.split(':')[1];
 let tvd=document.getElementById('tv'); if(tvd) tvd.innerHTML='';
@@ -394,19 +402,22 @@ autosize:true,
 theme:'dark',
 interval:chartInterval,
 timezone:'Africa/Nairobi',
-style:'1',
+style:cType,
 locale:'en',
 toolbar_bg:'#0b0e12',
 enable_publishing:false,
 hide_side_toolbar:false,
 allow_symbol_change:true,
-studies:['RSI@tv-basicstudies','MASimple@tv-basicstudies','Volume@tv-basicstudies'],
+studies:['RSI@tv-basicstudies','MASimple@tv-basicstudies','Volume@tv-basicstudies','MACD@tv-basicstudies','BB@tv-basicstudies'],
 show_popup_button:true,
 popup_width:'1000',
 popup_height:'650',
 details:true,
 hotlist:true,
-calendar:true
+calendar:true,
+withdateranges:true,
+hide_volume:false,
+save_image:false
 });
 }
 function getSpread(p){if(p.includes('XAU')) return 0.30;if(p.includes('BTC')) return 20;if(p.includes('USDKES')) return 0.05;if(p.includes('EUR')) return 0.00015;if(p.includes('GBP')) return 0.00018;return 0.00015;}
@@ -420,12 +431,16 @@ livePrices['BTCUSDT']={bid:43200,ask:43220};
 livePrices['USD/KES']={bid:129.50,ask:129.60};
 livePrices['EURUSD']={bid:1.16185,ask:1.16195};
 livePrices['GBPUSD']={bid:1.27450,ask:1.27465};
+Object.keys(livePrices).forEach(k=>{priceHistory[k]=[]; for(let i=0;i<50;i++){priceHistory[k].push(livePrices[k].bid + (Math.random()-0.5)*0.001);}});
 setInterval(()=>{
 Object.keys(livePrices).forEach(pair=>{
 let vol=0.0004; if(pair.includes('XAU')) vol=0.4; if(pair.includes('BTC')) vol=8; if(pair.includes('KES')) vol=0.05;
 let c=(Math.random()-0.5)*vol;
 livePrices[pair].bid+=c;
 livePrices[pair].ask=livePrices[pair].bid+getSpread(pair);
+if(!priceHistory[pair]) priceHistory[pair]=[];
+priceHistory[pair].push(livePrices[pair].bid);
+if(priceHistory[pair].length>100) priceHistory[pair].shift();
 });
 let ck=cur.split(':')[1];
 let map={'EURUSD':'EUR/USD','GBPUSD':'GBP/USD','XAUUSD':'XAUUSD','BTCUSDT':'BTCUSDT','USDKES':'USD/KES'};
@@ -447,6 +462,7 @@ render();
 }
 },700);
 startAutoSLTP();
+startBotEngine();
 }
 function startAutoSLTP(){
 setInterval(async()=>{
@@ -456,11 +472,11 @@ let pd=livePrices[p.pair];
 if(!pd) continue;
 let currPrice=p.type=='BUY'?pd.bid:pd.ask;
 let hit=false; let reason='';
-if(p.sl!==null && p.sl!==undefined){
+if(p.sl!==null && p.sl!==undefined && p.sl!==''){
 if(p.type=='BUY' && currPrice <= Number(p.sl)){hit=true; reason='SL Hit';}
 if(p.type=='SELL' && currPrice >= Number(p.sl)){hit=true; reason='SL Hit';}
 }
-if(!hit && p.tp!==null && p.tp!==undefined){
+if(!hit && p.tp!==null && p.tp!==undefined && p.tp!==''){
 if(p.type=='BUY' && currPrice >= Number(p.tp)){hit=true; reason='TP Hit';}
 if(p.type=='SELL' && currPrice <= Number(p.tp)){hit=true; reason='TP Hit';}
 }
@@ -471,23 +487,156 @@ await closePosAuto(p.id,reason,currPrice);
 }
 },1000);
 }
+function calcSMA(arr, period){
+if(arr.length<period) return null;
+let sum=0; for(let i=arr.length-period;i<arr.length;i++) sum+=arr[i];
+return sum/period;
+}
+function calcRSI(arr, period=14){
+if(arr.length<period+1) return 50;
+let gains=0, losses=0;
+for(let i=arr.length-period;i<arr.length;i++){
+let diff=arr[i]-arr[i-1];
+if(diff>=0) gains+=diff; else losses-=diff;
+}
+if(losses==0) return 100;
+let rs=gains/losses;
+return 100 - (100/(1+rs));
+}
+function getBotSignal(pair){
+let hist=priceHistory[pair];
+if(!hist||hist.length<50) return null;
+let sma20=calcSMA(hist,20);
+let sma50=calcSMA(hist,50);
+let rsi=calcRSI(hist,14);
+let prevSma20=calcSMA(hist.slice(0,-1),20);
+let prevSma50=calcSMA(hist.slice(0,-1),50);
+let strategy=document.getElementById('botStrategy')?.value||'ma_rsi';
+if(strategy=='ma_rsi'){
+if(prevSma20 && prevSma50 && sma20 && sma50){
+if(prevSma20<=prevSma50 && sma20>sma50 && rsi<70 && rsi>30){
+return {type:'BUY', reason:`MA Cross UP + RSI ${rsi.toFixed(0)}`, rsi, sma20, sma50};
+}
+if(prevSma20>=prevSma50 && sma20<sma50 && rsi<70 && rsi>30){
+return {type:'SELL', reason:`MA Cross DOWN + RSI ${rsi.toFixed(0)}`, rsi, sma20, sma50};
+}
+}
+}
+else if(strategy=='scalping'){
+let last=hist[hist.length-1];
+let prev=hist[hist.length-2];
+if(last>prev && rsi<75){return {type:'BUY', reason:`Scalp UP RSI ${rsi.toFixed(0)}`, rsi};}
+if(last<prev && rsi>25){return {type:'SELL', reason:`Scalp DOWN RSI ${rsi.toFixed(0)}`, rsi};}
+}
+else if(strategy=='trend'){
+if(sma20 && sma50){
+if(sma20>sma50 && rsi>50){return {type:'BUY', reason:`Trend UP MA ${sma20.toFixed(5)}>${sma50.toFixed(5)}`, rsi};}
+if(sma20<sma50 && rsi<50){return {type:'SELL', reason:`Trend DOWN`, rsi};}
+}
+}
+return null;
+}
+function toggleBot(){
+botEnabled=!botEnabled;
+let t1=document.getElementById('botToggle');
+let t2=document.getElementById('botToggle2');
+if(t1) t1.classList.toggle('on', botEnabled);
+if(t2) t2.classList.toggle('on', botEnabled);
+let st=document.getElementById('botStatusText');
+let stSmall=document.getElementById('botStatusSmall');
+let sideSt=document.getElementById('sideBotStatus');
+let autoInd=document.getElementById('autoIndicator');
+let log=document.getElementById('botLog');
+if(botEnabled){
+if(st) st.innerText='ON 🤖';
+if(stSmall) stSmall.innerText='ON • Trading';
+if(stSmall) stSmall.style.color='#00c076';
+if(sideSt){sideSt.innerText='ON 🤖'; sideSt.style.color='#00c076';}
+if(autoInd){autoInd.innerText='🤖 BOT ON'; autoInd.style.color='#00c076';}
+if(log){log.innerHTML+='<div style="color:#00c076">['+new Date().toLocaleTimeString()+'] Bot STARTED - Strategy: '+(document.getElementById('botStrategy')?.value||'ma_rsi')+'</div>'; log.scrollTop=log.scrollHeight;}
+if(Notification.permission=='granted'){new Notification('🤖 Bot Started', {body:'Auto trading active'});}
+}else{
+if(st) st.innerText='OFF';
+if(stSmall){stSmall.innerText='OFF'; stSmall.style.color='#8b93a1';}
+if(sideSt){sideSt.innerText='OFF'; sideSt.style.color='#8b93a1';}
+if(autoInd){autoInd.innerText='🤖 Bot OFF'; autoInd.style.color='#8b93a1';}
+if(log){log.innerHTML+='<div style="color:#ff3b3b">['+new Date().toLocaleTimeString()+'] Bot STOPPED</div>'; log.scrollTop=log.scrollHeight;}
+}
+localStorage.setItem('fx_bot_enabled_'+(currentUser?.id||'guest'), botEnabled?'1':'0');
+}
+function loadBotState(){
+try{
+let saved=localStorage.getItem('fx_bot_enabled_'+(currentUser?.id||'guest'));
+if(saved=='1'){botEnabled=false; toggleBot();}
+}catch(e){}
+}
+function startBotEngine(){
+setInterval(async()=>{
+if(!botEnabled||!currentUser) return;
+let maxTrades=parseInt(document.getElementById('botMaxTrades')?.value||'3');
+if(positions.length>=maxTrades){
+let sigEl=document.getElementById('botSignal'); if(sigEl) sigEl.innerText='Max trades ('+maxTrades+') reached - waiting for close';
+return;
+}
+let botPairSel=document.getElementById('botPair')?.value||'All Pairs';
+let pairsToCheck=[];
+if(botPairSel=='All Pairs'){pairsToCheck=['EUR/USD','GBP/USD','XAUUSD','BTCUSDT'];}
+else if(botPairSel=='EUR/USD Only'){pairsToCheck=['EUR/USD'];}
+else if(botPairSel=='GOLD Only'){pairsToCheck=['XAUUSD'];}
+else if(botPairSel=='BTC Only'){pairsToCheck=['BTCUSDT'];}
+for(let pair of pairsToCheck){
+let signal=getBotSignal(pair);
+if(signal){
+let sigEl=document.getElementById('botSignal'); if(sigEl) sigEl.innerText=pair+': '+signal.reason+' → '+signal.type;
+let log=document.getElementById('botLog');
+let lot=parseFloat(document.getElementById('botLot')?.value||'0.05');
+let maxLot=getMaxLot(); if(lot>maxLot) lot=maxLot;
+let existingSamePair=positions.filter(p=>p.pair==pair.replace('/','').replace('EUR/USD','EURUSD').replace('GBP/USD','GBPUSD')).length;
+if(existingSamePair>=1) continue;
+let entry=signal.type=='BUY'? (livePrices[pair]?.ask||liveAsk) : (livePrices[pair]?.bid||liveBid);
+let sl=null, tp=null;
+let atr=0.0005; if(pair.includes('XAU')) atr=2; if(pair.includes('BTC')) atr=100;
+if(signal.type=='BUY'){sl=entry-atr*3; tp=entry+atr*5;}
+else{sl=entry+atr*3; tp=entry-atr*5;}
+await openBotTrade(pair, signal.type, lot, entry, sl, tp, signal.reason);
+break;
+}
+}
+},5000);
+}
+async function openBotTrade(pair, type, lot, entry, sl, tp, reason){
+let pairKey=pair.replace('/','').replace('EUR/USD','EURUSD').replace('GBP/USD','GBPUSD');
+if(pair=='EUR/USD') pairKey='EURUSD';
+if(pair=='GBP/USD') pairKey='GBPUSD';
+let {data,error}=await supa.from('open_trades').insert({user_id:currentUser.id,pair:pairKey,type,lot,entry,sl,tp,account_type:account,is_bot:true,bot_reason:reason}).select().single();
+if(error){console.log('Bot trade error', error); return;}
+positions.push({id:data.id,type,pair:pairKey,lot,entry,sl,tp,pl:0,is_bot:true});
+render();
+let log=document.getElementById('botLog');
+if(log){log.innerHTML+='<div style="color:#00c076">['+new Date().toLocaleTimeString()+'] 🤖 '+type+' '+pair+' '+lot+' lot @ '+entry.toFixed(5)+' | '+reason+'</div>'; log.scrollTop=log.scrollHeight;}
+let ticker=document.getElementById('botPLTicker'); if(ticker) ticker.innerText='Bot: '+botTrades+' trades';
+}
 async function closePosAuto(id,reason,price){
 let pos=positions.find(p=>p.id==id); if(!pos) return;
 let profit=pos.pl;
+if(pos.is_bot){botPL+=profit; botTrades++;}
 if(account=='real'){
 if(profit>=0){bal+=profit;}else{let loss=Math.abs(profit); if(bonus>=loss) bonus-=loss; else{let rem=loss-bonus; bonus=0; bal=Math.max(0,bal-rem);}}
 cashback+=Math.abs(pos.lot)*0.05*2; bal+=Math.abs(pos.lot)*0.05*2;
 await supa.from('profiles').update({balance:bal,bonus:bonus,cashback:cashback}).eq('id',currentUser.id);
-await supa.from('closed_trades').insert({user_id:currentUser.id,pair:pos.pair,type:pos.type,lot:pos.lot,profit:profit,close_reason:reason});
+await supa.from('closed_trades').insert({user_id:currentUser.id,pair:pos.pair,type:pos.type,lot:pos.lot,profit:profit,close_reason:reason,is_bot:pos.is_bot||false});
 }else{demoBal+=profit; await supa.from('profiles').update({demo_balance:demoBal}).eq('id',currentUser.id);}
 await supa.from('open_trades').delete().eq('id',id);
 positions=positions.filter(p=>p.id!=id);
 render(); loadHistory(); loadChallenge();
-try{if(Notification.permission=='granted'){new Notification('FX Kenya: '+reason+' '+pos.pair,{body:pos.type+' '+pos.lot+' closed $'+profit.toFixed(2)});}}catch(e){}
-let ai=document.getElementById('autoIndicator'); if(ai){ai.innerText='🤖 '+reason+' '+pos.pair+' $'+profit.toFixed(2); ai.style.color=profit>=0?'#00c076':'#ff3b3b'; setTimeout(()=>{ai.innerText='🤖 AUTO ON'; ai.style.color='#00c076';},4000);}
+let dBotPl=document.getElementById('dBotPl'); if(dBotPl) dBotPl.innerText='$'+botPL.toFixed(2);
+let dBotTr=document.getElementById('dBotTrades'); if(dBotTr) dBotTr.innerText=botTrades+' bot trades';
+let botBal=document.getElementById('botBal'); if(botBal) botBal.innerText=botPL.toFixed(2);
+let ai=document.getElementById('autoIndicator'); if(ai){ai.innerText='🤖 '+reason+' '+pos.pair+' $'+profit.toFixed(2); ai.style.color=profit>=0?'#00c076':'#ff3b3b'; setTimeout(()=>{if(botEnabled){ai.innerText='🤖 BOT ON'; ai.style.color='#00c076';}else{ai.innerText='🤖 Bot OFF';}},4000);}
+let log=document.getElementById('botLog'); if(log && pos.is_bot){log.innerHTML+='<div style="color:'+(profit>=0?'#00c076':'#ff3b3b')+'">['+new Date().toLocaleTimeString()+'] Closed '+pos.pair+' '+reason+' $'+profit.toFixed(2)+'</div>'; log.scrollTop=log.scrollHeight;}
 }
 function startAutoRefresh(){setInterval(async()=>{if(!currentUser) return;let {data}=await supa.from('profiles').select('balance,bonus,demo_balance,total_deposits,cashback').eq('id',currentUser.id).single();if(data){bal=data.balance||0;bonus=data.bonus||0;demoBal=data.demo_balance||10000;totalDeposits=data.total_deposits||0;cashback=data.cashback||0;updateVip();upd();}},5000);}
-async function loadOpenTrades(){if(!currentUser) return;let {data}=await supa.from('open_trades').select('*').eq('user_id',currentUser.id).eq('account_type',account).order('created_at',{ascending:true});positions=(data||[]).map(t=>({id:t.id,type:t.type,pair:t.pair,lot:t.lot,entry:t.entry,sl:t.sl,tp:t.tp,pl:0}));render();}
+async function loadOpenTrades(){if(!currentUser) return;let {data}=await supa.from('open_trades').select('*').eq('user_id',currentUser.id).eq('account_type',account).order('created_at',{ascending:true});positions=(data||[]).map(t=>({id:t.id,type:t.type,pair:t.pair,lot:t.lot,entry:t.entry,sl:t.sl,tp:t.tp,pl:0,is_bot:t.is_bot||false}));render();}
 async function openTrade(type){
 let total=account=='demo'?demoBal:bal+bonus;
 if(total<=1) return alert('Deposit first! Wallet → Deposit');
@@ -500,12 +649,6 @@ let sl=slVal?parseFloat(slVal):null;
 let tp=tpVal?parseFloat(tpVal):null;
 if(sl && isNaN(sl)) sl=null;
 if(tp && isNaN(tp)) tp=null;
-if(sl && tp){
-if(type=='BUY' && sl>=entry){return alert('BUY SL must be below entry '+entry.toFixed(5));}
-if(type=='BUY' && tp<=entry){return alert('BUY TP must be above entry '+entry.toFixed(5));}
-if(type=='SELL' && sl<=entry){return alert('SELL SL must be above entry '+entry.toFixed(5));}
-if(type=='SELL' && tp>=entry){return alert('SELL TP must be below entry '+entry.toFixed(5));}
-}
 let pairKey=cur.split(':')[1];
 let {data,error}=await supa.from('open_trades').insert({user_id:currentUser.id,pair:pairKey,type,lot,entry,sl,tp,account_type:account}).select().single();
 if(error) return alert(error.message);
@@ -513,40 +656,20 @@ positions.push({id:data.id,type,pair:data.pair,lot,entry,sl,tp,pl:0});
 render(); loadChallenge();
 }
 function render(){
-let h=''; if(!positions.length){h='No positions - set SL/TP for auto close';}else{
+let h=''; if(!positions.length){h='No positions - bot will auto trade when ON';}else{
 positions.forEach(p=>{
 let col=p.pl>=0?'#00c076':'#ff3b3b';
 let slTxt=p.sl?' SL:'+Number(p.sl).toFixed(5):'';
 let tpTxt=p.tp?' TP:'+Number(p.tp).toFixed(5):'';
-h+=`<div class="row"><div><b style="color:${p.type=='BUY'?'#00c076':'#ff3b3b'}">${p.type}</b> ${p.pair} ${p.lot} lot<br><small>Entry ${Number(p.entry).toFixed(5)}${slTxt}${tpTxt}</small><br><small style="color:${col};font-weight:800">$${p.pl.toFixed(2)} ${p.pl>=0?'▲':'▼'} Auto</small></div><button onclick="closePos('${p.id}')" style="background:#fff;color:#000;border:0;padding:6px 12px;border-radius:8px;font-weight:700">Close</button></div>`;
+let botTag=p.is_bot?'<span style="background:#00c076;color:#000;font-size:8px;padding:2px 4px;border-radius:4px;margin-right:4px">BOT</span>':'';
+h+=`<div class="row"><div>${botTag}<b style="color:${p.type=='BUY'?'#00c076':'#ff3b3b'}">${p.type}</b> ${p.pair} ${p.lot} lot<br><small>Entry ${Number(p.entry).toFixed(5)}${slTxt}${tpTxt}</small><br><small style="color:${col};font-weight:800">$${p.pl.toFixed(2)} ${p.pl>=0?'▲':'▼'}</small></div><button onclick="closePos('${p.id}')" style="background:#fff;color:#000;border:0;padding:6px 12px;border-radius:8px;font-weight:700">Close</button></div>`;
 });
 }
 let tr=document.getElementById('trades'); if(tr) tr.innerHTML=h;
 let dt=document.getElementById('dashTrades'); if(dt) dt.innerHTML=h;
 upd();
 }
-async function closePos(id){let pos=positions.find(p=>p.id==id);if(!pos) return;let profit=pos.pl;if(account=='real'){if(profit>=0){bal+=profit;}else{let loss=Math.abs(profit);if(bonus>=loss) bonus-=loss;else{let rem=loss-bonus;bonus=0;bal=Math.max(0,bal-rem);}}cashback+=Math.abs(pos.lot)*0.05*2;bal+=Math.abs(pos.lot)*0.05*2;await supa.from('profiles').update({balance:bal,bonus:bonus,cashback:cashback}).eq('id',currentUser.id);await supa.from('closed_trades').insert({user_id:currentUser.id,pair:pos.pair,type:pos.type,lot:pos.lot,profit:profit,close_reason:'Manual'});}else{demoBal+=profit;await supa.from('profiles').update({demo_balance:demoBal}).eq('id',currentUser.id);}await supa.from('open_trades').delete().eq('id',id);positions=positions.filter(p=>p.id!=id);render();loadHistory();loadChallenge();}
-async function closeAll(){for(let p of [...positions]) await closePos(p.id);}
-function upd(){
-let f=positions.reduce((s,p)=>s+p.pl,0);
-let curBal=account=='demo'?demoBal:bal;
-let curBonus=account=='demo'?0:bonus;
-let equity=curBal+curBonus+f;
-let used=positions.reduce((s,p)=>s+getMarginLot(p.lot),0);
-let level=used>0?(equity/used*100):0;
-let dBal=document.getElementById('dBal'); if(dBal) dBal.innerText='$'+curBal.toFixed(2);
-let dBo=document.getElementById('dBonus'); if(dBo) dBo.innerText='$'+curBonus.toFixed(2);
-let dEq=document.getElementById('dEqu'); if(dEq) dEq.innerText='$'+equity.toFixed(2);
-let dPl=document.getElementById('dPl'); if(dPl){dPl.innerText=(f>=0?'+$':'-$')+Math.abs(f).toFixed(2); dPl.style.color=f>=0?'#00c076':'#ff3b3b';}
-let dTr=document.getElementById('dTrades'); if(dTr) dTr.innerText=positions.length+' trades';
-let balEl=document.getElementById('bal'); if(balEl) balEl.innerText=curBal.toFixed(2);
-let bo=document.getElementById('bonus'); if(bo) bo.innerText=curBonus.toFixed(2);
-let eq=document.getElementById('equ'); if(eq) eq.innerText=equity.toFixed(2);
-let fl=document.getElementById('fl'); if(fl){fl.innerText=(f>=0?'+$':'-$')+Math.abs(f).toFixed(2); fl.style.color=f>=0?'#00c076':'#ff3b3b';}
-let eb=document.getElementById('dEquBar'); if(eb) eb.style.width=Math.min(100,level)+'%';
-let seBal=document.getElementById('sideBal'); if(seBal) seBal.innerText='$'+bal.toFixed(2);
-let seBo=document.getElementById('sideBonus'); if(seBo) seBo.innerText='B $'+bonus.toFixed(2);
-}
+async function closePos(id){let pos=positions.find(p=>p.id==id);if(!pos) return;let profit=pos.pl;if(pos.is_bot){botPL+=profit; botTrades++;}if(account=='real'){if(profit>=0){bal+=profit;}else{let loss=Math.abs(profit);if(bonus>=loss) bonus-=loss;else{let rem=loss-bonus;bonus=0;bal=Math.max(0,bal-rem);}}cashback+=Math.abs(pos.lot)*0.05*2;bal+=Math.abs(pos.lot)*0.05*2;await supa.from('profiles').update({balance:bal,bonus:bonus,cashback:cashback}).eq('id',currentUser.id);await supa.from('closed_trades').ins
 async function loadWithdrawStats(){if(!currentUser) return;let today=new Date().toISOString().split('T')[0];let {data}=await supa.from('withdrawals').select('amount').eq('user_id',currentUser.id).eq('status','approved').gte('created_at',today+'T00:00:00');let sum=0; if(data) data.forEach(d=>sum+=Number(d.amount)||0);let el=document.getElementById('todayWithdrawn'); if(el) el.innerText=sum.toFixed(2);let pend=await supa.from('withdrawals').select('amount').eq('user_id',currentUser.id).eq('status','pending').gte('created_at',today+'T00:00:00');let pendSum=0; if(pend.data) pend.data.forEach(d=>pendSum+=Number(d.amount)||0); todayWithdrawn=sum+pendSum; if(el) el.innerText=todayWithdrawn.toFixed(2);}
 async function loadChallenge(){if(!currentUser) return;let weekAgo=new Date(); weekAgo.setDate(weekAgo.getDate()-7);let {data}=await supa.from('closed_trades').select('lot').eq('user_id',currentUser.id).gte('created_at',weekAgo.toISOString());let lots=0; if(data) data.forEach(d=>lots+=Number(d.lot)||0);let pct=Math.min(100,(lots/5)*100);let bar=document.getElementById('challengeBar'); if(bar) bar.style.width=pct+'%';let txt=document.getElementById('challengeText'); if(txt) txt.innerText=lots.toFixed(2)+' / 5 lots';}
 async function loadProfile(){if(!currentUser) return;let {data}=await supa.from('profiles').select('*').eq('id',currentUser.id).single();if(!data) return;let f=document.getElementById('profFirst'); if(f) f.value=data.first_name||'';let l=document.getElementById('profLast'); if(l) l.value=data.last_name||'';let a=document.getElementById('profAddress'); if(a) a.value=data.address||'';let ph=document.getElementById('profPhone'); if(ph) ph.value=data.phone||'';let em=document.getElementById('profEmail'); if(em) em.value=data.email||'';}
@@ -559,18 +682,18 @@ async function loadMyDeposits(){let {data}=await supa.from('deposits').select('*
 async function submitWithdraw(){let amt=parseFloat(document.getElementById('withAmount').value),phone=document.getElementById('withPhone').value.trim();if(!amt||isNaN(amt)) return alert('Enter amount');if(amt<5) return alert('Min $5');if(amt>50000) return alert('Max $50k/day');if(amt>bal) return alert('Only $'+bal.toFixed(2)+' real. Bonus $'+bonus.toFixed(2)+' trade-only');if((todayWithdrawn+amt)>50000) return alert('Daily limit $50k exceeded. Today: $'+todayWithdrawn.toFixed(2));if(amt>20&&kycStatus!=='approved') return alert('🔒 Verify KYC to withdraw >$20');await supa.from('withdrawals').insert({user_id:currentUser.id,email:currentUser.email,amount:amt,phone,status:'pending'});alert('✅ Withdraw $'+amt+' requested');loadMyWithdraws();loadAllTx();loadWithdrawStats();}
 async function loadMyWithdraws(){let {data}=await supa.from('withdrawals').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(5);if(!data) return;let h='<b style="font-size:11px">Recent Withdraws</b><br>';data.forEach(d=>{h+=`<div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #222"><span>$${d.amount} → ${d.phone}</span><span style="color:${d.status=='approved'?'#00c076':'#f5c518'}">${d.status}</span></div>`});let el=document.getElementById('myWithdraws'); if(el) el.innerHTML=h;}
 async function loadAllTx(){let {data:d}=await supa.from('deposits').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(20);let {data:w}=await supa.from('withdrawals').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(20);let h='';if(d) d.forEach(x=>{h+=`<div style="display:flex;justify-content:space-between;font-size:11px;padding:6px 0;border-bottom:1px solid #222"><span>💰 Deposit KES ${x.amount}</span><span style="color:${x.status=='approved'?'#00c076':'#f5c518'}">${x.status}</span></div>`;});if(w) w.forEach(x=>{h+=`<div style="display:flex;justify-content:space-between;font-size:11px;padding:6px 0;border-bottom:1px solid #222"><span>💸 Withdraw $${x.amount}</span><span style="color:${x.status=='approved'?'#00c076':'#f5c518'}">${x.status}</span></div>`;});if(!h) h='No transactions';let el=document.getElementById('allTx'); if(el) el.innerHTML=h;}
-async function loadHistory(){let {data}=await supa.from('closed_trades').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(15);let he=document.getElementById('history'); if(!he) return;if(!data||!data.length){he.innerHTML='No history';return;}let h='';data.forEach(t=>{let rs=t.close_reason||'Manual'; let col=rs.includes('TP')?'#00c076':rs.includes('SL')?'#ff3b3b':'#8b93a1'; h+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222"><span>${t.pair} ${t.type} ${t.lot} <small style="color:${col}">[${rs}]</small></span><span style="color:${t.profit>=0?'#00c076':'#ff3b3b'}">$${Number(t.profit).toFixed(2)}</span></div>`});he.innerHTML=h;}
+async function loadHistory(){let {data}=await supa.from('closed_trades').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(20);let he=document.getElementById('history'); if(!he) return;if(!data||!data.length){he.innerHTML='No history';return;}let h='';data.forEach(t=>{let rs=t.close_reason||'Manual'; let col=rs.includes('TP')?'#00c076':rs.includes('SL')?'#ff3b3b':'#8b93a1'; let botTag=t.is_bot?'<span style="background:#00c076;color:#000;font-size:8px;padding:2px 4px;border-radius:4px">BOT</span> ':''; h+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222"><span>${botTag}${t.pair} ${t.type} ${t.lot} <small style="color:${col}">[${rs}]</small></span><span style="color:${t.profit>=0?'#00c076':'#ff3b3b'}">$${Number(t.profit).toFixed(2)}</span></div>`});he.innerHTML=h;}
 async function loadLeaderboard(){let {data:balData}=await supa.from('profiles').select('id,email,balance,total_deposits').order('balance',{ascending:false}).limit(10);let hb='';if(!balData||!balData.length) hb='No traders';else balData.forEach((u,i)=>{let medal=i==0?'🥇':i==1?'🥈':i==2?'🥉':'#'+(i+1);let emailMask=u.email.split('@')[0].slice(0,3)+'***';let isMe=currentUser&&u.id==currentUser.id;let vip=u.total_deposits>=2000?'💎':u.total_deposits>=500?'🥇':u.total_deposits>=100?'🥈':'🥉';hb+=`<div class="leaderRow"><span>${medal} ${vip} ${emailMask} ${isMe?'(You)':''}</span><div style="display:flex;gap:6px;align-items:center"><b style="color:#00c076">$${Number(u.balance||0).toFixed(0)}</b>${isMe?'':`<button class="copyBtn" onclick="copyTrader('${u.id}','${emailMask}')">COPY</button>`}</div></div>`;});let lb=document.getElementById('leaderBalance'); if(lb) lb.innerHTML=hb;}
 async function copyTrader(l,id){let {data:exists}=await supa.from('copy_follows').select('*').eq('follower_id',currentUser.id).eq('leader_id',l).single();if(exists){await supa.from('copy_follows').delete().eq('follower_id',currentUser.id).eq('leader_id',l);alert('Stopped copying');loadCopying();return;}await supa.from('copy_follows').insert({follower_id:currentUser.id,leader_id:l});alert('Now copying '+id);loadCopying();}
 async function loadCopying(){let {data}=await supa.from('copy_follows').select('leader_id').eq('follower_id',currentUser.id);let cl=document.getElementById('copyingList'); if(!cl) return;if(!data||!data.length){cl.innerHTML='Not copying';return;}let ids=data.map(d=>d.leader_id);let {data:leaders}=await supa.from('profiles').select('id,email').in('id',ids);let h='';leaders.forEach(l=>{h+=`<div>✅ ${l.email.split('@')[0].slice(0,3)}*** <span style="color:#ff3b3b;cursor:pointer" onclick="copyTrader('${l.id}','')">✕ stop</span></div>`;});cl.innerHTML=h;}
 async function loadAffList(){if(!myRefCode) return;let {data}=await supa.from('profiles').select('email,total_deposits').eq('referred_by',myRefCode).order('created_at',{ascending:false}).limit(20);let al=document.getElementById('affList'); if(!al) return;if(!data||!data.length){al.innerHTML='<div style="color:#5a6476">No referrals yet - $5 REAL per deposit</div>';return;}let h='<b style="font-size:11px">Your Referrals ($5 real per deposit):</b><br>';data.forEach(r=>{h+=`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #222"><span>${r.email.split('@')[0].slice(0,3)}***</span><span>${r.total_deposits>0?'✅ $'+r.total_deposits+' → you got $5 real':'⏳ no deposit'}</span></div>`;});al.innerHTML=h;}
 function copyRef(){let el=document.getElementById('refLink'); if(el){navigator.clipboard.writeText(el.value); alert('✅ Copied!');}}
-function shareRef(){let el=document.getElementById('refLink'); if(!el) return;let url=el.value;let text=encodeURIComponent('Join FX Kenya Pro - $2 bonus! '+url); window.open('https://wa.me/?text='+text,'_blank');}
+function shareRef(){let el=document.getElementById('refLink'); if(!el) return;let url=el.value;let text=encodeURIComponent('Join FX Kenya Pro - $2 bonus + Auto Bot! '+url); window.open('https://wa.me/?text='+text,'_blank');}
 async function loadSignals(){let {data}=await supa.from('signals').select('*').order('created_at',{ascending:false}).limit(3);let sb=document.getElementById('signalBar'); if(!sb) return;if(!data||!data.length){sb.style.display='none';return;}let h='';data.forEach(s=>{h+=`<div class="signalCard"><b style="color:#f5c518">📢 ${s.pair} ${s.type}</b> • ${s.message}</div>`;});sb.innerHTML=h;sb.style.display='block';}
-function requestNotif(){if(!('Notification' in window)) return alert('No support'); Notification.requestPermission().then(p=>{if(p=='granted'){new Notification('FX Kenya: Auto SL/TP ON 🤖'); alert('✅ ON - Auto SL/TP alerts');} else alert('Allow');});}
-async function loadChat(){if(!currentUser) return;let {data}=await supa.from('chats').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:true}).limit(40);let cb=document.getElementById('chatBox'); if(!cb) return;if(!data||!data.length){cb.innerHTML='<div style="text-align:center;color:#5a6476;font-size:11px;padding:20px">Support 24/7 - Ask about Auto SL/TP</div>';return;}let h='';data.forEach(c=>{let t=new Date(c.created_at); let tm=t.getHours().toString().padStart(2,'0')+':'+t.getMinutes().toString().padStart(2,'0'); h+=`<div class="msg ${c.sender=='user'?'user':'admin'}">${c.message}<br><small style="opacity:.6">${tm}</small></div>`;});cb.innerHTML=h;cb.scrollTop=cb.scrollHeight;}
+function requestNotif(){if(!('Notification' in window)) return alert('No support'); Notification.requestPermission().then(p=>{if(p=='granted'){new Notification('FX Kenya: Bot Alerts ON 🤖'); alert('✅ ON');} else alert('Allow');});}
+async function loadChat(){if(!currentUser) return;let {data}=await supa.from('chats').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:true}).limit(40);let cb=document.getElementById('chatBox'); if(!cb) return;if(!data||!data.length){cb.innerHTML='<div style="text-align:center;color:#5a6476;font-size:11px;padding:20px">Support 24/7 - Ask about Bot</div>';return;}let h='';data.forEach(c=>{let t=new Date(c.created_at); let tm=t.getHours().toString().padStart(2,'0')+':'+t.getMinutes().toString().padStart(2,'0'); h+=`<div class="msg ${c.sender=='user'?'user':'admin'}">${c.message}<br><small style="opacity:.6">${tm}</small></div>`;});cb.innerHTML=h;cb.scrollTop=cb.scrollHeight;}
 async function sendChat(){let inp=document.getElementById('chatInput'); if(!inp) return;let msg=inp.value.trim();if(!msg) return;await supa.from('chats').insert({user_id:currentUser.id,email:currentUser.email,message:msg,sender:'user'});inp.value='';loadChat();}
-async function loadAdmin(){if(!currentUser||currentUser.email!==ADMIN_EMAIL){let ad=document.getElementById('adminDeposits'); if(ad) ad.innerHTML='⛔';return;}let ac=document.getElementById('adminCheck'); if(ac) ac.innerHTML='✅ '+currentUser.email+' • Auto SL/TP Active';let {data:kycData}=await supa.from('kyc').select('*').eq('status','pending').order('created_at');let hk='';if(!kycData||!kycData.length) hk='No pending KYC';else kycData.forEach(x=>{hk+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:11px">${x.email}<br>${x.full_name}<br><a href="${x.id_front_url}" target="_blank" style="color:#f5c518">ID</a> | <a href="${x.selfie_url}" target="_blank" style="color:#00c076">Selfie</a><br><button onclick="approveKyc('${x.id}','${x.user_id}')" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px;margin-top:4px">APPROVE +$2</button></div>`;});let ak=document.getElementById('adminKyc'); if(ak) ak.innerHTML=hk;let {data:d}=await supa.from('deposits').select('*').eq('status','pending').order('created_at');let h='';if(!d||!d.length) h='No pending';else d.forEach(x=>{h+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} KES ${x.amount}<br>${x.phone}<br><button onclick="approveDep('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">APPROVE + BONUS</button></div>`});let ad=document.getElementById('adminDeposits'); if(ad) ad.innerHTML=h;let {data:w}=await supa.from('withdrawals').select('*').eq('status','pending').order('created_at');let hw='';if(!w||!w.length) hw='No pending';else w.forEach(x=>{hw+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount} → ${x.phone}<br><button onclick="approveWith('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">PAID</button></div>`});let aw=document.getElementById('adminWithdraws'); if(aw) aw.innerHTML=hw;}
+async function loadAdmin(){if(!currentUser||currentUser.email!==ADMIN_EMAIL){let ad=document.getElementById('adminDeposits'); if(ad) ad.innerHTML='⛔';return;}let ac=document.getElementById('adminCheck'); if(ac) ac.innerHTML='✅ '+currentUser.email+' • Bot P/L $'+botPL.toFixed(2);let {data:kycData}=await supa.from('kyc').select('*').eq('status','pending').order('created_at');let hk='';if(!kycData||!kycData.length) hk='No pending KYC';else kycData.forEach(x=>{hk+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:11px">${x.email}<br>${x.full_name}<br><a href="${x.id_front_url}" target="_blank" style="color:#f5c518">ID</a> | <a href="${x.selfie_url}" target="_blank" style="color:#00c076">Selfie</a><br><button onclick="approveKyc('${x.id}','${x.user_id}')" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px;margin-top:4px">APPROVE +$2</button></div>`;});let ak=document.getElementById('adminKyc'); if(ak) ak.innerHTML=hk;let {data:d}=await supa.from('deposits').select('*').eq('status','pending').order('created_at');let h='';if(!d||!d.length) h='No pending';else d.forEach(x=>{h+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} KES ${x.amount}<br>${x.phone}<br><button onclick="approveDep('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">APPROVE + BONUS</button></div>`});let ad=document.getElementById('adminDeposits'); if(ad) ad.innerHTML=h;let {data:w}=await supa.from('withdrawals').select('*').eq('status','pending').order('created_at');let hw='';if(!w||!w.length) hw='No pending';else w.forEach(x=>{hw+=`<div style="border:1px solid #222;padding:8px;border-radius:8px;margin:6px 0;font-size:12px">${x.email} $${x.amount} → ${x.phone}<br><button onclick="approveWith('${x.id}','${x.user_id}',${x.amount})" style="background:#00c076;border:0;padding:6px 10px;border-radius:6px">PAID</button></div>`});let aw=document.getElementById('adminWithdraws'); if(aw) aw.innerHTML=hw;}
 async function approveKyc(id,uid){await supa.from('kyc').update({status:'approved'}).eq('id',id);let {data:p}=await supa.from('profiles').select('bonus').eq('id',uid).single();await supa.from('profiles').update({bonus:(p.bonus||0)+2}).eq('id',uid);alert('Approved +$2 BONUS');loadAdmin();}
 async function approveDep(id,uid,amt){let {data:p}=await supa.from('profiles').select('balance,bonus,total_deposits,referred_by').eq('id',uid).single();let td=p.total_deposits||0;let perc=td>=2000?1:td>=500?0.8:td>=100?0.6:0.5;let bonusAdd=amt*perc;await supa.from('profiles').update({balance:(p.balance||0)+amt,bonus:(p.bonus||0)+bonusAdd,total_deposits:td+amt}).eq('id',uid);await supa.from('deposits').update({status:'approved'}).eq('id',id);if(p.referred_by&&td==0){let {data:ref}=await supa.from('profiles').select('id,balance').eq('referral_code',p.referred_by).single(); if(ref) await supa.from('profiles').update({balance:ref.balance+5}).eq('id',ref.id);}alert('Approved: $'+amt+' REAL + $'+bonusAdd.toFixed(2)+' BONUS');loadAdmin();}
 async function approveWith(id,uid,amt){let today=new Date().toISOString().split('T')[0];let {data:todayData}=await supa.from('withdrawals').select('amount').eq('user_id',uid).eq('status','approved').gte('created_at',today+'T00:00:00');let sum=0; if(todayData) todayData.forEach(d=>sum+=Number(d.amount)||0);if((sum+amt)>50000) return alert('Exceeds $50k daily. Already: $'+sum);let {data:p}=await supa.from('profiles').select('balance').eq('id',uid).single();if(amt>p.balance) return alert('Not enough REAL. Real: $'+p.balance);await supa.from('profiles').update({balance:p.balance-amt}).eq('id',uid);await supa.from('withdrawals').update({status:'approved'}).eq('id',id);alert('Paid $'+amt);loadAdmin();}
